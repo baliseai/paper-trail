@@ -436,15 +436,14 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="head">
-    <h2><span id="nsys">23</span> configurations, 103-question baseline</h2>
-    <p>Results on the current 150 questions are not published yet. Click a row for its breakdown.</p>
+    <h2><span id="nsys">7</span> configurations · <span id="lbset-lbl">150 questions (v2.1)</span></h2>
+    <p id="lbset-note">Full 150-question v2.1 runs (medium effort, blind 3-lab graded). Switch to the 103-question baseline to view the earlier multi-effort and SharePoint comparisons. Click any row for its breakdown.</p>
   </div>
   <div class="controls">
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
-      <div class="seg tight pillbar" id="preset-seg" role="group" aria-label="Compare">
-        <button class="chip" type="button" data-p="all" aria-pressed="true">All</button>
-        <button class="chip" type="button" data-p="content" aria-pressed="false">With and without an index</button>
-        <button class="chip" type="button" data-p="model" aria-pressed="false">One harness, eight models</button>
+      <div class="seg tight pillbar" id="set-seg" role="group" aria-label="Question set">
+        <button class="chip" type="button" data-set="v2" aria-pressed="true">150 questions (v2.1)</button>
+        <button class="chip" type="button" data-set="v1" aria-pressed="false">103 baseline</button>
       </div>
       <div class="seg tight pillbar" id="metric-seg" role="group" aria-label="Score metric">
         <button class="chip" type="button" data-m="score" aria-pressed="true">Standard</button>
@@ -1071,8 +1070,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   };
 
   /* ---------- LEADERBOARD ---------- */
-  let view = 'overall', metric = 'score', effortMode = 'collapsed', preset = 'all';
-  const PRESETS = { all: () => true, content: s => !s.id.startsWith('studio-'), model: s => s.id.startsWith('studio-') };
+  let view = 'overall', metric = 'score', effortMode = 'collapsed', activeSet = 'v2';
   const filt = { harness: 'all', model: 'all', cs: 'all' };
   const expanded = new Set();
   const EFF_ORD = { low: 0, medium: 1, high: 2 };
@@ -1119,8 +1117,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   }
   function filterSystems(list) {
     return list.filter(s =>
-      PRESETS[preset](s)
-      && (filt.harness === 'all' || s.harness_label === filt.harness)
+      (filt.harness === 'all' || s.harness_label === filt.harness)
       && (filt.model === 'all' || s.model_label === filt.model)
       && (filt.cs === 'all' || s.content_system === filt.cs)
     );
@@ -1206,11 +1203,24 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
     renderBoard();
   };
-  $('#preset-seg').onclick = e => {
-    const b = e.target.closest('[data-p]'); if (!b) return;
-    preset = b.dataset.p;
-    $('#preset-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    renderBoard();
+  function applyDataset(setKey) {
+    activeSet = setKey;
+    DATA.lb = (setKey === 'v2' && DATA.lbV2 && DATA.lbV2.systems?.length) ? DATA.lbV2 : DATA.lbV1;
+    filt.harness = filt.model = filt.cs = 'all';
+    view = 'overall';
+    expanded.clear();
+    $('#nsys').textContent = DATA.lb.n_systems;
+    const isV2 = DATA.lb === DATA.lbV2;
+    $('#lbset-lbl').textContent = isV2 ? '150 questions (v2.1)' : '103-question baseline';
+    $('#lbset-note').textContent = isV2
+      ? 'Full 150-question v2.1 runs (medium effort, blind 3-lab graded). Switch to the 103 baseline to compare earlier multi-effort and SharePoint runs. Click any row for its breakdown.'
+      : 'Earlier 103-question baseline across 23 configurations, including SharePoint alone and reasoning-effort sweeps. Click any row for its breakdown.';
+    populateAxisFilters(); renderViews(); renderBoard(); renderHeatmap(); renderHistogram(); renderScatter(); renderTokens();
+  }
+  $('#set-seg').onclick = e => {
+    const b = e.target.closest('[data-set]'); if (!b) return;
+    $('#set-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    applyDataset(b.dataset.set);
   };
   $('#effort-seg').onclick = e => {
     const b = e.target.closest('[data-ef]'); if (!b) return;
@@ -1233,8 +1243,9 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     renderBoard();
   };
   function renderViews() {
-    const lb = DATA.lb, counts = {'1': 20, '2': 16, '3': 28, '4': 16, '5': 23};
-    const opts = [['overall', 'Overall', 103], ['hardcore', 'Hardest 11', lb.hardcore_ids.length],
+    const lb = DATA.lb, totalQ = lb.n_questions || 103;
+    const counts = lb.kind_counts || {'1': 20, '2': 16, '3': 28, '4': 16, '5': 23};
+    const opts = [['overall', 'Overall', totalQ], ['hardcore', `Hardest ${lb.hardcore_ids.length}`, lb.hardcore_ids.length],
       ...Object.entries(lb.kinds).map(([k, v]) => [k, v, counts[k] || 0])];
     $('#views').innerHTML = opts.map(([k, l, n]) => `<button class="chip" type="button" data-v="${k}" aria-pressed="${k === view}">${esc(l)}<span class="n">${n}</span></button>`).join('');
     $('#views').onclick = e => { const b = e.target.closest('[data-v]'); if (!b) return; view = b.dataset.v; renderViews(); renderBoard(); };
@@ -1479,13 +1490,22 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   /* ---------- BOOT ---------- */
   (async () => {
     try {
-      [DATA.lb, DATA.q, DATA.ex, DATA.tok] = await Promise.all(['leaderboard', 'questions', 'example-grades', 'tokens'].map(load));
-      DATA.qual = await load('qualification').catch(() => null);
-      $('#best').textContent = Math.max(...DATA.lb.systems.map(s => s.score)).toFixed(1);
-      $('#nsys').textContent = DATA.lb.n_systems;
-      $('#nsys-fact').textContent = DATA.lb.n_systems;
-      document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lb.n_systems);
-      renderLayers(); populateAxisFilters(); renderViews(); renderBoard(); renderQual(); renderHeatmap(); renderHistogram(); renderScatter(); renderGrid(); renderQFilters(); renderQuestions(); renderTokens();
+      [DATA.lbV1, DATA.q, DATA.ex, DATA.tok] = await Promise.all(['leaderboard', 'questions', 'example-grades', 'tokens'].map(load));
+      [DATA.lbV2, DATA.qual] = await Promise.all([
+        load('leaderboard-v2').catch(() => null),
+        load('qualification').catch(() => null),
+      ]);
+      DATA.lb = DATA.lbV1;
+      $('#best').textContent = Math.max(...DATA.lbV1.systems.map(s => s.score)).toFixed(1);
+      $('#nsys-fact').textContent = DATA.lbV1.n_systems;
+      document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lbV1.n_systems);
+      renderLayers(); renderGrid(); renderQual(); renderQFilters(); renderQuestions();
+      if (DATA.lbV2 && DATA.lbV2.systems?.length) {
+        applyDataset('v2');
+      } else {
+        $('#set-seg').hidden = true;
+        applyDataset('v1');
+      }
     } catch (err) {
       $('#lbody').innerHTML = `<tr><td colspan="8">The results could not be loaded. Reload the page.</td></tr>`;
     }
