@@ -2,9 +2,10 @@
 
 **[Website](https://baliseresearch.com/paper-trail/) · [Dataset on Hugging Face](https://huggingface.co/datasets/baliseai/paper-trail) · [Leaderboard](#leaderboard) · [Submit a system](#submitting-results)**
 
-Paper Trail asks **150 questions about 9,832 public NASA files**. The library includes partnership agreements,
-procurement records, audits, directives, technical reports, and backups. Tasks range from finding a clause to listing
-all agreements that meet a condition. The reference answers are based on the documents in the library.
+Paper Trail asks **150 work questions over 9,832 enterprise documents**: partnership agreements, procurement
+contracts, audits, directives, technical reports and old backups. Tasks range from finding a clause to listing all
+agreements that meet a condition. The files are public NASA records, so anyone can rebuild the library, and the
+reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
