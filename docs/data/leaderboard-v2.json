@@ -2,7 +2,7 @@
  "version": "v2.1",
  "n_questions": 150,
  "as_of": "2026-11-27",
- "n_systems": 7,
+ "n_systems": 8,
  "hardcore_ids": [
   "M14",
   "M27",
@@ -330,16 +330,56 @@
    "tool_calls_mean": 11.7,
    "steps_mean": 11.2,
    "timeouts": 2
+  },
+  {
+   "id": "studio-mistral-large-4.0-medium-v2",
+   "name": "Vertesia Agent System \u00b7 Mistral Large 4.0 medium",
+   "assistant": "Vertesia Agent System",
+   "harness": "Vertesia Agent System",
+   "harness_label": "Vertesia Agent System",
+   "harness_detail": "",
+   "content_system": "Vertesia",
+   "retrieval": "Vertesia index (built in)",
+   "model": "Mistral Large 4.0, medium",
+   "model_name": "Mistral Large 4.0",
+   "model_label": "Mistral Large 4.0",
+   "reasoning_effort": "medium",
+   "model_detail": "medium effort",
+   "correct": 92,
+   "partial": 30,
+   "wrong": 6,
+   "no_answer": 22,
+   "score": 71.3,
+   "score_wrong_minus1": 67.3,
+   "by_kind": {
+    "1": 84.0,
+    "2": 82.0,
+    "3": 58.8,
+    "4": 88.9,
+    "5": 54.5
+   },
+   "hardcore": 36.4,
+   "open_split": 74.0,
+   "held_out": 70.8,
+   "median_s": 229,
+   "p90_s": 446,
+   "input_tokens_per_q": 756943,
+   "cached_input_per_q": 593758,
+   "output_tokens_per_q": 11654,
+   "tool_calls_mean": 33.2,
+   "steps_mean": 20.4,
+   "timeouts": 20
   }
  ],
  "difficulty_histogram": [
   20,
-  10,
-  4,
+  6,
+  7,
   8,
-  9,
-  17,
-  25,
-  57
+  4,
+  11,
+  18,
+  27,
+  49
  ]
 }
