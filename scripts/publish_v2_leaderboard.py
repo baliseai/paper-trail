@@ -64,6 +64,8 @@ def _norm_meta(stem, sys_meta):
     else:
         harness_label = "Vertesia Agent System" if (not harness_raw or "vertesia" in harness_raw.lower()) else harness_raw
         cs = sys_meta.get("content_system") or "Vertesia"
+    if "gpt-6.2" in model_label.lower() and "composer" in model_label.lower():
+        model_label = "GPT 6.2"
     if cs.lower() in ("sharepoint + vertesia", "sharepoint + vertesia index"):
         cs = "SharePoint + Vertesia index"
     return harness_label, model_label, effort, cs
