@@ -52,9 +52,9 @@ reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
-**Funding and conflicts.** Paper Trail was built by Eric Barroca and is published by Balise Research. Vertesia's
-document index and agent appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were
-run by the author. Outside submissions are graded with the same rubric.
+**Funding and conflicts.** Paper Trail is built and published by Balise, Inc. Vertesia's document index and agent
+appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were run by Balise. Outside
+submissions are graded with the same rubric.
 
 For the submission format and run rules, see
 [Submitting results](#submitting-results-for-the-held-out-set).
@@ -67,7 +67,7 @@ For the submission format and run rules, see
   January–March 2027, "this year" is 2026.
 - **Held-out set:** 25 open questions (5 per kind) publish their answer and source files; the other 125 keep their
   answers private so scores stay comparable. See [Submitting results](#submitting-results-for-the-held-out-set).
-- **Built by:** Eric Barroca and Balise, from an evaluation of assistants, agents, and content systems over this library.
+- **Built by:** Balise, Inc., from an evaluation of assistants, agents, and content systems over this library.
 
 ## What is in this repository
 
@@ -351,7 +351,7 @@ otherwise the file name), `title_from`, `source`, `source_url`, `ntrs_id`, `byte
   from the platform's run records. Copilot and Claude.ai
   were run through their consumer products, whose behaviour can change without notice.
 - **Conflict of interest.** Vertesia sells the index and the agent used in 21 of the 23 baseline rows, and the
-  benchmark's author ran every row. The questions, rubric and per-question grades are published so others can judge,
+  benchmark's publisher ran every row. The questions, rubric and per-question grades are published so others can judge,
   and outside submissions are graded the same way.
 - **Link rot.** Some source URLs may stop resolving over time (see above).
 
@@ -366,7 +366,7 @@ this benchmark, and the use of NASA documents here implies no endorsement by NAS
 ```bibtex
 @misc{papertrail2026,
   title  = {Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents},
-  author = {Barroca, Eric and {Balise}},
+  author = {{Balise Research}},
   year   = {2026},
   note   = {v2.1, 150 questions over 9,832 public NASA documents},
   url    = {https://github.com/baliseai/paper-trail}

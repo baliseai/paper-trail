@@ -9,9 +9,9 @@ reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
-**Funding and conflicts.** Paper Trail was built by Eric Barroca and is published by Balise Research. Vertesia's
-document index and agent appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were
-run by the author. Outside submissions are graded with the same rubric.
+**Funding and conflicts.** Paper Trail is built and published by Balise, Inc. Vertesia's document index and agent
+appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were run by Balise. Outside
+submissions are graded with the same rubric.
 
 For the submission format and run rules, see
 [Submitting results](#submitting-results).
@@ -202,7 +202,7 @@ NASA of any system measured.
 ```bibtex
 @misc{papertrail2026,
   title  = {Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents},
-  author = {Barroca, Eric and {Balise}},
+  author = {{Balise Research}},
   year   = {2026},
   note   = {v2.1, 150 questions over 9,832 public NASA documents},
   url    = {https://github.com/baliseai/paper-trail}
