@@ -9,9 +9,9 @@ reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
-**Funding and conflicts.** Paper Trail is published by Balise Research (Eric Barroca and Balise). It was first built at
-Vertesia, whose document index and agent appear in 21 of the 23 baseline rows. Vertesia pays for its own runs. All 23
-rows were run by the benchmark's authors. Outside submissions are graded with the same rubric.
+**Funding and conflicts.** Paper Trail was built by Eric Barroca and is published by Balise Research. Vertesia's
+document index and agent appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were
+run by the author. Outside submissions are graded with the same rubric.
 
 For the submission format and run rules, see
 [Submitting results](#submitting-results).

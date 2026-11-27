@@ -52,9 +52,9 @@ reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
-**Funding and conflicts.** Paper Trail is published by Balise Research (Eric Barroca and Balise). It was first built at
-Vertesia, whose document index and agent appear in 21 of the 23 baseline rows. Vertesia pays for its own runs. All 23
-rows were run by the benchmark's authors. Outside submissions are graded with the same rubric.
+**Funding and conflicts.** Paper Trail was built by Eric Barroca and is published by Balise Research. Vertesia's
+document index and agent appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were
+run by the author. Outside submissions are graded with the same rubric.
 
 For the submission format and run rules, see
 [Submitting results](#submitting-results-for-the-held-out-set).
@@ -350,9 +350,9 @@ otherwise the file name), `title_from`, `source`, `source_url`, `ntrs_id`, `byte
   are given only as a median and 90th percentile; neither reports tokens. The Vertesia agent's times and tokens come
   from the platform's run records. Copilot and Claude.ai
   were run through their consumer products, whose behaviour can change without notice.
-- **Conflict of interest.** The benchmark was first built at Vertesia, which sells the index and the agent used in 21
-  of the 23 baseline rows, and its authors ran every row. The questions, rubric and per-question grades are published
-  so others can judge, and outside submissions are graded the same way.
+- **Conflict of interest.** Vertesia sells the index and the agent used in 21 of the 23 baseline rows, and the
+  benchmark's author ran every row. The questions, rubric and per-question grades are published so others can judge,
+  and outside submissions are graded the same way.
 - **Link rot.** Some source URLs may stop resolving over time (see above).
 
 ## Licence
