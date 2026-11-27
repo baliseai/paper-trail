@@ -1,0 +1,101 @@
+[
+ {
+  "id": "M33",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many space florida annexes under kca-4723 and which is the biggest",
+  "answer": "Seven annexes KCA-4723-1 to -7; biggest KCA-4723-2 (39127), $11,872,768 as printed.",
+  "source_files": [
+   "Agreements/Active/ARC/39138_KCA-4723-7 Rev Basic.pdf",
+   "Agreements/Active/KSC/37233_37233_KCA-4723_Rev_Basic_Executed.pdf",
+   "Agreements/Active/KSC/39127_KCA-4723-2 Rev Basic.pdf",
+   "Agreements/Active/KSC/39133_KCA-4723-3 Rev Basic.pdf",
+   "Agreements/Active/KSC/39134_KCA-4723-4 Rev Basic.pdf",
+   "Agreements/Active/KSC/39135_KCA-4723-5 Rev Basic.pdf",
+   "Agreements/Active/KSC/39137_KCA-4723-6 Rev Basic.pdf",
+   "Agreements/_To file/37234_37234_KCA-4723-1_Rev_Basic_Executed.pdf"
+  ]
+ },
+ {
+  "id": "M37",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "which directive covers foreign companies paying to use nasa facilities, and does the embraer icing tunnel annex fall under it",
+  "answer": "NPD 1370.1, Reimbursable Utilization of NASA Facilities by Foreign Entities and Foreign-Sponsored Research; yes, the Embraer annex is reimbursable use of Glenn's Icing Research Tunnel by a Brazilian company.",
+  "source_files": [
+   "Agreements/International/BR01581_72550.pdf",
+   "Policy and guidance/N_PD_1370_0001_.pdf"
+  ]
+ },
+ {
+  "id": "M44",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "the faa umbrella lets either side quit on 30 days notice - is that what our guidance says to do",
+  "answer": "Yes: the Guide says for low-risk SAAs (and low-risk IAAs) it often makes sense to let either party terminate after thirty days notice; the FAA umbrella (31919) has exactly that.",
+  "source_files": [
+   "Agreements/Interagency (federal)/31919_NASA-FAA_Final_Umbrella_ANG-1_signed_1.4.21.pdf",
+   "Policy and guidance/NAII_1050_1E_.pdf"
+  ]
+ },
+ {
+  "id": "M52",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "list the agreements with tesla or rivian so i can brief the boss",
+  "answer": "None: no agreement file mentions Tesla or Rivian.",
+  "source_files": []
+ },
+ {
+  "id": "M53",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "put the microsoft agreements in a table - what each one is for and which are annexes",
+  "answer": "Five Microsoft files: HQ umbrella 37860 (STEM engagement), Annex 1 37861 (Minecraft), Annex 2 40494 (interactive content; filed in _To file), Annex 3 42203 (Windows Learning STEM library), and Glenn SAA3-1745 37391 (tablet battery tests). All non-reimbursable.",
+  "source_files": [
+   "Agreements/Active/GRC/37391_SAA3-1745.pdf",
+   "Agreements/Active/HQ/37860_NONREIMBURSABLE_SPACE_ACT_UMBRELLA_AGREEMENT_Microsoft-NASA-final_signed.pdf",
+   "Agreements/Active/HQ/37861_MicrosoftAnnex1_MinecraftFeb2023_final-signed.pdf",
+   "Agreements/Active/HQ/42203_Microsoft-Annex3Finalsigned2-6-25.pdf",
+   "Agreements/_To file/40494_Microsoft-Annex2_Signed_3-27-24.pdf"
+  ]
+ },
+ {
+  "id": "Q8",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "whats the termination notice in the stratolaunch agreement",
+  "answer": "30 calendar days written notice by either party (AFRC umbrella 42419); same clause in ARC 35299 and LaRC 41629; older expired AFRC umbrella 31693 (annexes 31694, 39883) and HQ unfunded 38802 are also in the library.",
+  "source_files": [
+   "Agreements/Active/ARC/35299_SAA2-403646_Stratolaunch_NRUSAA_Fully_Executed_030122.pdf",
+   "Agreements/Active/Other centers/41629_SAA1-41629 Stratolaunch Umbrella NRUSAA _Fully Executed.pdf",
+   "Agreements/Active/Other centers/42419_64176_64176_42419_Stratolaunch_Umbrella_Final.pdf",
+   "Agreements/Expired/2025/31693_Final_Signed.pdf",
+   "Agreements/Expired/2025/31694_31694_Final_Signed_Annex.pdf",
+   "Agreements/Expired/2025/38802_22-22ACOFinal-0010-38802_Stratolaunch_Gould.pdf",
+   "Agreements/Expired/2025/39883_39883_39883_Annex 3 Partner Signed_rev1_EZsigned.pdf"
+  ]
+ },
+ {
+  "id": "Q10",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "who's allowed to sign a reimbursable saa, can they delegate it",
+  "answer": "NPD 1050.7A: MDAAs, Officials-in-Charge of HQ offices, Center Directors and the NOJMO Director sign within their jurisdiction; foreign agreements go to the AA for OIIR; delegation in writing to managers of supporting projects; signer determines the NASA contribution is fair and reasonable.",
+  "source_files": [
+   "Policy and guidance/NPD_1050.7A_Authority_to_Enter_into_Partnership_Agreements.htm",
+   "Policy and guidance/N_PD_1050_007A_.pdf"
+  ]
+ },
+ {
+  "id": "N7",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "who owns inventions under the joby umbrella with ames",
+  "answer": "Joby SAA2-403660 (35648): 20135(b) does not apply, title stays with the inventing party, licence on request (37 CFR 404); same in 37414.",
+  "source_files": [
+   "Agreements/Umbrella and annexes/Joby Aviation/35648_SAA2-403660_Joby_Aviation_NRUSAA_Fully_Executed_060322.pdf",
+   "Agreements/Umbrella and annexes/Joby Aviation/37414_SAA2-403721_Joby_Aero_NRUSAA_Agreement_Fully_Executed_122022.pdf"
+  ]
+ }
+]

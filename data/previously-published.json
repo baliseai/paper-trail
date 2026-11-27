@@ -1,0 +1,137 @@
+{
+ "note": "Questions whose answer has been published at some point. None of them may be in the held-out set.",
+ "questions": [
+  {
+   "id": "M1",
+   "question": "do we have a deal w firefly for launches out of wallops"
+  },
+  {
+   "id": "M16",
+   "question": "how do disputes get settled under the space florida ksc umbrella"
+  },
+  {
+   "id": "M22",
+   "question": "firefly jpl f prime agreement - who owns inventions"
+  },
+  {
+   "id": "M24",
+   "question": "how many agreements do we have with boeing and at which centers"
+  },
+  {
+   "id": "M33",
+   "question": "how many space florida annexes under kca-4723 and which is the biggest"
+  },
+  {
+   "id": "M37",
+   "question": "which directive covers foreign companies paying to use nasa facilities, and does the embraer icing tunnel annex fall under it"
+  },
+  {
+   "id": "M41",
+   "question": "has the ig ever written about our embraer agreement"
+  },
+  {
+   "id": "M44",
+   "question": "the faa umbrella lets either side quit on 30 days notice - is that what our guidance says to do"
+  },
+  {
+   "id": "M49",
+   "question": "compare the two firefly umbrellas (marshall and wallops) - what each covers and how long"
+  },
+  {
+   "id": "M5",
+   "question": "where is the fda mou filed and whats its number"
+  },
+  {
+   "id": "M52",
+   "question": "list the agreements with tesla or rivian so i can brief the boss"
+  },
+  {
+   "id": "M53",
+   "question": "put the microsoft agreements in a table - what each one is for and which are annexes"
+  },
+  {
+   "id": "M57",
+   "question": "brief me on the anduril agreements - what are they and which centers"
+  },
+  {
+   "id": "M9",
+   "question": "which google agreement is the battery one and what are they paying"
+  },
+  {
+   "id": "N19",
+   "question": "list the msfc agreements sitting in the to file folder so i can file them"
+  },
+  {
+   "id": "N4",
+   "question": "where did the purdue umbrella w jsc get filed"
+  },
+  {
+   "id": "N7",
+   "question": "who owns inventions under the joby umbrella with ames"
+  },
+  {
+   "id": "N9",
+   "question": "how many agreements do we have w texas a&m incl the tees ones"
+  },
+  {
+   "id": "P11",
+   "question": "for mishap reporting, is NPR 8621.1D still the latest word or did an interim directive update it, and what changed"
+  },
+  {
+   "id": "P14",
+   "question": "what is syncom space services doing under nns15aa01c, at which center, and what is the contract value"
+  },
+  {
+   "id": "P2",
+   "question": "do we have a procurement contract with bechtel and what is its ceiling"
+  },
+  {
+   "id": "P20",
+   "question": "which agreements sitting in Active/GRC and Active/HQ are actually already expired as of today"
+  },
+  {
+   "id": "P25",
+   "question": "reconcile Old shared drive/agreements_backup_2019 and Desktop backup against Agreements/ - how many files are in those two backup folders and are any of them missing from Agreements"
+  },
+  {
+   "id": "P32",
+   "question": "what did the 2026/2027 ig audit of nasa's aerosciences evaluation and test capabilities portfolio (ig-27-002) find, and which commercial partners have active wind-tunnel or icing-tunnel agreements with glenn or ames"
+  },
+  {
+   "id": "P34",
+   "question": "before we review new icing work at glenn, which active agreements use the icing research tunnel AND how many historical technical reports mentioning icing do we hold in Technical Reports (and which center and decade have the most)"
+  },
+  {
+   "id": "P35",
+   "question": "we have active agreements on thermal protection systems (like canopy aerospace, relativity, intuitive machines) - roughly how many technical reports on \"thermal protection\" are in Technical Reports and which two centers produced the most"
+  },
+  {
+   "id": "P37",
+   "question": "what do NASA's FY25 and FY26 financial statement audits (ig-26-001 and ig-27-003) say about the audit opinion, auditor firm, and any material weaknesses or significant deficiencies"
+  },
+  {
+   "id": "P42",
+   "question": "check the 7 agreements with \"draft\" or \"for signature\" in the filename in Active/HQ and Active/JSC - build a table showing which ones are actually fully signed vs unsigned (check the signature pages, not just the filenames)"
+  },
+  {
+   "id": "P46",
+   "question": "produce a filing remediation table for the GRC and HQ agreements sitting in Agreements/_To file/ - give file path, partner, agreement number, reimbursable vs non-reimbursable, expiration date, and target folder (Active vs Expired)"
+  },
+  {
+   "id": "P6",
+   "question": "is our delta air lines fatigue research agreement at ames (saa2-403566) still active or expired, check if any mod extended it"
+  },
+  {
+   "id": "Q10",
+   "question": "who's allowed to sign a reimbursable saa, can they delegate it"
+  },
+  {
+   "id": "Q8",
+   "question": "whats the termination notice in the stratolaunch agreement"
+  },
+  {
+   "id": "Q9",
+   "question": "how many annexes under the ula kca-4726 umbrella and whats the combined value"
+  }
+ ]
+}

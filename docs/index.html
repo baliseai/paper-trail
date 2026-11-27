@@ -1,0 +1,1489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents</title>
+<meta name="description" content="Paper Trail asks 150 work questions about 9,832 public NASA files and scores the whole stack that answers them: content system, harness and model.">
+<link rel="canonical" href="https://baliseresearch.com/paper-trail/">
+<meta property="og:title" content="Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents">
+<meta property="og:description" content="150 work questions about 9,832 public NASA files. Scores the whole stack that answers them: content system, harness and model.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://baliseresearch.com/paper-trail/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents">
+<meta name="twitter:description" content="150 work questions about 9,832 public NASA files. Scores the whole stack that answers them: content system, harness and model.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='%230f3128'/><path d='M28 41.5 C50 40.6 74 39.6 100 38.5 L99.5 57 C74 58.1 50 59.1 28.5 60 Z' fill='%23f8f5ec' stroke='%23f8f5ec' stroke-width='3' stroke-linejoin='round'/><path d='M28 70 C52 69.2 76 68.3 100.5 67 L100 85.5 C76 86.8 52 87.7 28.5 88.5 Z' fill='%23eea23f' stroke='%23eea23f' stroke-width='3' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column (max 1120px) in Balise Forest palette (matching usebalise.com & baliseresearch.com). */
+:root{
+  --bg:#f8f5ec; --surface:#fffdf6; --ink:#1c332d; --evergreen:#0f3128; --muted:#5f6a64; --line:#d2cec3; --soft:#f1ede1;
+  --accent:#0f3128; --accent-soft:rgba(15,49,40,.09); --accent-ink:#f8f5ec;
+  --clay:#a25236; --clay-soft:rgba(162,82,54,.12); --gold:#eea23f; --gold-soft:rgba(238,162,63,.2);
+  --ok:#1b5e3c; --ok-soft:#e2f0e7; --part:#9a5b13; --part-soft:#f9ecd6; --bad:#a23b2a; --bad-soft:#f8e4df; --none:#6d7873; --none-soft:#ebe6da;
+  --seg-new:#0f3128; --seg-write:#2a5044; --seg-read:#c7d4cd; --seg-out:#1c332d;
+  --c-gemini:#2a6f97; --c-claude:#a25236; --c-gpt:#1b6e53; --c-muse:#7b4b94; --c-sp:#6d7873; --c-with:#d08422;
+  --shadow:0 1px 2px rgba(15,49,40,.05), 0 4px 16px rgba(15,49,40,.03);
+  --f-display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --f-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+:root[data-theme="dark"]{
+  --bg:#131514; --surface:#181b19; --ink:#e9e6dc; --evergreen:#f8f5ec; --muted:#979e99; --line:#2c312e; --soft:#1f2321;
+  --accent:#eea23f; --accent-soft:rgba(238,162,63,.16); --accent-ink:#131514;
+  --clay:#d98462; --clay-soft:rgba(217,132,98,.16); --gold:#eea23f; --gold-soft:rgba(238,162,63,.18);
+  --ok:#63d29b; --ok-soft:#163326; --part:#eea23f; --part-soft:#382a14; --bad:#f08878; --bad-soft:#3d1d18; --none:#909893; --none-soft:#232725;
+  --seg-new:#eea23f; --seg-write:#c48434; --seg-read:#39403c; --seg-out:#f8f5ec;
+  --c-gemini:#68b0d8; --c-claude:#e08b69; --c-gpt:#52c79a; --c-muse:#c295db; --c-sp:#909893; --c-with:#eea23f;
+  --shadow:0 2px 6px rgba(0,0,0,.35);
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;color:var(--evergreen);margin:0;letter-spacing:-.025em}
+h2{font-size:clamp(24px,2.6vw,31px);line-height:1.16}
+h3{font-size:17.5px;line-height:1.3}
+p{margin:0}
+a{color:var(--clay)}
+a:hover{color:var(--evergreen)}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+.eyebrow{font:700 11px/1 var(--f-mono);letter-spacing:.13em;text-transform:uppercase;color:var(--clay)}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Balise Research brand strip */
+.brandbar{border-bottom:1px solid var(--line);background:var(--bg)}
+.brandbar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:11px;font-size:13px}
+.brandlink{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--evergreen);font:700 16.5px/1 var(--f-display);letter-spacing:-.02em;flex:none;white-space:nowrap}
+.brand-sub{font:700 10px/1 var(--f-mono);letter-spacing:.13em;text-transform:uppercase;color:var(--clay);padding:3px 6px;border-radius:4px;background:var(--clay-soft)}
+.brand-crumbs{display:flex;align-items:center;gap:14px;color:var(--muted);white-space:nowrap}
+.brand-crumbs a{color:var(--muted);text-decoration:none;white-space:nowrap}
+.brand-crumbs a:hover{color:var(--evergreen)}
+@media (max-width:680px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .brandbar-in{padding-block:9px}
+  .brand-crumbs{gap:10px;font-size:12px}
+  .brand-crumbs .hide-sm{display:none}
+  .hero{padding-block:26px 24px}
+  .fact{padding:14px 14px}
+  .fact b{font-size:24px}
+  section{padding-block:36px 32px}
+  .controls{gap:8px;margin-bottom:10px}
+  .filterbar{width:100%;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .fselect{width:100%;justify-content:space-between;padding:6px 8px;font-size:12px}
+  .fselect select{min-width:0;max-width:100%;text-overflow:ellipsis;font-size:12px}
+  #views,#qfilters,#dfilters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-inline:-2px}
+  .lb th:nth-child(5),.lb td:nth-child(5),
+  .lb th:nth-child(6),.lb td:nth-child(6),
+  .lb th:nth-child(7),.lb td:nth-child(7),
+  .lb th:nth-child(8),.lb td:nth-child(8){display:none}
+  .lb th{white-space:normal;font-size:10px}
+  .lb .sys,.lb .sys.hc,.lb .sys.n{min-width:0!important;max-width:none}
+  .lb td,.lb th{padding:8px 5px;font-size:12px}
+  .lb .score{display:block!important;min-width:40px!important;text-align:right}
+  .lb .score b{font-size:14.5px}
+  .lb .stack{display:none!important}
+  .lb th:nth-child(4){text-align:right}
+  .lb .tag{font-size:10px;padding:2px 5px;white-space:normal}
+  .lb .sys small{font-size:11px}
+  .kbar-row{grid-template-columns:120px minmax(0,1fr) 38px;gap:6px;font-size:11.5px}
+  .qual-tbl th:nth-child(4),.qual-tbl td:nth-child(4),
+  .qual-tbl th:nth-child(5),.qual-tbl td:nth-child(5),
+  .qual-tbl th:nth-child(6),.qual-tbl td:nth-child(6),
+  .qual-tbl th:nth-child(7),.qual-tbl td:nth-child(7){display:none}
+  .qual-tbl th{white-space:normal;font-size:10px}
+  .qual-tbl .sys,.qual-tbl .sys.n{min-width:0!important}
+  .qual-tbl .score{display:block!important;min-width:40px!important;text-align:right}
+  .qual-tbl .stack{display:none!important}
+  .qual-tbl th:nth-child(3){text-align:right}
+  .qual-tbl td,.qual-tbl th{padding:8px 5px;font-size:12px}
+  .qstatus{font-size:10.5px;padding:3px 6px}
+}
+
+/* hero — balanced two-column editorial layout */
+.hero{padding-block:40px 34px;display:grid;gap:24px}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:36px;align-items:start}
+@media (max-width:880px){.hero-top{grid-template-columns:minmax(0,1fr);gap:24px}}
+.hero-copy{display:grid;gap:14px}
+.hero h1{font-size:clamp(40px,5.4vw,60px);font-weight:600;line-height:1.0;letter-spacing:-.035em}
+.hero .lede-lead{font-size:clamp(16.5px,1.5vw,18px);line-height:1.55;color:var(--ink);max-width:58ch}
+.hero .lede{font-size:14.5px;line-height:1.65;color:var(--muted);max-width:60ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:var(--shadow)}
+.fact{background:var(--surface);padding:18px 20px;display:grid;gap:5px;min-width:0}
+.fact b{font:600 28px/1.05 var(--f-display);color:var(--evergreen);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.fact span{font-size:12.5px;line-height:1.4;color:var(--muted)}
+.hero-side{display:grid;gap:14px;align-content:start}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
+.links a{text-decoration:none}
+
+/* section bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;padding-block:9px;scrollbar-width:none}
+.bar a{flex:none;text-decoration:none;color:var(--muted);font:500 13.5px/1 var(--f-body);padding:7px 11px;border-radius:7px;transition:background .15s,color .15s}
+.bar a:hover{color:var(--ink);background:var(--soft)}
+
+section{padding-block:48px 44px;scroll-margin-top:54px}
+section + section{border-top:1px solid var(--line)}
+.head{display:grid;gap:8px;margin-bottom:24px}
+.head p{color:var(--muted);font-size:15px;max-width:72ch}
+
+/* cards & buttons */
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow)}
+.box ol,.box ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:8px 15px;cursor:pointer;font-size:13.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:background .15s,border-color .15s}
+.btn:hover:not(:disabled){background:var(--soft);border-color:color-mix(in srgb,var(--ink) 20%,var(--line))}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.sm{padding:5px 11px;font-size:12.5px}
+
+/* controls — cleaner segmented groups */
+.controls{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.seg.tight{margin-bottom:0}
+.seg.pillbar{background:var(--soft);padding:4px;border-radius:10px;border:1px solid var(--line);gap:3px}
+.seg.pillbar .chip{border:0;background:transparent;border-radius:7px;padding:6px 12px}
+.seg.pillbar .chip[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(20,23,31,.08)}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .12s,color .12s}
+.chip:hover{background:var(--soft)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .n{color:var(--muted);margin-left:5px;font-family:var(--f-mono);font-size:11.5px}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.ctrl-lbl{font:600 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:4px}
+.filterbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fselect{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:5px 10px;font-size:13px}
+.fselect label{font:600 10.5px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.fselect select{border:0;background:transparent;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;padding-right:4px;outline:none}
+.search{width:100%;max-width:420px;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:9px 13px}
+
+/* What moves the score: one row per comparison, dots on a 0-100 track */
+.byline{font-size:13px;color:var(--muted)}
+.layers{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 22px 6px;box-shadow:var(--shadow)}
+.lrow{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr) 62px;gap:8px 18px;align-items:center;padding:12px 0}
+.lrow.g{border-top:1px solid var(--line)}
+.llbl b{display:block;font:600 15.5px/1.3 var(--f-display);color:var(--evergreen)}
+.llbl span{font-size:13px;line-height:1.4;color:var(--muted)}
+.ltrack{position:relative;height:26px;margin:0 46px 0 44px}
+.ltrack::before{content:"";position:absolute;left:0;right:0;top:12px;height:2px;border-radius:1px;background:var(--soft)}
+.lspan{position:absolute;top:10px;height:6px;border-radius:3px;background:var(--accent);opacity:.25}
+.ldot{position:absolute;top:6px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+.ldot.sm{top:8px;width:10px;height:10px;margin-left:-5px}
+.ldot.hollow{background:var(--surface);border-color:var(--muted)}
+.lval{position:absolute;top:4px;font:600 12px/18px var(--f-mono);color:var(--ink);white-space:nowrap}
+.lval.l{transform:translateX(calc(-100% - 11px))}
+.lval.r{transform:translateX(11px)}
+.ldelta{font:600 16px var(--f-display);text-align:right;font-variant-numeric:tabular-nums;color:var(--evergreen);white-space:nowrap}
+.ldelta.soft{color:var(--muted)}
+.laxis{padding:0 0 8px}
+.laxis .ltrack{height:16px}
+.laxis .ltrack::before{display:none}
+.laxis .ltrack span{position:absolute;top:0;transform:translateX(-50%);font:11px var(--f-mono);color:var(--muted)}
+.takeaways{margin:16px 0 10px;padding-left:20px;display:grid;gap:5px;font-size:15px;max-width:76ch}
+.dbar-track{height:6px;border-radius:999px;background:var(--soft);overflow:hidden;position:relative}
+.dbar-fill{height:100%;border-radius:999px}
+@media (max-width:720px){
+  .layers{padding:6px 14px 2px}
+  .lrow{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
+  .ltrack{grid-column:1/-1;grid-row:2;margin:0 40px 0 38px}
+}
+
+/* Pareto scatter plot */
+.svg-wrap{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px 14px;overflow:hidden}
+.svg-wrap svg{display:block;width:100%;height:auto;overflow:visible}
+.scatter-tip{position:absolute;pointer-events:none;z-index:30;background:var(--ink);color:var(--bg);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.45;min-width:210px;max-width:280px;box-shadow:0 10px 28px rgba(0,0,0,.22);opacity:0;transition:opacity .12s ease}
+.scatter-tip.show{opacity:1}
+.scatter-tip b{display:block;font-family:var(--f-display);font-size:13.5px;margin-bottom:3px}
+.scatter-tip .trow{display:flex;justify-content:space-between;gap:12px;opacity:.92}
+.slegend{display:flex;flex-wrap:wrap;gap:12px 16px;font-size:12.5px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.slegend span{display:inline-flex;align-items:center;gap:6px}
+.sdot{width:9px;height:9px;border-radius:999px;display:inline-block;background:var(--c)}
+
+/* Leaderboard */
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%}
+th{font:600 11px/1.3 var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8.5px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+.lb td{font-variant-numeric:tabular-nums}
+.lb td.r{white-space:nowrap}
+.lb tbody tr.main-row{cursor:pointer}
+.lb tbody tr.main-row:hover{background:var(--soft)}
+.lb tbody tr.detail-row td{background:var(--bg);padding:14px 18px}
+.sys{min-width:210px}
+.sys b{font-weight:600}
+.sys small{display:block;color:var(--muted);font-size:12px}
+.sys.n{min-width:132px}
+.sys.hc{min-width:165px}
+.sys.hc b{display:block;margin-bottom:4px}
+.tag{display:inline-block;font:600 11px/1 var(--f-body);letter-spacing:.02em;padding:3px 7px;border-radius:5px;margin-right:5px;vertical-align:1px}
+.tag.with{background:var(--accent-soft);color:var(--accent)}
+.tag.alone{background:var(--none-soft);color:var(--muted)}
+.tag.agent{background:var(--ok-soft);color:var(--ok)}
+.tag.ext{background:var(--part-soft);color:var(--part)}
+.tag.to{background:var(--bad-soft);color:var(--bad);margin-left:4px}
+.tag.eff{background:var(--soft);color:var(--muted);margin-left:6px;font-weight:500}
+.eff-tbl{width:100%;border-collapse:collapse;margin-top:14px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);font-size:13px}
+.eff-tbl th{padding:7px 10px;font-size:10.5px;background:var(--soft)}
+.eff-tbl td{padding:7px 10px;font-variant-numeric:tabular-nums}
+.eff-tbl tr.cur td{background:var(--gold-soft);font-weight:600}
+.qual-box{margin-top:26px;display:grid;gap:12px}
+.qual-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.qual-head h3{font-size:17px;font-weight:700}
+.qual-tbl td{font-variant-numeric:tabular-nums}
+.qstatus{display:inline-block;font:600 11.5px/1 var(--f-body);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.qstatus.qualified{background:var(--ok-soft);color:var(--ok)}
+.qstatus.dnq{background:var(--none-soft);color:var(--muted)}
+.dag{margin-left:3px;color:var(--muted)}
+.caret{display:inline-block;width:14px;color:var(--muted);font-size:11px;transition:transform .15s ease}
+tr.open .caret{transform:rotate(90deg)}
+.score{display:grid;grid-template-columns:46px minmax(72px,112px);align-items:center;gap:8px;min-width:128px}
+.score b{font:700 17px/1 var(--f-display)}
+.stack{display:flex;height:9px;border-radius:3px;overflow:hidden;background:var(--soft)}
+.stack i{display:block;height:100%}
+.c-ok{background:var(--ok)} .c-part{background:var(--part)} .c-bad{background:var(--bad)} .c-none{background:var(--none)}
+.cpwn{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.rank{font:600 13px var(--f-mono);color:var(--muted);white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:12px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.rowdefs{display:grid;gap:8px;margin-top:14px;font-size:13.5px}
+.detail-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:18px}
+@media (max-width:780px){.detail-grid{grid-template-columns:minmax(0,1fr)}}
+.kbars{display:grid;gap:7px}
+.kbar-row{display:grid;grid-template-columns:160px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:12.5px}
+.dstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.dstat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.dstat span{display:block;font-size:11.5px;color:var(--muted)}
+.dstat b{font:600 14px var(--f-mono)}
+
+/* Heatmap + Difficulty histogram */
+.hm th.sortable{cursor:pointer;user-select:none}
+.hm th.sortable:hover{color:var(--ink)}
+.hm td.cell{text-align:center;font:600 12.5px var(--f-body);font-variant-numeric:tabular-nums;border-left:1px solid var(--bg);min-width:52px;padding:7.5px 6px}
+.hm th{padding:9px 7px;font-size:10.5px}
+.hm td.sys-col{font-size:12.5px;min-width:160px;max-width:240px;padding:7px 10px;line-height:1.25}
+.hm td.sys-col small{display:block;color:var(--muted);margin-left:0;font-size:11px}
+.split2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:18px}
+@media (max-width:860px){.split2{grid-template-columns:minmax(0,1fr)}}
+
+/* Tabbed worked examples */
+.ex{display:grid;gap:18px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;gap:10px}
+.qline{font:600 clamp(18px,2.2vw,23px)/1.3 var(--f-display)}
+.qmeta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:18px}
+@media (max-width:820px){.cols{grid-template-columns:minmax(0,1fr)}}
+.why{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.why li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;font-size:14px}
+.why li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent);margin-top:7px}
+.key td{font-size:13.5px;vertical-align:top}
+.key td:first-child{font-family:var(--f-mono);font-size:12.5px;white-space:nowrap}
+.path{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);word-break:break-all}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.answers{grid-template-columns:minmax(0,1fr)}}
+.ans{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:8px;align-content:start}
+.ans header{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.ans header b{font:600 15px var(--f-display)}
+.grade{display:inline-block;font:600 12px/1 var(--f-body);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.g-correct{background:var(--ok-soft);color:var(--ok)} .g-partial{background:var(--part-soft);color:var(--part)}
+.g-wrong{background:var(--bad-soft);color:var(--bad)} .g-none{background:var(--none-soft);color:var(--muted)}
+.ans p{font-size:14px}
+.ans .verdict{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.grid9{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (max-width:720px){.grid9{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grid9 div{font-size:12.5px;padding:8px 10px;border-radius:8px;display:flex;justify-content:space-between;gap:6px}
+
+/* questions */
+.qlist{display:grid;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.qrow{border-bottom:1px solid var(--line)}
+.qrow:last-child{border-bottom:0}
+.qrow summary{list-style:none;display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 16px;cursor:pointer}
+.qrow summary::-webkit-details-marker{display:none}
+.qrow summary:hover{background:var(--soft)}
+.qid{font:500 13px var(--f-mono);color:var(--muted)}
+.qtext{font-size:14.5px;min-width:0}
+.qtags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.pill{font:600 11px/1 var(--f-body);padding:4px 7px;border-radius:5px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.pill.hard{background:var(--bad-soft);color:var(--bad)}
+.pill.open{background:var(--ok-soft);color:var(--ok)}
+.pill.v2{background:var(--accent-soft);color:var(--accent)}
+.qbody{padding:4px 16px 16px 84px;display:grid;gap:10px;font-size:14px}
+.qbody ul{margin:0;padding-left:18px}
+@media (max-width:640px){.qrow summary{grid-template-columns:46px minmax(0,1fr)}.qtags{grid-column:2;justify-content:flex-start}.qbody{padding-left:16px}}
+
+/* documents */
+.docs td{font-size:13.5px}
+.docs td.p{font-family:var(--f-mono);font-size:12px;word-break:break-all;min-width:280px}
+.pager{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.rules{grid-template-columns:minmax(0,1fr)}}
+.rubric{display:grid;gap:10px}
+.rubric div{display:grid;grid-template-columns:104px 38px minmax(0,1fr);gap:10px;align-items:baseline;font-size:14px}
+.rubric .pts{font:600 14px var(--f-mono);text-align:right}
+
+/* tokens */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:grid;gap:8px}
+.crow{display:grid;grid-template-columns:225px minmax(0,1fr) 138px;gap:12px;align-items:center;font-size:13.5px}
+.crow .lbl{min-width:0}
+.crow .lbl small{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap}
+.cbar{height:15px;display:flex;border-radius:3px;overflow:hidden;background:var(--soft)}
+.cbar i{display:block;height:100%}
+.crow .val{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.crow .val small{display:block;color:var(--muted);font-size:11.5px}
+@media (max-width:640px){.crow{grid-template-columns:minmax(0,1fr) 92px}.crow .cbar{grid-column:1/-1;grid-row:2}}
+.axis{display:grid;grid-template-columns:225px minmax(0,1fr) 138px;gap:12px;font:11.5px var(--f-body);font-variant-numeric:tabular-nums;color:var(--muted)}
+.axis div{display:flex;justify-content:space-between}
+@media (max-width:640px){.axis{display:none}}
+
+/* challenge & cite */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.steps{grid-template-columns:minmax(0,1fr)}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px;align-content:start}
+.step .k{font:600 12.5px var(--f-body);letter-spacing:.02em;color:var(--accent)}
+.dl{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.dl .btn{padding:7px 12px;font-size:13px}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font:12px/1.55 var(--f-mono);margin:0;white-space:pre-wrap;word-break:break-word}
+.cite-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--muted)}
+footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;gap:6px}
+</style>
+</head>
+<body>
+
+<div class="brandbar"><div class="wrap brandbar-in">
+  <a class="brandlink" href="https://baliseresearch.com/">
+    <svg width="24" height="24" viewBox="0 0 128 128" aria-hidden="true">
+      <rect width="128" height="128" rx="26" fill="#0f3128"/>
+      <path d="M28 41.5 C50 40.6 74 39.6 100 38.5 L99.5 57 C74 58.1 50 59.1 28.5 60 Z" fill="#f8f5ec" stroke="#f8f5ec" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M28 70 C52 69.2 76 68.3 100.5 67 L100 85.5 C76 86.8 52 87.7 28.5 88.5 Z" fill="#eea23f" stroke="#eea23f" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+    Balise <span class="brand-sub">Research</span>
+  </a>
+  <div class="brand-crumbs">
+    <a href="https://baliseresearch.com/">All research</a>
+    <a href="https://github.com/baliseai/paper-trail">GitHub</a>
+    <a class="hide-sm" href="https://huggingface.co/datasets/baliseai/paper-trail">Hugging Face</a>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <div class="hero-copy">
+        <p class="eyebrow">Balise Research · Question set v2.1</p>
+        <h1>Paper Trail</h1>
+        <p class="lede-lead"><b>150 questions about 9,832 public NASA files</b>, asked the way people ask at work.</p>
+        <p class="lede">Most document benchmarks hand the model a few clean passages. “List every agreement up for renewal next quarter” needs every matching file out of thousands, scans and misfiled copies included.</p>
+        <p class="lede">Paper Trail scores the whole stack that answers it and names each part: the content system, the harness, the model.</p>
+        <div class="links">
+          <a class="btn primary" href="#layers">Results</a>
+          <a class="btn" href="#take-part">Run it</a>
+          <a class="btn" href="https://github.com/baliseai/paper-trail">GitHub</a>
+          <a class="btn" href="https://huggingface.co/datasets/baliseai/paper-trail">Hugging Face</a>
+        </div>
+        <p class="byline">Published by Balise Research. <a href="#disclosure">Funding and conflicts</a></p>
+      </div>
+      <div class="hero-side">
+        <div class="facts" id="facts">
+          <div class="fact"><b>9,832</b><span>public NASA files<br>(178,937 pages · 11.2 GB)</span></div>
+          <div class="fact"><b>150</b><span>questions<br>(5 kinds · 25 open)</span></div>
+          <div class="fact"><b id="nsys-fact">23</b><span>configurations<br>103-question baseline</span></div>
+          <div class="fact"><b id="best">96.6</b><span>highest baseline score<br>103 questions</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="bar"><div class="wrap"><nav aria-label="Sections">
+  <a href="#layers">What moves the score</a>
+  <a href="#leaderboard">Leaderboard</a>
+  <a href="#breakdown">By question kind</a>
+  <a href="#frontier">Tokens and time</a>
+  <a href="#example">Examples</a>
+  <a href="#questions">Questions</a>
+  <a href="#library">Library</a>
+  <a href="#rules">Rules</a>
+  <a href="#take-part">Run it</a>
+</nav></div></div>
+
+<main class="wrap">
+
+<section id="layers">
+  <div class="head">
+    <h2>What moves the score</h2>
+    <p>Same library, same questions, one layer changed at a time. 103-question baseline.</p>
+  </div>
+  <div class="layers" id="layerchart"></div>
+  <ul class="takeaways" id="takeaways">
+    <li>Adding an index moved the same assistant, on the same files, by 25.7 and 83.5 points.</li>
+    <li>Swapping the model moved the score by up to 23.3 points across 8 models, and 4.9 across the top three.</li>
+    <li>Swapping the harness moved it 1.5 points when both shared a model and an index.</li>
+  </ul>
+  <p class="note">One run per question, so a point or two is a tie. The index in these runs is Vertesia’s: see <a href="#disclosure">funding and conflicts</a>.</p>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+  <div class="head">
+    <h2><span id="nsys">23</span> configurations, 103-question baseline</h2>
+    <p>Results on the current 150 questions are not published yet. Click a row for its breakdown.</p>
+  </div>
+  <div class="controls">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+      <div class="seg tight pillbar" id="preset-seg" role="group" aria-label="Compare">
+        <button class="chip" type="button" data-p="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-p="content" aria-pressed="false">With and without an index</button>
+        <button class="chip" type="button" data-p="model" aria-pressed="false">One harness, eight models</button>
+      </div>
+      <div class="seg tight pillbar" id="metric-seg" role="group" aria-label="Score metric">
+        <button class="chip" type="button" data-m="score" aria-pressed="true">Standard</button>
+        <button class="chip" type="button" data-m="strict" aria-pressed="false">Strict (−1)</button>
+        <button class="chip" type="button" data-m="held_out" aria-pressed="false">Held-out</button>
+      </div>
+      <div class="seg tight pillbar" id="effort-seg" role="group" aria-label="Effort grouping">
+        <button class="chip" type="button" data-ef="collapsed" aria-pressed="true">Default effort</button>
+        <button class="chip" type="button" data-ef="all" aria-pressed="false">All efforts</button>
+      </div>
+    </div>
+    <div class="filterbar" role="group" aria-label="Filter by axis">
+      <span class="fselect"><label for="f-harness">Harness</label><select id="f-harness"><option value="all">All</option></select></span>
+      <span class="fselect"><label for="f-model">Model</label><select id="f-model"><option value="all">All</option></select></span>
+      <span class="fselect"><label for="f-cs">Content</label><select id="f-cs"><option value="all">All</option></select></span>
+      <button class="btn sm" type="button" id="f-reset" hidden>Reset</button>
+    </div>
+  </div>
+  <div class="seg" id="views" role="group" aria-label="Rank by question kind"></div>
+  <div class="scroll"><table class="lb">
+    <thead><tr><th>#</th><th>Harness · content system</th><th>Model</th><th id="scorehead">Score</th><th id="cpwnhead">C / P / W / N</th><th class="r">Hardest 11</th><th class="r">Median</th><th class="r">Tokens / q</th></tr></thead>
+    <tbody id="lbody"><tr><td colspan="8" class="muted">Loading results…</td></tr></tbody>
+  </table></div>
+  <div class="legend">
+    <span style="--c:var(--ok)">Correct (1)</span><span style="--c:var(--part)">Partial (0.5)</span><span style="--c:var(--bad)">Wrong (0; −1 strict)</span><span style="--c:var(--none)">No answer (0)</span>
+  </div>
+  <div class="rowdefs">
+    <p><span class="tag alone">SharePoint</span> The assistant searches the SharePoint library with its own built-in search.</p>
+    <p><span class="tag with">SharePoint + Vertesia index</span> Same library and assistant, plus a search tool over Vertesia’s index of the files.</p>
+    <p><span class="tag agent">Vertesia</span> Vertesia’s agent over the same index. Only the model and its effort change between these rows.</p>
+  </div>
+  <div class="qual-box" id="qualbox" hidden>
+    <div class="qual-head">
+      <div>
+        <h3>Qualification round</h3>
+      </div>
+      <span class="note">Screening threshold: 70% on the 25 open questions</span>
+    </div>
+    <p class="note" id="qualnote"></p>
+    <div class="scroll"><table class="qual-tbl">
+      <thead><tr><th>Model</th><th>Status</th><th>Score (25 q)</th><th>C / P / W / N</th><th class="r">K1–K5</th><th class="r">Median</th><th class="r">Tokens / q</th></tr></thead>
+      <tbody id="qualbody"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- SCORES BY QUESTION KIND + DIFFICULTY HISTOGRAM -->
+<section id="breakdown">
+  <div class="head">
+    <h2>Scores by kind of question</h2>
+    <p>103-question baseline. Click a column to sort.</p>
+  </div>
+  <div class="scroll"><table class="hm">
+    <thead><tr>
+      <th>System</th>
+      <th class="r sortable" data-hm="score">Overall ↕</th>
+      <th class="r sortable" data-hm="1">K1 · Find ↕</th>
+      <th class="r sortable" data-hm="2">K2 · Clause ↕</th>
+      <th class="r sortable" data-hm="3">K3 · Count ↕</th>
+      <th class="r sortable" data-hm="4">K4 · Cross ↕</th>
+      <th class="r sortable" data-hm="5">K5 · Act ↕</th>
+      <th class="r sortable" data-hm="hardcore">Hard 11 ↕</th>
+    </tr></thead>
+    <tbody id="hmbody"><tr><td colspan="8" class="muted">Loading heatmap…</td></tr></tbody>
+  </table></div>
+  <div class="split2">
+    <div class="box">
+      <h3>How many systems got each question right</h3>
+      <div id="histosvg"></div>
+    </div>
+    <div class="box">
+      <h3>What the hard questions need</h3>
+      <ul class="why">
+        <li><span>Every matching file, not the top few: counts, totals, renewals due.</span></li>
+        <li><span>One partner recognised under several legal names.</span></li>
+        <li><span>A contract followed across its modifications.</span></li>
+        <li><span>The page itself when the filename is wrong: signatures on files named <code>Draft</code>, expired agreements filed under <code>Active/</code>, renamed backups.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SCORE AGAINST TOKENS AND TIME -->
+<section id="frontier">
+  <div class="head">
+    <h2>Score against tokens and time</h2>
+    <p>One point per configuration. Arrows run from low to high effort on the same model.</p>
+  </div>
+  <div class="controls">
+    <div class="seg tight pillbar" id="fx-seg" role="group" aria-label="X axis">
+      <button class="chip" type="button" data-fx="tokens" aria-pressed="true">Input tokens / q</button>
+      <button class="chip" type="button" data-fx="latency" aria-pressed="false">Median latency</button>
+      <button class="chip" type="button" data-fx="tools" aria-pressed="false">Tool calls / q</button>
+    </div>
+    <div class="seg tight pillbar" id="fy-seg" role="group" aria-label="Y axis">
+      <button class="chip" type="button" data-fy="score" aria-pressed="true">Score</button>
+      <button class="chip" type="button" data-fy="strict" aria-pressed="false">Strict (−1)</button>
+      <button class="chip" type="button" data-fy="hardcore" aria-pressed="false">Hardest 11</button>
+    </div>
+  </div>
+  <div class="svg-wrap" id="scatterwrap">
+    <div id="scattersvg"></div>
+    <div class="scatter-tip" id="scattertip" role="status" aria-live="polite"></div>
+    <div class="slegend">
+      <span><i class="sdot" style="--c:var(--c-gemini)"></i>Gemini (Vertesia Agent System)</span>
+      <span><i class="sdot" style="--c:var(--c-claude)"></i>Claude (Vertesia Agent System)</span>
+      <span><i class="sdot" style="--c:var(--c-gpt)"></i>GPT (Vertesia Agent System)</span>
+      <span><i class="sdot" style="--c:var(--c-muse)"></i>Muse (Vertesia Agent System)</span>
+      <span><i class="sdot" style="--c:var(--c-with)"></i>Assistant + Vertesia index</span>
+      <span><i class="sdot" style="--c:var(--c-sp)"></i>Assistant on SharePoint alone</span>
+      <span class="muted">Dashed arrows: low → medium → high effort</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOKEN USAGE -->
+<section id="tokens">
+  <div class="head">
+    <h2>Input tokens per question</h2>
+    <p>Agent runs only: the assistants do not report tokens.</p>
+  </div>
+  <div class="controls">
+    <div class="seg tight pillbar" id="toksort-seg" role="group" aria-label="Sort token chart">
+      <button class="chip" type="button" data-ts="tokens" aria-pressed="true">Lowest tokens first</button>
+      <button class="chip" type="button" data-ts="score" aria-pressed="false">Highest score first</button>
+      <button class="chip" type="button" data-ts="family" aria-pressed="false">By model family</button>
+    </div>
+  </div>
+  <div class="chart" id="costchart" role="img" aria-label="Input tokens per question for each Vertesia Agent System run set, fresh and cached"></div>
+  <div class="legend">
+    <span style="--c:var(--seg-new)">Fresh input</span><span style="--c:var(--seg-read)">Read from prompt cache</span>
+  </div>
+  <p class="note" style="margin-top:14px">Tokens come from the platform’s run records; small side calls for titles and notes are left out. Muse Wonder 1.0 has token records for 49 (low) and 47 (medium) of its 103 runs.</p>
+</section>
+
+<!-- WORKED EXAMPLES -->
+<section id="example">
+  <div class="head">
+    <h2>Three graded questions</h2>
+    <p>M53 is retired from scoring. P20 and P42 are open questions in the current set.</p>
+  </div>
+  <div class="seg" id="extabs" role="tablist" aria-label="Worked examples">
+    <button class="chip" type="button" role="tab" data-ex="M53" aria-pressed="true">1 · M53: Misfiled scan and duplicate</button>
+    <button class="chip" type="button" role="tab" data-ex="P20" aria-pressed="false">2 · P20: Expired files still in Active/</button>
+    <button class="chip" type="button" role="tab" data-ex="P42" aria-pressed="false">3 · P42: Multimodal signature-page audit</button>
+  </div>
+
+  <!-- Example 1: M53 -->
+  <div class="ex" id="ex-M53">
+    <div class="qcard">
+      <p class="qid">M53 · Baseline example · Retired from scoring</p>
+      <p class="qline">put the microsoft agreements in a table - what each one is for and which are annexes</p>
+      <div class="qmeta"><span>Typed verbatim, lowercase and all</span><span>Answered correctly by <b id="m53solved">19</b> of <span class="nsys">23</span> measured systems</span></div>
+    </div>
+    <div class="cols">
+      <div class="box">
+        <h3>What makes it hard</h3>
+        <ul class="why">
+          <li><span>Annex 2 is misfiled in <code>Agreements/_To file</code>, away from the umbrella and the other annexes.</span></li>
+          <li><span>The Glenn battery agreement (<code>37391</code>) stands alone in another center’s folder. A search for “Microsoft annex” misses it.</span></li>
+          <li><span>Annex 3 (<code>42203</code>) is a scan.</span></li>
+          <li><span>An identical backup of the umbrella sits in <code>Old shared drive/</code>. It is not a sixth agreement.</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>The expected answer</h3>
+        <div class="scroll" style="border:0"><table class="key">
+          <thead><tr><th>Agreement</th><th>What it is for</th><th>Annex?</th></tr></thead>
+          <tbody>
+            <tr><td>37860</td><td>STEM education and engagement; governs the annexes<div class="path">Agreements/Active/HQ/37860_NONREIMBURSABLE_SPACE_ACT_UMBRELLA_AGREEMENT_Microsoft-NASA-final_signed.pdf</div></td><td>Umbrella</td></tr>
+            <tr><td>37861</td><td>STEM and coding content in Minecraft<div class="path">Agreements/Active/HQ/37861_MicrosoftAnnex1_MinecraftFeb2023_final-signed.pdf</div></td><td>Annex 1</td></tr>
+            <tr><td>40494</td><td>Interactive science content for students and the public<div class="path">Agreements/_To file/40494_Microsoft-Annex2_Signed_3-27-24.pdf</div></td><td>Annex 2</td></tr>
+            <tr><td>42203</td><td>A STEM resource library in the Windows Learning app<div class="path">Agreements/Active/HQ/42203_Microsoft-Annex3Finalsigned2-6-25.pdf</div></td><td>Annex 3</td></tr>
+            <tr><td>37391</td><td>Glenn lithium-ion battery testing (SAA3-1745)<div class="path">Agreements/Active/GRC/37391_SAA3-1745.pdf</div></td><td>Standalone</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">All five are non-reimbursable: no money changes hands.</p>
+      </div>
+    </div>
+    <div class="answers">
+      <article class="ans"><header><b>M365 Copilot (Cowork) alone</b><span class="grade g-none">No answer</span></header>
+        <p>Searched mail and files for “Microsoft agreement annex”, then asked for a link or the title of the main agreement.</p>
+        <p class="verdict">No answer: found none of the five files, though the test user can open all of them.</p></article>
+      <article class="ans"><header><b>Claude.ai alone · 82 s</b><span class="grade g-partial">Partial</span></header>
+        <p>Opened files one by one over 20 SharePoint calls. Found the umbrella and three annexes, could not read the scanned annexes, and missed the Glenn battery agreement.</p>
+        <p class="verdict">Partial: everything stated is right, one of five agreements missing.</p></article>
+      <article class="ans"><header><b>Copilot + Vertesia</b><span class="grade g-correct">Correct</span></header>
+        <p>Four index calls, then a five-row table with each file linked, annexes marked, and the backup scan excluded.</p>
+        <p class="verdict">Correct: all five agreements, purposes, and annex status right.</p></article>
+      <article class="ans"><header><b>Claude.ai + Vertesia · 46 s</b><span class="grade g-correct">Correct</span></header>
+        <p>The same five-row table, with the Glenn agreement marked standalone and all five noted as non-reimbursable.</p>
+        <p class="verdict">Correct.</p></article>
+    </div>
+    <div class="box">
+      <h3>Vertesia Agent System on M53, across all 19 model and effort runs</h3>
+      <div class="grid9" id="grid9"></div>
+      <p class="note">GPT 6.2 Sol low stopped after the umbrella and annexes and left out Glenn (same miss as Claude.ai alone). Muse Wonder 1.0 low timed out at 10 minutes.</p>
+    </div>
+  </div>
+
+  <!-- Example 2: P20 -->
+  <div class="ex" id="ex-P20" hidden>
+    <div class="qcard">
+      <p class="qid">P20 · Kind 3 (Count, list or total) · Open question</p>
+      <p class="qline">which agreements sitting in Active/GRC and Active/HQ are actually already expired as of today</p>
+      <div class="qmeta"><span>Reference date: 23 November 2026</span></div>
+    </div>
+    <div class="cols">
+      <div class="box">
+        <h3>What makes it hard</h3>
+        <ul class="why">
+          <li><span>Only <code>Agreements/Active/GRC/</code> and <code>Agreements/Active/HQ/</code> count. Files in <code>Expired/</code> or <code>_To file/</code> do not.</span></li>
+          <li><span>Most agreements say “5 years from Effective Date” on the signature page. The end date has to be worked out.</span></li>
+          <li><span><code>40430</code> (Outpost Technologies) is an Ames agreement filed in <code>Active/GRC</code>.</span></li>
+          <li><span><code>38804</code> (Boeing) leaves its term as “X years” and <code>39549</code> (Rocket Lab) runs to 2029. Neither is expired.</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>The expected answer (7 expired files: 5 GRC, 2 HQ)</h3>
+        <div class="scroll" style="border:0"><table class="key">
+          <thead><tr><th>Folder</th><th>Agreement &amp; Partner</th><th>Expired</th></tr></thead>
+          <tbody>
+            <tr><td>Active/GRC</td><td><code>40430</code> · Outpost Technologies (SAA2-403805-1, Ames agreement filed in GRC)</td><td>2026-10-08</td></tr>
+            <tr><td>Active/GRC</td><td><code>40577</code> · Castheon, Inc. (SAA3-1817)</td><td>2026-04-24</td></tr>
+            <tr><td>Active/GRC</td><td><code>39980</code> · Northrop Grumman (SAA3-1724-06)</td><td>2026-02-28</td></tr>
+            <tr><td>Active/GRC</td><td><code>37051</code> · MIT (SAA3-1746-01)</td><td>2025-03-15</td></tr>
+            <tr><td>Active/GRC</td><td><code>38857</code> · Makel Engineering, Inc. (SAA3-1780)</td><td>2026-03-07</td></tr>
+            <tr><td>Active/HQ</td><td><code>35525</code> · National Geographic Partners (Artemis Imagery)</td><td>2026-09-23</td></tr>
+            <tr><td>Active/HQ</td><td><code>30043</code> · NIOSH / CDC / HHS (Total Worker Health)</td><td>2021-03-18</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 3: P42 -->
+  <div class="ex" id="ex-P42" hidden>
+    <div class="qcard">
+      <p class="qid">P42 · Kind 5 (Find, then act) · Open question</p>
+      <p class="qline">check the 7 agreements with "draft" or "for signature" in the filename in Active/HQ and Active/JSC - build a table showing which ones are actually fully signed vs unsigned (check the signature pages, not just the filenames)</p>
+    </div>
+    <div class="cols">
+      <div class="box">
+        <h3>What makes it hard</h3>
+        <ul class="why">
+          <li><span>The seven filenames say <code>Draft</code>, <code>Final_Draft</code> or <code>FOR_SIGNATURE</code>. Both parties signed all seven.</span></li>
+          <li><span>On five of them the printed date lines are blank. The signatures are stamps or handwriting, visible only on the rendered page.</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>The expected answer (all 7 fully signed)</h3>
+        <div class="scroll" style="border:0"><table class="key">
+          <thead><tr><th>File</th><th>Partner</th><th>Signers (NASA / Partner)</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>HQ · 38787</td><td>Peanuts Worldwide Umbrella</td><td>Marc Etkind (Jul 27, 2023) / Tim Erickson (Jul 24, 2023)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>HQ · 38788</td><td>Peanuts Worldwide Annex 1</td><td>Marc Etkind (Jul 27, 2023) / Tim Erickson (Jul 25, 2023)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>HQ · 40724</td><td>Arizona State Univ. / MILO</td><td>Michael Kincaid (May 30, 2024) / David Thomas (May 30, 2024)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>HQ · 44981</td><td>Hack Club (The Hack Found.)</td><td>Elaine Ho (Mar 18, 2026) / Zach Latta (Mar 17, 2026)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>JSC · 41986</td><td>Toyota Tsusho America</td><td>Jason Noble (Feb 23, 2026) / Hideya Ito (Feb 19, 2026)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>JSC · 44894</td><td>Texas Space Coalition</td><td>Vanessa Wyche (Jun 4, 2026) / Michels Pryor (Jun 1, 2026)</td><td><span class="grade g-correct">Signed</span></td></tr>
+            <tr><td>JSC · 45573</td><td>UT System / UT Austin</td><td>Randall Suratt (Jul 1, 2026) / Daniel Sharphorn (Jun 29, 2026)</td><td><span class="grade g-correct">Signed</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONS EXPLORER -->
+<section id="questions">
+  <div class="head">
+    <h2>150 questions, written the way people type</h2>
+    <p>25 have published answers, five per kind. 125 are held out. <a href="data/archived-open-examples.json">Eight retired questions</a> are there for practice.</p>
+  </div>
+  <div class="toolbar">
+    <input class="search" id="qsearch" type="search" placeholder="Search the 150 questions" aria-label="Search the questions">
+    <span class="note" id="qcount"></span>
+  </div>
+  <div class="seg" id="qfilters" role="group" aria-label="Filter questions"></div>
+  <div class="qlist" id="qlist"><p class="muted" style="padding:16px">Loading questions…</p></div>
+  <div class="pager"><span id="qpage"></span><span><button class="btn sm" id="qprev" type="button">Previous</button> <button class="btn sm" id="qnext" type="button">Next</button> <button class="btn sm" id="qall" type="button">Show all</button></span></div>
+</section>
+
+<!-- LIBRARY EXPLORER -->
+<section id="library">
+  <div class="head">
+    <h2>9,832 public documents, filed the way teams file them</h2>
+    <p>Agreements, FOIA contracts and their modifications, Inspector General audits, directives, technical reports, and an old shared drive of renamed backups and scans. The manifest lists paths and <code>nasa.gov</code> links only: no extracted text, no document types.</p>
+    <p class="note">The measured runs used 9,834 files. The public list leaves out two copies of one agreement with a private individual; no question depends on it.</p>
+  </div>
+  <div class="toolbar">
+    <input class="search" id="dsearch" type="search" placeholder="Search file names and folders" aria-label="Search the library">
+    <span class="note" id="dcount"></span>
+  </div>
+  <div class="seg" id="dfilters" role="group" aria-label="Filter by folder"></div>
+  <div class="scroll"><table class="docs">
+    <thead><tr><th>File</th><th>Subfolder</th><th>Source</th><th class="r">Pages</th></tr></thead>
+    <tbody id="dbody"><tr><td colspan="4" class="muted">Loading the document list…</td></tr></tbody>
+  </table></div>
+  <div class="pager"><span id="dpage"></span><span><button class="btn" id="dprev" type="button">Previous</button> <button class="btn" id="dnext" type="button">Next</button></span></div>
+</section>
+
+<!-- RULES & SCORING -->
+<section id="rules">
+  <div class="head">
+    <h2>Same library, same questions, same rubric</h2>
+  </div>
+  <div class="rules">
+    <div class="box">
+      <h3>How to run it</h3>
+      <ol>
+        <li>Load the 9,832 raw files in their folder tree with <code>scripts/download_documents.py</code>. Leave out nothing and add nothing.</li>
+        <li>Ask each question as written, typos included. One run, no follow-up, no human help.</li>
+        <li>Answer from the library. Web search and outside knowledge do not count.</li>
+        <li>Treat today as <b>23 November 2026</b>.</li>
+        <li>Stop each run at <b>10 minutes</b>. Record the time, and tokens if your system reports them.</li>
+        <li>The system classifies, reads and indexes the files itself. A person may define document types and fields beforehand, but not from the questions, and may not tag or correct documents by hand, one at a time or in bulk.</li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>How answers are graded</h3>
+      <div class="rubric">
+        <div><span class="grade g-correct">Correct</span><span class="pts">1</span><span>Says what the documents say. Counts and totals within about 10% count as correct; printed amounts in the files are the reference.</span></div>
+        <div><span class="grade g-partial">Partial</span><span class="pts">0.5</span><span>Finds the right documents and points the right way, but leaves something out or misses a key figure by more than 10%.</span></div>
+        <div><span class="grade g-wrong">Wrong</span><span class="pts">0</span><span>States something the documents contradict, or names the wrong document.</span></div>
+        <div><span class="grade g-none">No answer</span><span class="pts">0</span><span>Gives up, asks a clarifying question, times out, or says nothing is there when something is.</span></div>
+      </div>
+      <p class="note">Baseline: one grader checked each answer against the documents, and a second graded the non-obvious ones blind. The <b>Strict</b> score also takes a point off for each wrong answer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RUN IT, DOWNLOADS, CITATION -->
+<section id="take-part">
+  <div class="head">
+    <h2>Run it on your system</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="k">1 · Build the library</span><p><code>python scripts/download_documents.py --out ./library</code> fetches the 9,832 files from <code>nasa.gov</code> (about 11 GB) and checks each hash. Load them into your content system.</p></div>
+    <div class="step"><span class="k">2 · Ask the 150 questions</span><p><code>scripts/run_custom.py</code> runs them through your code or any program, with the time limit and checkpoints. <code>scripts/grade_open.py</code> scores your 25 open answers against the published ones.</p></div>
+    <div class="step"><span class="k">3 · Send your answers</span><p>Email the file to <a href="mailto:benchmarks@baliseresearch.com">benchmarks@baliseresearch.com</a>, not a pull request: answers posted in public would reveal the held-out set. Only your grades are published.</p></div>
+  </div>
+  <div class="dl" id="downloads">
+    <button class="btn primary" type="button" data-dl="documents">Document manifest (CSV)</button>
+    <button class="btn" type="button" data-dl="questions">Questions (CSV)</button>
+    <button class="btn" type="button" data-dl="questions-json">Questions (JSON)</button>
+    <button class="btn" type="button" data-dl="template">Submission template (JSON)</button>
+    <a class="btn" href="https://github.com/baliseai/paper-trail/raw/main/data/results.parquet" style="text-decoration:none">Grades (Parquet)</a>
+    <a class="btn" href="https://github.com/baliseai/paper-trail/blob/main/scripts/RUNBOOK.md" style="text-decoration:none">Runbook</a>
+  </div>
+  <p class="note" id="dlnote" style="margin-top:10px"></p>
+
+  <div class="split2" style="margin-top:20px">
+    <div class="box">
+      <h3>Submission format</h3>
+      <pre>{
+  "system": {
+    "name": "…", "harness": "…", "model": "…",
+    "reasoning_effort": "medium",
+    "content_system": "…", "run_date": "2026-11-27",
+    "ingestion": {
+      "no_human_categorization": true,
+      "schema_mode": "auto | human_authored"
+    }
+  },
+  "answers": [
+    {
+      "id": "P42", "answer": "…",
+      "sources": ["Agreements/Active/HQ/38787_38787_UmbrellaPWW_7_18_23_FINAL_FOR_SIGNATURE.pdf"],
+      "seconds": 46, "input_tokens": 47000
+    }
+  ]
+}</pre>
+    </div>
+    <div class="box">
+      <div class="cite-head">
+        <h3>Cite Paper Trail</h3>
+        <button class="btn sm" type="button" id="copybib">Copy BibTeX</button>
+      </div>
+      <pre id="bibtext">@misc{papertrail2026,
+  title  = {Paper Trail: Benchmarking Models, Harnesses, and Content Systems on Enterprise Documents},
+  author = {Barroca, Eric and {Balise}},
+  year   = {2026},
+  note   = {v2.1, 150 questions over 9,832 public NASA documents},
+  url    = {https://github.com/baliseai/paper-trail}
+}</pre>
+      <p class="note" id="bibnote">Questions, rubric, grades, and leaderboard under CC BY 4.0; scripts under MIT.</p>
+    </div>
+  </div>
+</section>
+
+<section id="disclosure">
+  <div class="head">
+    <h2>Funding and conflicts</h2>
+    <p>Paper Trail is published by Balise Research (Eric Barroca and Balise). It was first built at Vertesia, whose document index and agent appear in 21 of the 23 baseline rows. Vertesia pays for its own runs. All 23 rows were run by the benchmark’s authors. Outside submissions are graded with the same rubric.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Paper Trail v2.1 · 150 questions over 9,832 public NASA files · reference date 23 November 2026.</p>
+  <p>Documents are public NASA records from nasa.gov; the question set, rubric, and grades are by Eric Barroca and Balise. NASA does not endorse this benchmark.</p>
+  <p><a href="https://github.com/baliseai/paper-trail">GitHub</a> · <a href="https://huggingface.co/datasets/baliseai/paper-trail">Hugging Face</a> · CC BY 4.0 / MIT.</p>
+</footer>
+</main>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmtT = s => s == null ? '—' : s < 60 ? `${Math.round(s)} s` : `${Math.floor(s / 60)} min ${String(Math.round(s % 60)).padStart(2, '0')} s`;
+  const kt = v => v == null ? '—' : `${Math.round(v / 1000).toLocaleString('en-US')}K`;
+  const DATA = {};
+  const load = async n => { const r = await fetch(`data/${n}.json`, { cache: 'no-store' }); if (!r.ok) throw new Error(n); return r.json(); };
+
+  function group(s) {
+    if (s.id.startsWith('studio-')) return 'agent';
+    if (s.content_system === 'SharePoint + Vertesia index') return 'with';
+    if (s.content_system === 'SharePoint') return 'alone';
+    return 'ext';
+  }
+  function familyColor(s) {
+    const g = group(s);
+    if (g === 'alone') return 'var(--c-sp)';
+    if (g === 'with') return 'var(--c-with)';
+    const m = (s.model_name || s.model || '').toLowerCase();
+    if (m.includes('gemini')) return 'var(--c-gemini)';
+    if (m.includes('claude')) return 'var(--c-claude)';
+    if (m.includes('gpt')) return 'var(--c-gpt)';
+    if (m.includes('muse')) return 'var(--c-muse)';
+    return 'var(--accent)';
+  }
+  function completedAccuracy(s) {
+    if (!s.timeouts || s.timeouts <= 0) return null;
+    const finished = s.correct + s.partial + s.wrong + s.no_answer - s.timeouts;
+    if (finished <= 0) return null;
+    return ((s.correct + 0.5 * s.partial) / finished * 100).toFixed(1);
+  }
+
+  /* ---------- WHAT MOVES THE SCORE ---------- */
+  // Each row holds two layers fixed and changes the third. Pairs are named by system id.
+  function renderLayers() {
+    const by = Object.fromEntries(DATA.lb.systems.map(s => [s.id, s]));
+    const f1 = v => v.toFixed(1);
+    const pair = (a, b) => by[a] && by[b] ? [by[a].score, by[b].score] : null;
+    const copilot = pair('copilot-alone', 'copilot-vertesia');
+    const claude = pair('claude-alone-high', 'claude-vertesia-high');
+    const harness = pair('studio-claude-opus-5.5-high', 'claude-vertesia-high');
+    const noIndex = pair('copilot-alone', 'claude-alone-high');
+    const best = {};
+    DATA.lb.systems.filter(s => s.id.startsWith('studio-')).forEach(s => { best[s.model_name] = Math.max(best[s.model_name] ?? 0, s.score); });
+    const models = Object.values(best).sort((a, b) => a - b);
+
+    const dots = (vals, cls = '') => vals.map(v => `<i class="ldot ${cls}" style="left:${v}%"></i>`).join('');
+    const ends = (lo, hi) => `<span class="lval l" style="left:${lo}%">${f1(lo)}</span><span class="lval r" style="left:${hi}%">${f1(hi)}</span>`;
+    const row = (first, name, desc, vals, delta, cls = '') => {
+      const lo = Math.min(...vals), hi = Math.max(...vals);
+      return `<div class="lrow${first ? ' g' : ''}">
+        <div class="llbl">${first ? `<b>${name}</b>` : ''}<span>${desc}</span></div>
+        <div class="ltrack"><i class="lspan" style="left:${lo}%;width:${hi - lo}%"></i>${dots(vals, cls)}${ends(lo, hi)}</div>
+        <div class="ldelta${cls === 'hollow' ? ' soft' : ''}">${delta}</div></div>`;
+    };
+    const diff = p => f1(Math.abs(p[1] - p[0]));
+    let html = '';
+    if (copilot) html += row(true, 'Content system', 'Copilot on SharePoint search, then with an index added', copilot, `+${diff(copilot)}`);
+    if (claude) html += row(!copilot, 'Content system', 'Claude.ai, Opus 5.5: the same change', claude, `+${diff(claude)}`);
+    if (models.length > 1) html += row(true, 'Model', `${models.length} models on one agent and one index, best effort each`, models, f1(models.at(-1) - models[0]), 'sm');
+    if (harness) html += row(true, 'Harness', 'Opus 5.5 on one index: an agent, then an assistant', harness, diff(harness));
+    if (noIndex) html += row(!harness, 'Harness', 'Copilot and Claude.ai on SharePoint search. Their models differ.', noIndex, diff(noIndex), 'hollow');
+    html += `<div class="lrow laxis"><span></span><div class="ltrack">${[0, 25, 50, 75, 100].map(v => `<span style="left:${v}%">${v}</span>`).join('')}</div><span></span></div>`;
+    $('#layerchart').innerHTML = html.replace('lrow g', 'lrow');
+
+    const items = [];
+    if (copilot && claude) items.push(`Adding an index moved the same assistant, on the same files, by ${diff(claude)} and ${diff(copilot)} points.`);
+    if (models.length > 3) items.push(`Swapping the model moved the score by up to ${f1(models.at(-1) - models[0])} points across ${models.length} models, and ${f1(models.at(-1) - models.at(-3))} across the top three.`);
+    if (harness) items.push(`Swapping the harness moved it ${diff(harness)} points when both shared a model and an index.`);
+    if (items.length) $('#takeaways').innerHTML = items.map(t => `<li>${t}</li>`).join('');
+  }
+
+  /* ---------- SCORE AGAINST TOKENS AND TIME ---------- */
+  const scatter = { x: 'tokens', y: 'score' };
+  function renderScatter() {
+    const W = 920, H = 370, M = { t: 22, r: 30, b: 48, l: 56 };
+    const pw = W - M.l - M.r, ph = H - M.t - M.b;
+    const xVal = s => scatter.x === 'tokens' ? (s.input_tokens_per_q ? s.input_tokens_per_q / 1000 : null)
+      : scatter.x === 'latency' ? s.median_s : s.tool_calls_mean;
+    const yVal = s => scatter.y === 'score' ? s.score : scatter.y === 'strict' ? s.score_wrong_minus1 : s.hardcore;
+    const pts = DATA.lb.systems.filter(s => xVal(s) != null && yVal(s) != null);
+
+    const maxX = Math.max(...pts.map(xVal));
+    const xMax = scatter.x === 'tokens' ? Math.ceil(maxX / 100) * 100 : scatter.x === 'latency' ? Math.ceil(maxX / 50) * 50 : Math.ceil(maxX / 5) * 5;
+    const minY = Math.min(...pts.map(yVal));
+    const yMin = Math.max(0, Math.floor((minY - 5) / 10) * 10);
+    const yMax = 100;
+
+    const sx = v => M.l + (v / xMax) * pw;
+    const sy = v => M.t + ph - ((v - yMin) / (yMax - yMin)) * ph;
+
+    // Grid lines
+    let grid = '';
+    const yTicks = 5;
+    for (let i = 0; i <= yTicks; i++) {
+      const val = yMin + (yMax - yMin) * (i / yTicks);
+      const y = sy(val);
+      grid += `<line x1="${M.l}" x2="${W - M.r}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-dasharray="${i === 0 ? '' : '3 4'}"/>`;
+      grid += `<text x="${M.l - 10}" y="${y + 4}" text-anchor="end" fill="var(--muted)" font-size="11" font-family="var(--f-mono)">${Math.round(val)}</text>`;
+    }
+    const xTicks = 5;
+    for (let i = 0; i <= xTicks; i++) {
+      const val = xMax * (i / xTicks);
+      const x = sx(val);
+      grid += `<line x1="${x}" x2="${x}" y1="${M.t}" y2="${M.t + ph}" stroke="var(--line)" stroke-dasharray="${i === 0 ? '' : '3 4'}"/>`;
+      const lbl = scatter.x === 'tokens' ? `${Math.round(val)}K` : scatter.x === 'latency' ? `${Math.round(val)}s` : `${Math.round(val)}`;
+      grid += `<text x="${x}" y="${H - 18}" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="var(--f-mono)">${lbl}</text>`;
+    }
+    const xTitle = scatter.x === 'tokens' ? 'Mean input tokens per question (thousands)' : scatter.x === 'latency' ? 'Median latency in seconds (lower is faster)' : 'Mean tool calls per question';
+    const yTitle = scatter.y === 'score' ? 'Score' : scatter.y === 'strict' ? 'Strict score' : 'Hardest 11';
+    grid += `<text x="${M.l + pw / 2}" y="${H - 2}" text-anchor="middle" fill="var(--muted)" font-size="11.5">${xTitle}</text>`;
+    grid += `<text x="14" y="${M.t + ph / 2}" text-anchor="middle" fill="var(--muted)" font-size="11.5" transform="rotate(-90 14 ${M.t + ph / 2})">${yTitle}</text>`;
+
+    // Pareto frontier (minimize X, maximize Y)
+    const sorted = [...pts].sort((a, b) => xVal(a) - xVal(b) || yVal(b) - yVal(a));
+    const frontier = [];
+    let bestY = -Infinity;
+    for (const p of sorted) {
+      if (yVal(p) > bestY) { frontier.push(p); bestY = yVal(p); }
+    }
+    const frontierPath = frontier.length > 1
+      ? `<polyline fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-opacity=".45" stroke-dasharray="5 4" points="${frontier.map(p => `${sx(xVal(p)).toFixed(1)},${sy(yVal(p)).toFixed(1)}`).join(' ')}"/>`
+      : '';
+
+    // Effort arrows (low -> medium -> high for studio models)
+    const effOrder = ['low', 'medium', 'high'];
+    const byModel = {};
+    pts.filter(s => s.id.startsWith('studio-')).forEach(s => {
+      (byModel[s.model_name] ||= {})[s.reasoning_effort] = s;
+    });
+    let arrows = '';
+    for (const [mname, map] of Object.entries(byModel)) {
+      const seq = effOrder.map(e => map[e]).filter(Boolean);
+      for (let i = 0; i < seq.length - 1; i++) {
+        const a = seq[i], b = seq[i + 1];
+        arrows += `<line x1="${sx(xVal(a)).toFixed(1)}" y1="${sy(yVal(a)).toFixed(1)}" x2="${sx(xVal(b)).toFixed(1)}" y2="${sy(yVal(b)).toFixed(1)}" stroke="${familyColor(a)}" stroke-width="1.5" stroke-opacity=".55" stroke-dasharray="3 3" marker-end="url(#arr)"/>`;
+      }
+    }
+
+    // Key point labels (non-overlapping top/interesting points)
+    const labelIds = new Set(['claude-vertesia-high', 'copilot-vertesia', 'claude-alone-high', 'copilot-alone',
+      'studio-gemini-4-neon-medium', 'studio-gemini-4-neon-low', 'studio-gemini-4-neon-high',
+      'studio-claude-opus-5.5-high', 'studio-gpt-6.2-astra-low', 'studio-gpt-6.2-sol-high', 'studio-claude-sonnet-5.5-low']);
+
+    let dots = '';
+    for (const s of pts) {
+      const cx = sx(xVal(s)), cy = sy(yVal(s)), col = familyColor(s);
+      const isFront = frontier.includes(s);
+      const r = isFront ? 6.5 : 5.2;
+      dots += `<circle class="sdot-pt" data-id="${esc(s.id)}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="${col}" stroke="var(--surface)" stroke-width="1.8" style="cursor:pointer" tabindex="0"/>`;
+      if (labelIds.has(s.id)) {
+        const short = s.id === 'claude-vertesia-high' ? 'Claude.ai + Vertesia'
+          : s.id === 'copilot-vertesia' ? 'Copilot + Vertesia'
+          : s.id === 'claude-alone-high' ? 'Claude.ai alone'
+          : s.id === 'copilot-alone' ? 'Copilot alone'
+          : `${s.model_label} ${s.reasoning_effort || ''}`.trim();
+        const offsets = {
+          'studio-gpt-6.2-astra-low': [-8, -10, 'end'],
+          'studio-gemini-4-neon-low': [8, -10, 'start'],
+          'studio-gemini-4-neon-medium': [8, -10, 'start'],
+          'studio-claude-opus-5.5-high': [-10, -10, 'end'],
+          'studio-gpt-6.2-sol-high': [10, 15, 'start'],
+          'studio-gemini-4-neon-high': [-10, -10, 'end'],
+          'studio-claude-sonnet-5.5-low': [10, 4, 'start'],
+          'claude-vertesia-high': [10, -10, 'start'],
+          'copilot-vertesia': [10, 14, 'start'],
+          'claude-alone-high': [10, 4, 'start'],
+          'copilot-alone': [10, -8, 'start'],
+        };
+        const [dx, dy, anchor] = offsets[s.id] || [cx > W - 150 ? -10 : 9, -8, cx > W - 150 ? 'end' : 'start'];
+        dots += `<text x="${(cx + dx).toFixed(1)}" y="${(cy + dy).toFixed(1)}" text-anchor="${anchor}" fill="var(--ink)" font-size="11" font-weight="${isFront ? 600 : 400}" pointer-events="none">${esc(short)}</text>`;
+      }
+    }
+
+    $('#scattersvg').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pareto scatter plot of ${yTitle} against ${xTitle}">
+      <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L7,4 L0,7 z" fill="var(--muted)" opacity=".7"/></marker></defs>
+      ${grid}${frontierPath}${arrows}${dots}
+    </svg>`;
+
+    const tip = $('#scattertip'), wrap = $('#scatterwrap');
+    const showTip = (el, ev) => {
+      const s = DATA.lb.systems.find(x => x.id === el.dataset.id);
+      if (!s) return;
+      const ca = completedAccuracy(s);
+      tip.innerHTML = `<b>${esc(s.name)}</b>
+        <div class="trow"><span>Content system</span><span>${esc(s.content_system)}</span></div>
+        <div class="trow"><span>Score / Strict</span><span>${s.score.toFixed(1)} / ${s.score_wrong_minus1.toFixed(1)}</span></div>
+        <div class="trow"><span>Hardest 11</span><span>${s.hardcore.toFixed(1)}</span></div>
+        <div class="trow"><span>Latency (p50 / p90)</span><span>${fmtT(s.median_s)} / ${fmtT(s.p90_s)}</span></div>
+        ${s.input_tokens_per_q ? `<div class="trow"><span>Input / Output</span><span>${kt(s.input_tokens_per_q)} / ${kt(s.output_tokens_per_q)}</span></div>` : ''}
+        ${s.tool_calls_mean ? `<div class="trow"><span>Tool calls / q</span><span>${s.tool_calls_mean}</span></div>` : ''}
+        ${ca ? `<div class="trow"><span>Timeouts</span><span>${s.timeouts} (${ca}% on ${103 - s.timeouts} finished)</span></div>` : ''}`;
+      const r = wrap.getBoundingClientRect();
+      const px = (ev ? ev.clientX : el.getBoundingClientRect().left) - r.left;
+      const py = (ev ? ev.clientY : el.getBoundingClientRect().top) - r.top;
+      tip.style.left = `${Math.min(Math.max(10, px + 14), r.width - 260)}px`;
+      tip.style.top = `${Math.max(10, py - 20)}px`;
+      tip.classList.add('show');
+    };
+    $('#scattersvg').querySelectorAll('.sdot-pt').forEach(el => {
+      el.addEventListener('mouseenter', ev => showTip(el, ev));
+      el.addEventListener('mousemove', ev => showTip(el, ev));
+      el.addEventListener('focus', () => showTip(el, null));
+      el.addEventListener('mouseleave', () => tip.classList.remove('show'));
+      el.addEventListener('blur', () => tip.classList.remove('show'));
+    });
+  }
+  $('#fx-seg').onclick = e => {
+    const b = e.target.closest('[data-fx]'); if (!b) return;
+    scatter.x = b.dataset.fx;
+    $('#fx-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderScatter();
+  };
+  $('#fy-seg').onclick = e => {
+    const b = e.target.closest('[data-fy]'); if (!b) return;
+    scatter.y = b.dataset.fy;
+    $('#fy-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderScatter();
+  };
+
+  /* ---------- LEADERBOARD ---------- */
+  let view = 'overall', metric = 'score', effortMode = 'collapsed', preset = 'all';
+  const PRESETS = { all: () => true, content: s => !s.id.startsWith('studio-'), model: s => s.id.startsWith('studio-') };
+  const filt = { harness: 'all', model: 'all', cs: 'all' };
+  const expanded = new Set();
+  const EFF_ORD = { low: 0, medium: 1, high: 2 };
+  const configKey = s => `${s.harness_label}|${s.content_system}|${s.model_label}`;
+
+  function groupByConfig(list) {
+    const map = new Map();
+    for (const s of list) {
+      const k = configKey(s);
+      if (!map.has(k)) map.set(k, []);
+      map.get(k).push(s);
+    }
+    for (const arr of map.values()) {
+      arr.sort((a, b) => (EFF_ORD[a.reasoning_effort] ?? 9) - (EFF_ORD[b.reasoning_effort] ?? 9));
+    }
+    return map;
+  }
+
+  function collapseEfforts(list) {
+    const map = groupByConfig(list);
+    const out = [];
+    for (const arr of map.values()) {
+      const med = arr.find(s => s.reasoning_effort === 'medium');
+      out.push(med || [...arr].sort((a, b) => scoreOf(b) - scoreOf(a))[0]);
+    }
+    return out;
+  }
+
+  function populateAxisFilters() {
+    const uniq = arr => [...new Set(arr.filter(Boolean))];
+    const fill = (id, vals) => {
+      const sel = $(id);
+      sel.innerHTML = `<option value="all">All</option>` + vals.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+    };
+    fill('#f-harness', uniq(DATA.lb.systems.map(s => s.harness_label)));
+    fill('#f-model', uniq(DATA.lb.systems.map(s => s.model_label)));
+    fill('#f-cs', uniq(DATA.lb.systems.map(s => s.content_system)));
+  }
+
+  function scoreOf(s) {
+    if (view === 'hardcore') return s.hardcore;
+    if (view !== 'overall') return s.by_kind[view];
+    return metric === 'strict' ? s.score_wrong_minus1 : metric === 'held_out' ? s.held_out : s.score;
+  }
+  function filterSystems(list) {
+    return list.filter(s =>
+      PRESETS[preset](s)
+      && (filt.harness === 'all' || s.harness_label === filt.harness)
+      && (filt.model === 'all' || s.model_label === filt.model)
+      && (filt.cs === 'all' || s.content_system === filt.cs)
+    );
+  }
+  function renderBoard() {
+    const lb = DATA.lb;
+    const active = filt.harness !== 'all' || filt.model !== 'all' || filt.cs !== 'all';
+    $('#f-reset').hidden = !active;
+    const filtered = filterSystems([...lb.systems]);
+    const cfgMap = groupByConfig(filtered);
+    const base = effortMode === 'collapsed' ? collapseEfforts(filtered) : filtered;
+    const rows = base.sort((a, b) => scoreOf(b) - scoreOf(a) || b.correct - a.correct || a.wrong - b.wrong);
+    const ranks = rows.map((s, i) => i);
+    rows.forEach((s, i) => { if (i && scoreOf(s).toFixed(1) === scoreOf(rows[i - 1]).toFixed(1)) ranks[i] = ranks[i - 1]; });
+    const mLbl = metric === 'strict' ? 'Strict' : metric === 'held_out' ? 'Held-out' : 'Score';
+    $('#scorehead').textContent = view === 'overall' ? mLbl : view === 'hardcore' ? 'Score · hardest 11' : `Score · ${lb.kinds[view]}`;
+    $('#cpwnhead').textContent = view === 'overall' ? 'C / P / W / N' : 'Overall C/P/W/N';
+
+    if (!rows.length) {
+      $('#lbody').innerHTML = '<tr><td colspan="8" class="muted">No system matches this combination. Click Reset to show all systems.</td></tr>';
+      return;
+    }
+
+    $('#lbody').innerHTML = rows.map((s, i) => {
+      const n = s.correct + s.partial + s.wrong + s.no_answer, w = v => (100 * v / n).toFixed(2);
+      const g = group(s), sc = scoreOf(s), isOpen = expanded.has(s.id);
+      const siblings = cfgMap.get(configKey(s)) || [s];
+      const effBadge = effortMode === 'collapsed' && siblings.length > 1
+        ? `<span class="tag eff" title="Click row to compare ${siblings.map(x => x.reasoning_effort).join(' / ')} effort">${siblings.length} efforts</span>`
+        : '';
+      const tied = rows.some((o, j) => j !== i && ranks[j] === ranks[i]);
+      const ca = completedAccuracy(s);
+      const toBadge = s.timeouts >= 4 ? `<span class="tag to" title="${s.timeouts} runs hit the 10-min limit (${ca}% on ${103 - s.timeouts} completed)">${s.timeouts} TO</span>` : '';
+      const bar = view === 'overall' && metric === 'score'
+        ? `<i class="c-ok" style="width:${w(s.correct)}%"></i><i class="c-part" style="width:${w(s.partial)}%"></i><i class="c-bad" style="width:${w(s.wrong)}%"></i><i class="c-none" style="width:${w(s.no_answer)}%"></i>`
+        : `<i class="c-ok" style="width:${Math.max(0, sc).toFixed(1)}%"></i>`;
+      let html = `<tr class="main-row${isOpen ? ' open' : ''}" data-sys="${esc(s.id)}">
+        <td class="rank"><span class="caret">▸</span>${ranks[i] + 1}${tied ? '=' : ''}</td>
+        <td class="sys hc"><b>${esc(s.harness_label)}</b><span class="tag ${g}" title="${esc(s.retrieval)}">${esc(s.content_system)}</span>${toBadge}</td>
+        <td class="sys n"><b>${esc(s.model_label)}</b>${effBadge}<small>${esc(s.model_detail)}</small></td>
+        <td><div class="score"><b class="num">${sc.toFixed(1)}</b><div class="stack" aria-hidden="true">${bar}</div></div></td>
+        <td class="cpwn">${s.correct} / ${s.partial} / ${s.wrong} / ${s.no_answer}</td>
+        <td class="r">${s.hardcore.toFixed(1)}</td>
+        <td class="r">${fmtT(s.median_s)}</td>
+        <td class="r">${s.input_tokens_per_q ? `${kt(s.input_tokens_per_q)}<small class="muted" style="display:block;font-size:11.5px">${Math.round(100 * s.cached_input_per_q / s.input_tokens_per_q)}% cached</small>` : '—'}</td>
+      </tr>`;
+      if (isOpen) {
+        const kbars = Object.entries(lb.kinds).map(([k, name]) => {
+          const kv = s.by_kind[k];
+          return `<div class="kbar-row"><span>K${k} · ${esc(name)}</span><div class="dbar-track"><div class="dbar-fill" style="width:${kv}%;background:${kv >= 90 ? 'var(--ok)' : kv >= 75 ? 'var(--part)' : 'var(--bad)'}"></div></div><b class="num r">${kv.toFixed(1)}</b></div>`;
+        }).join('');
+        const effSweep = siblings.length > 1 ? `<div style="margin-top:14px">
+          <div class="eyebrow" style="margin-bottom:6px">Reasoning effort variants (same harness, model &amp; content system)</div>
+          <table class="eff-tbl"><thead><tr><th>Effort</th><th class="r">Score</th><th class="r">Strict</th><th class="r">C / P / W / N</th><th class="r">Hardest 11</th><th class="r">Median</th><th class="r">Tokens / q</th><th class="r">Timeouts</th></tr></thead>
+          <tbody>${siblings.map(x => `<tr class="${x.id === s.id ? 'cur' : ''}">
+            <td>${esc(x.reasoning_effort || '—')}${x.id === s.id ? ' (shown)' : ''}</td>
+            <td class="r">${x.score.toFixed(1)}</td>
+            <td class="r">${x.score_wrong_minus1.toFixed(1)}</td>
+            <td class="r cpwn">${x.correct}/${x.partial}/${x.wrong}/${x.no_answer}</td>
+            <td class="r">${x.hardcore.toFixed(1)}</td>
+            <td class="r">${fmtT(x.median_s)}</td>
+            <td class="r">${kt(x.input_tokens_per_q)}</td>
+            <td class="r">${x.timeouts ?? '—'}</td>
+          </tr>`).join('')}</tbody></table></div>` : '';
+        html += `<tr class="detail-row"><td colspan="8"><div class="detail-grid">
+          <div><div class="eyebrow" style="margin-bottom:8px">Breakdown by question kind</div><div class="kbars">${kbars}</div></div>
+          <div><div class="eyebrow" style="margin-bottom:8px">Run metrics</div><div class="dstats">
+            <div class="dstat"><span>Strict (−1 wrong)</span><b>${s.score_wrong_minus1.toFixed(1)}</b></div>
+            <div class="dstat"><span>Open / Held-out</span><b>${s.open_split.toFixed(1)} / ${s.held_out.toFixed(1)}</b></div>
+            <div class="dstat"><span>Latency p50 / p90</span><b>${fmtT(s.median_s)} / ${fmtT(s.p90_s)}</b></div>
+            <div class="dstat"><span>Steps / Tool calls</span><b>${s.steps_mean ?? '—'} / ${s.tool_calls_mean ?? '—'}</b></div>
+            <div class="dstat"><span>Output tokens / q</span><b>${kt(s.output_tokens_per_q)}</b></div>
+            <div class="dstat"><span>10-min timeouts</span><b>${s.timeouts ?? '—'}${ca ? ` (${ca}% finished)` : ''}</b></div>
+          </div></div>
+        </div>${effSweep}</td></tr>`;
+      }
+      return html;
+    }).join('');
+  }
+  $('#lbody').onclick = e => {
+    const tr = e.target.closest('tr.main-row'); if (!tr) return;
+    const id = tr.dataset.sys;
+    if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
+    renderBoard();
+  };
+  $('#preset-seg').onclick = e => {
+    const b = e.target.closest('[data-p]'); if (!b) return;
+    preset = b.dataset.p;
+    $('#preset-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderBoard();
+  };
+  $('#effort-seg').onclick = e => {
+    const b = e.target.closest('[data-ef]'); if (!b) return;
+    effortMode = b.dataset.ef;
+    $('#effort-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderBoard();
+  };
+  $('#metric-seg').onclick = e => {
+    const b = e.target.closest('[data-m]'); if (!b) return;
+    metric = b.dataset.m; view = 'overall';
+    $('#metric-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderViews(); renderBoard();
+  };
+  $('#f-harness').onchange = e => { filt.harness = e.target.value; renderBoard(); };
+  $('#f-model').onchange = e => { filt.model = e.target.value; renderBoard(); };
+  $('#f-cs').onchange = e => { filt.cs = e.target.value; renderBoard(); };
+  $('#f-reset').onclick = () => {
+    filt.harness = filt.model = filt.cs = 'all';
+    $('#f-harness').value = $('#f-model').value = $('#f-cs').value = 'all';
+    renderBoard();
+  };
+  function renderViews() {
+    const lb = DATA.lb, counts = {'1': 20, '2': 16, '3': 28, '4': 16, '5': 23};
+    const opts = [['overall', 'Overall', 103], ['hardcore', 'Hardest 11', lb.hardcore_ids.length],
+      ...Object.entries(lb.kinds).map(([k, v]) => [k, v, counts[k] || 0])];
+    $('#views').innerHTML = opts.map(([k, l, n]) => `<button class="chip" type="button" data-v="${k}" aria-pressed="${k === view}">${esc(l)}<span class="n">${n}</span></button>`).join('');
+    $('#views').onclick = e => { const b = e.target.closest('[data-v]'); if (!b) return; view = b.dataset.v; renderViews(); renderBoard(); };
+  }
+
+  /* ---------- HEATMAP & DIFFICULTY HISTOGRAM ---------- */
+  let hmSort = 'score';
+  function hmColor(v) {
+    if (v >= 95) return 'background:var(--ok-soft);color:var(--ok)';
+    if (v >= 85) return 'background:color-mix(in srgb,var(--ok-soft) 55%,var(--surface));color:var(--ink)';
+    if (v >= 70) return 'background:var(--part-soft);color:var(--part)';
+    return 'background:var(--bad-soft);color:var(--bad)';
+  }
+  function renderHeatmap() {
+    const val = (s, k) => k === 'score' ? s.score : k === 'hardcore' ? s.hardcore : s.by_kind[k];
+    const rows = [...DATA.lb.systems].sort((a, b) => val(b, hmSort) - val(a, hmSort) || b.score - a.score || b.correct - a.correct || a.wrong - b.wrong);
+    $('#hmbody').innerHTML = rows.map(s => {
+      const cells = ['score', '1', '2', '3', '4', '5', 'hardcore'].map(k => {
+        const v = val(s, k);
+        return `<td class="cell" style="${hmColor(v)}">${v.toFixed(1)}</td>`;
+      }).join('');
+      const eff = s.reasoning_effort ? ` (${s.reasoning_effort})` : '';
+      const mod = s.model_label === 'Not disclosed' ? 'Auto' : s.model_label.replace('GPT (Auto)', 'GPT Auto');
+      const lbl = `${s.harness_label} · ${mod}${eff}`;
+      const sub = s.content_system;
+      return `<tr><td class="sys-col"><b>${esc(lbl)}</b><small>${esc(sub)}</small></td>${cells}</tr>`;
+    }).join('');
+  }
+  document.querySelectorAll('th[data-hm]').forEach(th => {
+    th.onclick = () => { hmSort = th.dataset.hm; renderHeatmap(); };
+  });
+
+  function renderHistogram() {
+    const bins = DATA.lb.difficulty_histogram;
+    const maxS = DATA.lb.n_systems;
+    const maxB = Math.max(...bins, 1);
+    const W = 460, H = 180, M = { t: 14, r: 10, b: 32, l: 28 };
+    const pw = W - M.l - M.r, ph = H - M.t - M.b, bw = pw / bins.length;
+    let bars = '';
+    bins.forEach((cnt, i) => {
+      const h = (cnt / maxB) * ph, x = M.l + i * bw, y = M.t + ph - h;
+      const col = i <= 9 ? 'var(--bad)' : i <= 15 ? 'var(--part)' : 'var(--ok)';
+      bars += `<rect x="${(x + 1.5).toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(2, bw - 3).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${col}"><title>${i}/${maxS} systems correct: ${cnt} questions</title></rect>`;
+      if (i % 5 === 0 || i === maxS) {
+        bars += `<text x="${(x + bw / 2).toFixed(1)}" y="${H - 12}" text-anchor="middle" fill="var(--muted)" font-size="10.5" font-family="var(--f-mono)">${i}</text>`;
+      }
+    });
+    bars += `<line x1="${M.l}" x2="${W - M.r}" y1="${M.t + ph}" y2="${M.t + ph}" stroke="var(--line)"/>`;
+    bars += `<text x="${M.l + pw / 2}" y="${H - 1}" text-anchor="middle" fill="var(--muted)" font-size="10.5">Systems answering correctly (out of ${maxS})</text>`;
+    $('#histosvg').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto">${bars}</svg>`;
+  }
+
+  /* ---------- WORKED EXAMPLES + M53 GRID ---------- */
+  $('#extabs').onclick = e => {
+    const b = e.target.closest('[data-ex]'); if (!b) return;
+    $('#extabs').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    ['M53', 'P20', 'P42'].forEach(id => { $(`#ex-${id}`).hidden = id !== b.dataset.ex; });
+  };
+  function renderGrid() {
+    const ex = DATA.ex, lb = DATA.lb;
+    const cls = { correct: 'g-correct', partial: 'g-partial', wrong: 'g-wrong', 'no answer': 'g-none' };
+    const studioRows = lb.systems.filter(x => x.id.startsWith('studio-'));
+    $('#grid9').innerHTML = studioRows.map(s => {
+      const g = ex.grades[s.id];
+      return `<div class="${cls[g] || 'g-none'}"><span>${esc(s.model.replace(' effort', ''))}</span><span>${fmtT(ex.times[s.id])}</span></div>`;
+    }).join('');
+    $('#m53solved').textContent = Object.values(ex.grades).filter(g => g === 'correct').length;
+  }
+
+  /* ---------- QUESTIONS ---------- */
+  const qf = { kind: 'all', split: 'all', page: 0, showAll: false }, QPER = 20;
+  function renderQFilters() {
+    const q = DATA.q, kinds = DATA.lb.kinds;
+    const chips = [
+      ['split', 'all', 'All', q.length],
+      ['split', 'open', 'Open answers', q.filter(x => x.split === 'open').length],
+      ['split', 'hardcore', 'Hardest 11', q.filter(x => x.hardcore).length],
+      ...Object.entries(kinds).map(([k, v]) => ['kind', k, v, q.filter(x => String(x.kind) === k).length])
+    ];
+    $('#qfilters').innerHTML = chips.map(([f, v, l, n]) => {
+      const on = f === 'kind' ? qf.kind === v : qf.split === v;
+      return `<button class="chip" type="button" data-f="${f}" data-val="${v}" aria-pressed="${on}">${esc(l)}<span class="n">${n}</span></button>`;
+    }).join('');
+  }
+  $('#qfilters').onclick = e => {
+    const b = e.target.closest('[data-f]'); if (!b) return;
+    if (b.dataset.f === 'kind') qf.kind = qf.kind === b.dataset.val ? 'all' : b.dataset.val;
+    else qf.split = b.dataset.val;
+    qf.page = 0;
+    renderQFilters(); renderQuestions();
+  };
+  $('#qsearch').addEventListener('input', () => { qf.page = 0; renderQuestions(); });
+  $('#qprev').onclick = () => { qf.page--; renderQuestions(); };
+  $('#qnext').onclick = () => { qf.page++; renderQuestions(); };
+  $('#qall').onclick = () => { qf.showAll = !qf.showAll; qf.page = 0; renderQuestions(); };
+  function renderQuestions() {
+    const term = $('#qsearch').value.trim().toLowerCase();
+    const rows = DATA.q.filter(x => (qf.kind === 'all' || String(x.kind) === qf.kind)
+      && (qf.split === 'all' || (qf.split === 'open' ? x.split === 'open' : x.hardcore))
+      && (!term || (x.id + ' ' + x.question + ' ' + (x.answer || '')).toLowerCase().includes(term)));
+    const pages = Math.max(1, Math.ceil(rows.length / QPER));
+    qf.page = Math.min(Math.max(0, qf.page), pages - 1);
+    const slice = qf.showAll ? rows : rows.slice(qf.page * QPER, qf.page * QPER + QPER);
+    $('#qcount').textContent = `${rows.length} of ${DATA.q.length} questions`;
+    $('#qpage').textContent = qf.showAll ? `Showing all ${rows.length}` : `Page ${qf.page + 1} of ${pages}`;
+    $('#qprev').disabled = qf.showAll || qf.page === 0;
+    $('#qnext').disabled = qf.showAll || qf.page >= pages - 1;
+    $('#qall').textContent = qf.showAll ? `Paginate (${QPER})` : `Show all (${rows.length})`;
+    $('#qlist').innerHTML = slice.length ? slice.map(x => `<details class="qrow"><summary>
+        <span class="qid">${esc(x.id)}</span><span class="qtext">${esc(x.question)}</span>
+        <span class="qtags">${x.hardcore ? '<span class="pill hard">Hardest 11</span>' : ''}${x.split === 'open' ? '<span class="pill open">Open answer</span>' : ''}<span class="pill">${esc(x.kind_name)}</span>${x.solved_by != null ? `<span class="pill">${x.solved_by}/${DATA.lb.n_systems} correct</span>` : ''}</span>
+      </summary><div class="qbody">${x.split === 'open'
+        ? `<p><b>Expected answer.</b> ${esc(x.answer)}</p>${x.source_files?.length ? `<div><b>Source files</b><ul>${x.source_files.map(f => `<li class="path">${esc(f)}</li>`).join('')}</ul></div>` : ''}${x.note ? `<p class="note">Grader's note: ${esc(x.note)}</p>` : ''}`
+        : `<p class="muted">Answer held out. Send your submission and we grade it against the documents.${x.hardcore ? ` ${x.solved_by === 0 ? 'No system' : x.solved_by === 1 ? 'One system' : x.solved_by + ' systems'} of ${DATA.lb.n_systems} answered it correctly.` : ''}</p>`}</div></details>`).join('')
+      : '<p class="muted" style="padding:16px">No question matches. Clear the search or pick another filter.</p>';
+  }
+
+  /* ---------- LIBRARY ---------- */
+  const df = { folder: 'all', page: 0 }, PER = 50;
+  function docRows() {
+    const term = $('#dsearch').value.trim().toLowerCase();
+    return DATA.docs.filter(d => (df.folder === 'all' || d.folder === df.folder) && (!term || (d.path || d.name).toLowerCase().includes(term)));
+  }
+  function renderDFilters() {
+    const c = {}; DATA.docs.forEach(d => c[d.folder] = (c[d.folder] || 0) + 1);
+    const chips = [['all', 'All folders', DATA.docs.length], ...Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, k, n])];
+    $('#dfilters').innerHTML = chips.map(([v, l, n]) => `<button class="chip" type="button" data-val="${esc(v)}" aria-pressed="${df.folder === v}">${esc(l)}<span class="n">${n.toLocaleString('en-US')}</span></button>`).join('');
+  }
+  $('#dfilters').onclick = e => { const b = e.target.closest('[data-val]'); if (!b) return; df.folder = b.dataset.val; df.page = 0; renderDFilters(); renderDocs(); };
+  $('#dsearch').addEventListener('input', () => { df.page = 0; renderDocs(); });
+  $('#dprev').onclick = () => { df.page--; renderDocs(); };
+  $('#dnext').onclick = () => { df.page++; renderDocs(); };
+  function renderDocs() {
+    const rows = docRows(), pages = Math.max(1, Math.ceil(rows.length / PER));
+    df.page = Math.min(Math.max(0, df.page), pages - 1);
+    const slice = rows.slice(df.page * PER, df.page * PER + PER);
+    $('#dcount').textContent = `${rows.length.toLocaleString('en-US')} of ${DATA.docs.length.toLocaleString('en-US')} documents`;
+    $('#dbody').innerHTML = slice.length ? slice.map(d => {
+      const url = typeof d.source_url === 'string' && d.source_url.startsWith('https://') ? d.source_url : null;
+      return `<tr><td class="p">${esc(d.path || d.name)}</td><td>${esc(d.subfolder || d.folder || '')}</td><td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.source || 'Source')}</a>` : esc(d.source || '—')}</td><td class="r num">${d.pages ?? '—'}</td></tr>`;
+    }).join('') : '<tr><td colspan="4" class="muted">No document matches. Clear the search or pick another folder.</td></tr>';
+    $('#dpage').textContent = `Page ${df.page + 1} of ${pages}`;
+    $('#dprev').disabled = df.page === 0; $('#dnext').disabled = df.page >= pages - 1;
+  }
+
+  /* ---------- TOKEN BAR CHART ---------- */
+  let tokSort = 'tokens';
+  function renderTokens() {
+    const sets = DATA.tok, lb = DATA.lb;
+    const order = ['gpt-6.2-sol', 'claude-opus-5.5', 'gemini-4-neon', 'gpt-6.2-astra', 'claude-fable-5', 'claude-sonnet-5.5', 'gemini-4-argon', 'muse-wonder-1.0'];
+    const eff = ['low', 'medium', 'high'];
+    const inp = t => t.new + t.write + t.read;
+    const rows = [];
+    for (const m of order) for (const e of eff) {
+      const s = sets[`${m}|${e}`]; if (!s) continue;
+      const sys = lb.systems.find(x => x.id === `studio-${m}-${e}`); if (!sys) continue;
+      rows.push({ s, sys, total: inp(s.tokens_per_q) });
+    }
+    if (tokSort === 'tokens') rows.sort((a, b) => a.total - b.total);
+    else if (tokSort === 'score') rows.sort((a, b) => b.sys.score - a.sys.score || a.total - b.total);
+    const max = Math.max(...rows.map(r => r.total));
+    const scale = Math.ceil(max / 200000) * 200000;
+    let html = `<div class="axis"><span></span><div>${[0, .25, .5, .75, 1].map(f => `<span>${kt(scale * f)}</span>`).join('')}</div><span></span></div>`;
+    for (const { s, sys, total } of rows) {
+      const t = s.tokens_per_q;
+      const seg = [[t.new + t.write, '--seg-new'], [t.read, '--seg-read']].map(([v, c]) => `<i style="width:${(100 * v / scale).toFixed(2)}%;background:var(${c})"></i>`).join('');
+      html += `<div class="crow"><div class="lbl">${esc(sys.model.replace(' effort', ''))}<small>score ${sys.score.toFixed(1)} · ${s.steps} steps · ${kt(t.out)} output${s.n < 90 ? ` · n=${s.n}` : ''}</small></div>
+        <div class="cbar">${seg}</div><div class="val">${kt(total)} input<small>${kt(total * s.n / s.correct)} per correct</small></div></div>`;
+    }
+    $('#costchart').innerHTML = html;
+  }
+  $('#toksort-seg').onclick = e => {
+    const b = e.target.closest('[data-ts]'); if (!b) return;
+    tokSort = b.dataset.ts;
+    $('#toksort-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderTokens();
+  };
+
+  /* ---------- DOWNLOADS & COPY BIBTEX ---------- */
+  const csvCell = v => { const s = v == null ? '' : Array.isArray(v) ? v.join(' | ') : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  const toCsv = (rows, cols) => [cols.join(','), ...rows.map(r => cols.map(c => csvCell(r[c])).join(','))].join('\n');
+  async function fileFor(kind) {
+    if (kind === 'documents') return ['paper-trail-documents.csv', toCsv(DATA.docs, ['n', 'path', 'folder', 'subfolder', 'name', 'source', 'source_url', 'bytes', 'pages', 'sha256'])];
+    if (kind === 'questions') return ['paper-trail-questions.csv', toCsv(DATA.q, ['id', 'kind_name', 'question', 'split', 'hardcore', 'answer', 'source_files'])];
+    if (kind === 'questions-json') return ['paper-trail-questions.json', JSON.stringify(DATA.q, null, 1)];
+    return ['paper-trail-submission.json', JSON.stringify(await load('submission-template'), null, 1)];
+  }
+  function save(filename, data) {
+    const type = filename.endsWith('.csv') ? 'text/csv' : 'application/json';
+    const url = URL.createObjectURL(new Blob([data], { type }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  $('#downloads').onclick = async e => {
+    const b = e.target.closest('[data-dl]'); if (!b) return;
+    if ((b.dataset.dl === 'documents' && !DATA.docs?.length) || !DATA.q) { $('#dlnote').textContent = 'The list is still loading. Try again in a moment.'; return; }
+    try { const [filename, data] = await fileFor(b.dataset.dl); save(filename, data); $('#dlnote').textContent = `Saved ${filename}.`; }
+    catch { $('#dlnote').textContent = 'This file could not be saved.'; }
+  };
+  $('#copybib').onclick = async () => {
+    try {
+      await navigator.clipboard.writeText($('#bibtext').textContent);
+      $('#copybib').textContent = 'Copied!';
+      setTimeout(() => { $('#copybib').textContent = 'Copy BibTeX'; }, 1600);
+    } catch { $('#bibnote').textContent = 'Select and copy the BibTeX block above.'; }
+  };
+
+  function renderQual() {
+    const q = DATA.qual;
+    if (!q || !q.systems || !q.systems.length) return;
+    $('#qualbox').hidden = false;
+    $('#qualnote').textContent = q.note || '';
+    const rows = [...q.systems].sort((a, b) => b.score - a.score || b.correct - a.correct || a.wrong - b.wrong);
+    $('#qualbody').innerHTML = rows.map(s => {
+      const n = s.correct + s.partial + s.wrong + s.no_answer, w = v => (100 * v / n).toFixed(2);
+      const bar = `<i class="c-ok" style="width:${w(s.correct)}%"></i><i class="c-part" style="width:${w(s.partial)}%"></i><i class="c-bad" style="width:${w(s.wrong)}%"></i><i class="c-none" style="width:${w(s.no_answer)}%"></i>`;
+      const kstr = ['1','2','3','4','5'].map(k => Math.round(s.by_kind[k])).join(' / ');
+      const toBadge = s.timeouts >= 4 ? `<span class="tag to">${s.timeouts} TO</span>` : '';
+      return `<tr>
+        <td class="sys n"><b>${esc(s.model_label)}</b>${toBadge}<small>${esc(s.harness_label)} · ${esc(s.model_detail)}</small></td>
+        <td><span class="qstatus ${esc(s.status)}">${esc(s.status_label)}</span></td>
+        <td><div class="score"><b class="num">${s.score.toFixed(1)}</b><div class="stack" aria-hidden="true">${bar}</div></div></td>
+        <td class="cpwn">${s.correct} / ${s.partial} / ${s.wrong} / ${s.no_answer}</td>
+        <td class="r cpwn">${kstr}</td>
+        <td class="r" style="white-space:nowrap">${fmtT(s.median_s)}</td>
+        <td class="r" style="white-space:nowrap">${kt(s.input_tokens_per_q)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  /* ---------- BOOT ---------- */
+  (async () => {
+    try {
+      [DATA.lb, DATA.q, DATA.ex, DATA.tok] = await Promise.all(['leaderboard', 'questions', 'example-grades', 'tokens'].map(load));
+      DATA.qual = await load('qualification').catch(() => null);
+      $('#best').textContent = Math.max(...DATA.lb.systems.map(s => s.score)).toFixed(1);
+      $('#nsys').textContent = DATA.lb.n_systems;
+      $('#nsys-fact').textContent = DATA.lb.n_systems;
+      document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lb.n_systems);
+      renderLayers(); populateAxisFilters(); renderViews(); renderBoard(); renderQual(); renderHeatmap(); renderHistogram(); renderScatter(); renderGrid(); renderQFilters(); renderQuestions(); renderTokens();
+    } catch (err) {
+      $('#lbody').innerHTML = `<tr><td colspan="8">The results could not be loaded. Reload the page.</td></tr>`;
+    }
+    try { DATA.docs = await load('documents'); renderDFilters(); renderDocs(); }
+    catch { $('#dbody').innerHTML = '<tr><td colspan="4">The document list could not be loaded. Reload the page.</td></tr>'; }
+  })();
+})();
+</script>
+</body>
+</html>

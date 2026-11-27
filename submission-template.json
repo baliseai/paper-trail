@@ -1,0 +1,1219 @@
+{
+ "system": {
+  "name": "Your system name",
+  "harness": "The agent or assistant that runs the model: a product, an agent framework or your own loop",
+  "harness_version": "Version or date of the harness",
+  "model": "Exact model name or id, as the provider names it",
+  "reasoning_effort": "Effort or thinking setting, if any",
+  "content_system": "The content system that holds the library (ECM or document platform, store, index)",
+  "retrieval": "How the harness searches and reads it (tools, connector, plugin)",
+  "run_date": "2026-11-23",
+  "ingestion": {
+   "no_human_categorization": null,
+   "schema_mode": "auto or human_authored (no tuning on benchmark questions/answers)",
+   "description": "How the library was ingested and processed: where it was loaded, conversion and OCR, how document types and schemas were defined, and confirming no manual per-document metadata edits or retyping (see Ingestion rules)"
+  }
+ },
+ "answers": [
+  {
+   "id": "M1",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M3",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M4",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M5",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M6",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M7",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M8",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M9",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M10",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M11",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M12",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M13",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M14",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M15",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M16",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M17",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M18",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M19",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M20",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M21",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M22",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M23",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M24",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M25",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M26",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M27",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M28",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M29",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M30",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M31",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M32",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M34",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M35",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M36",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M38",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M39",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M40",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M41",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M42",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M43",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M45",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M46",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M47",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M48",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M49",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M50",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M51",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M54",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M55",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M56",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "M57",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q11",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q19",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T8",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q1",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q2",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q3",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q4",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q5",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q6",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q7",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q9",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q13",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q14",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q15",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q16",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q17",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "Q18",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T1",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T2",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T4",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T6",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T7",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T9",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "T10",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N1",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N2",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N4",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N5",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N6",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N8",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N9",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N10",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N11",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N12",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N13",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N14",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N15",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N16",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N17",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N18",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N19",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "N20",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P2",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P3",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P4",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P5",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P6",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P7",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P8",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P9",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P10",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P11",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P12",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P13",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P14",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P15",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P16",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P17",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P18",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P19",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P20",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P21",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P22",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P23",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P24",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P25",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P26",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P27",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P28",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P29",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P30",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P31",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P32",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P33",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P34",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P35",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P36",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P37",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P38",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P39",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P40",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P41",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P42",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P43",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P44",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P45",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P46",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P47",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P48",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P49",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P50",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P51",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P52",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P53",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P54",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P55",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P56",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P57",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  },
+  {
+   "id": "P58",
+   "answer": "",
+   "sources": [],
+   "seconds": null,
+   "input_tokens": null,
+   "output_tokens": null
+  }
+ ]
+}

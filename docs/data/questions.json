@@ -1,0 +1,1497 @@
+[
+ {
+  "id": "M1",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "do we have a deal w firefly for launches out of wallops",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 20,
+  "answer": "Yes. Umbrella GSFC-25-43442 (PAM 43442) between NASA Goddard/Wallops Flight Facility and Firefly Aerospace Inc. \"for providing range services and launch support\", five years from the Effective Date (runs to Aug 2030 on its signature date), plus Annex 1 (PAM 43443) for first-launch/range support needs for future Alpha operations from Wallops.",
+  "source_files": [
+   "Agreements/Umbrella and annexes/Firefly Aerospace/43442_GSFC-25-43442_Umbrella_Complete.pdf",
+   "Agreements/Umbrella and annexes/Firefly Aerospace/43443_GSFC-25-43442_Annex_1_Complete.pdf"
+  ]
+ },
+ {
+  "id": "M3",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "anything signed with openai",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M4",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "is there an agreement with the houston rodeo, what for",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M5",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "where is the fda mou filed and whats its number",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 16,
+  "answer": "MOU 225-18-027 between FDA and NASA (PAM 41104), Agreements/Active/JSC/41104_2018-9-13.FDA_NASA_MOU_225-18-027_FINAL-_cek_signed.DH_signed.pdf; mutual support for biomedical research and development of drugs, biologics and medical devices for space missions and CBRN medical countermeasures.",
+  "source_files": [
+   "Agreements/Active/JSC/41104_2018-9-13.FDA_NASA_MOU_225-18-027_FINAL-_cek_signed.DH_signed.pdf"
+  ]
+ },
+ {
+  "id": "M6",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "antelope valley medical center mou - what is it actually for",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M7",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "the zurich uni agreement - is that the original or an extension and how long does it run",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "M8",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "who is the nasa contact for the netherlands aerospace centre annex",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "M9",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "which google agreement is the battery one and what are they paying",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "Reimbursable SAA 41743 between the NASA Office of JPL Management and Oversight and Google LLC for a battery chemistry investigation; estimated reimbursement $800,000.",
+  "source_files": [
+   "Agreements/Active/Other centers/41743_NS_82-223392_BASIC_SAA_41743.pdf"
+  ]
+ },
+ {
+  "id": "M10",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "do we have anything with nvidia",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M11",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "how much has rocket lab actually paid us so far under the stennis annex",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "M12",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "what was the exploration company agreement w langley for",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "M13",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "rolls royce stennis umbrella - what happens if they damage our test stand",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "M14",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "can microsoft use the nasa logo under the stem umbrella",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 7
+ },
+ {
+  "id": "M15",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "is the google education umbrella exclusive",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 11
+ },
+ {
+  "id": "M16",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "how do disputes get settled under the space florida ksc umbrella",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 18,
+  "answer": "KCA-4723 (PAM 37233): disputes go to the Points of Contact, then the signatories/designees; failing that the NASA signatory issues a written final agency decision for purposes of judicial review.",
+  "source_files": [
+   "Agreements/Active/KSC/37233_37233_KCA-4723_Rev_Basic_Executed.pdf"
+  ]
+ },
+ {
+  "id": "M17",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "who pays for what in the noaa libera agreement",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M18",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "GE low pressure ratio fan test - what was nasa supposed to provide",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M19",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "how do we get out of the 412th test wing alliance mou",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M20",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "faa aviation concepts umbrella - how much notice to terminate and does that kill the annexes",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M21",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "sandia regolith laser weld agreement w marshall - how long does it run",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M22",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "firefly jpl f prime agreement - who owns inventions",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "Each party keeps title to its inventions: 51 U.S.C. 20135(b) does not apply (PAM 42914).",
+  "source_files": [
+   "Agreements/Active/Other centers/42914_40-227684_BASIC_SAA.pdf"
+  ]
+ },
+ {
+  "id": "M23",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "whats the late payment penalty in the rocket lab stennis umbrella",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M24",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements do we have with boeing and at which centers",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 16,
+  "answer": "32 agreement files name The Boeing Company as party: LaRC 8, KSC 7, WSTF 4, ARC 4, GRC 4, AFRC 3, HQ 1, MSFC 1.",
+  "source_files": [
+   "Agreements/Active/GRC/32927_SAA3-1687.pdf",
+   "Agreements/Active/GRC/38404_SAA3-1761.pdf",
+   "Agreements/Active/HQ/38804_22-22ACOFinal-0044-38804_Boeing_Elsperman.pdf",
+   "Agreements/Active/Other centers/33523_SAA1_33523__SWS_NRUSAA_FullyExecuted.pdf",
+   "Agreements/Active/Other centers/35361_SAA1-35361_(Boeing)_Fully_Executed.pdf",
+   "Agreements/Active/Other centers/36785_Boeing-80AFRC22N0008-SFD_Boeing_NASA_Signed_FSAA.pdf",
+   "Agreements/Active/Other centers/40249_SAA1-35361 Annex 6 (Boeing) Fully Executed.pdf",
+   "Agreements/Expired/2024/39183_39183_CCtCap8-2339183_Final.pdf",
+   "Agreements/Expired/2025/30295_SAA3-1652.pdf",
+   "Agreements/Expired/2025/32676_SAA-RA-20-32676_R40b_Hot_Fire_Testing_STP3_FINAL_signed.pdf",
+   "Agreements/Expired/2025/38995_Boeing_Hypervelocity_Stand_Alone_Agreement_Executed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/28204_Boeing_28204_Umbrella_Signed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/29380_SAA2-403460_Umbrella_Boeing_Fully_Executed_4-27-2020.pdf",
+   "Agreements/Umbrella and annexes/Boeing/33087_Boeing_Umbrella_FINAL_v1_signed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/33088_Boeing_Info_Exchange_Annex_with_Boeing-FINAL_signed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/33524_33524_SAA1-33423_Annex_1_FullyExecuted.pdf",
+   "Agreements/Umbrella and annexes/Boeing/35290_SAA2-403647_Boeing_NRUSAA_Fully_Executed_052522.pdf",
+   "Agreements/Umbrella and annexes/Boeing/35362_SAA1-35361 Annex 1 (Boeing) Fully Executed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/36277_36277_SAA1_33523_Annex2_(002)_(002).pdf",
+   "Agreements/Umbrella and annexes/Boeing/38272_KCA-4735 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38273_KCA-4735-1 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38397_SAA2-403460-4_Boeing_R_A-4_Agreement_FE_070723.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38659_SAA1-35361 Annex 2 (Boeing) Fully Executed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38763_Annex_4_-_Boeing_-_Executed.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38776_SAA1-35361-04.pdf",
+   "Agreements/Umbrella and annexes/Boeing/38963_SAA2-403460-5_Boeing_R_A-5_Agreement_FE_071023.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39110_SAA1-35361_Annex5 (Boeing) FullyExecuted_2024-06-21.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39631_KCA-4735-2 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39632_KCA-4735-3 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39633_KCA-4735-4 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39636_KCA-4735-5 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/Boeing/39639_KCA-4735-6 Rev Basic.pdf"
+  ],
+  "note": "38804 (HQ unfunded tipping-point SAA) is registered HQ; its text points to a performing center (read as JSC by the parser). Counting by performing center would give HQ 0 / JSC 1."
+ },
+ {
+  "id": "M25",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "list the agreements with foreign companies or universities and which country",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 13
+ },
+ {
+  "id": "M26",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements does glenn have, split reimbursable vs non reimbursable",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M27",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which companies have agreements with 7 or more nasa centers",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 0
+ },
+ {
+  "id": "M28",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many unfunded agreements are there and which centers have them",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 0
+ },
+ {
+  "id": "M29",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many annexes under the sierra space marshall umbrella saa8-2236912 and what do they add up to",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 22
+ },
+ {
+  "id": "M30",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements w raytheon incl rtx, collins and pratt",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 3
+ },
+ {
+  "id": "M31",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements do we have with other federal agencies and which agencies come up most",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M32",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements with chinese companies",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "M34",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "who are stennis agreements with",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "M35",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many jpl agreements are there and are any with universities",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M36",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "per the space act agreements guide can an annex outlive its umbrella, and is fireflys marshall annex 6 inside the umbrella term",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "M38",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what did the ig audit of space act agreements recommend in 2014, and how many funded agreements do we have now",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 14
+ },
+ {
+  "id": "M39",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "who is supposed to sign off on agreements with foreign entities, and what is the airbus ksc annex for",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M40",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "microsoft tablet battery test at glenn - is it ok that nobody pays, whats the rule for doing that kind of work for free",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "M41",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "has the ig ever written about our embraer agreement",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "No. None of the 799 audit files (668 with a text layer, 131 OCRed) mentions Embraer.",
+  "source_files": [],
+  "note": "Negative existence: none of the 799 audit files mentions Embraer."
+ },
+ {
+  "id": "M42",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "did the ig say anything about space florida and ksc, and what agreements do we have with space florida now",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M43",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "how many recommendations came out of the international partnerships review and how many agreements with foreign partners do we actually hold",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 3
+ },
+ {
+  "id": "M45",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "under the authority to enter into partnership agreements directive who reviews agreements with other federal agencies, and how many interagency agreements are in the library",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M46",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "export control - what does the exploration company agreement say and is there a nasa directive behind it",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M47",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "table of the space florida ksc umbrella and annexes with the dollar amount of each",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M48",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "one pager on rolls royce - everything we have with them by center",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M49",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "compare the two firefly umbrellas (marshall and wallops) - what each covers and how long",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "Marshall SAA8-2339781 (39781): technical expertise and testing for launch and in-space transportation, five years. Wallops GSFC-25-43442 (43442): range services and launch support at Wallops, five years. Both reimbursable umbrellas.",
+  "source_files": [
+   "Agreements/Active/MSFC/39781_39781_SAA8-2339781_Final.pdf",
+   "Agreements/Umbrella and annexes/Firefly Aerospace/43442_GSFC-25-43442_Umbrella_Complete.pdf"
+  ]
+ },
+ {
+  "id": "M50",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "make a list of all agreements with german companies and what each is for",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "M51",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "summarise the google marshall big data umbrella and its annex",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "M54",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "draft talking points on the noaa agreements - what each is for and which are reimbursable",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 15
+ },
+ {
+  "id": "M55",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "table of agreements that were terminated for cause",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 16
+ },
+ {
+  "id": "M56",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "list the unfunded agreements at jsc with partner names",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 0
+ },
+ {
+  "id": "M57",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "brief me on the anduril agreements - what are they and which centers",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "Three reimbursable Space Act Agreement files across two centers: NASA Glenn (GRC) umbrella SAA3-1889 (43849, aeronautical R&D/propulsion, runs to Jan 2031) plus Annex 1 SAA3-1889-01 (43850, NPSS gas-turbine performance/weight tool, ,196), and NASA Marshall (MSFC) umbrella SAA8-2544529 (44529, commercial space transportation technical exchange and testing).",
+  "source_files": [
+   "Agreements/Active/GRC/43849_SAA3-1889.pdf",
+   "Agreements/Active/GRC/43850_SAA3-1889-01.pdf",
+   "Agreements/Active/MSFC/44529_SAA8-2544529_(44529)_Umbrella_Anduril_Industries_Inc._Final_Signed.pdf"
+  ]
+ },
+ {
+  "id": "Q11",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "what did the IG find about our reimbursable agreements data",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "Q19",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "what has the IG said about our cybersecurity since 2021",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "T8",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "summarise the IG recs on reimbursable agreements and which ones matter for our register",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "Q1",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which of our agreements expire next quarter",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "Q2",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "anything expiring before end of the year we need to deal with??",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "Q3",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements does msfc have and whats the total value",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "Q4",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "total $ value of reimbursable saas we signed this year",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 14
+ },
+ {
+  "id": "Q5",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "do we have anything with aws",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "Q6",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how much business do we do with bezos' company",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 1
+ },
+ {
+  "id": "Q7",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements do we have w spacex rn and whats the total",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 6
+ },
+ {
+  "id": "Q9",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many annexes under the ula kca-4726 umbrella and whats the combined value",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 21,
+  "answer": "13 annexes (KCA-4726-1 to -13) under umbrella 37728 (KSC, $0); as printed they total $319,414,151.99; Annex 2 (38149) $314,684,615. Annex 10 (42328) ended 30 Sep 2026 and prints $124,921.27. Umbrella and annexes 1-7 in Umbrella and annexes/United Launch Alliance/, 8-13 in Active/KSC/; annex 3 file named 38150_KCA-4276-3.",
+  "source_files": [
+   "Agreements/Active/KSC/38155_KCA-4726-8 Rev Basic.pdf",
+   "Agreements/Active/KSC/38156_KCA-4726-9 Rev Basic.pdf",
+   "Agreements/Active/KSC/42209_KCA-4726-11 Rev Basic Final.pdf",
+   "Agreements/Active/KSC/42328_KCA-4726-10 Rev Basic.pdf",
+   "Agreements/Active/KSC/42370_KCA-4726-12 Rev Basic Final.pdf",
+   "Agreements/Active/KSC/43182_KCA-4726-13 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/37728_KCA-4726_Rev_Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/37729_KCA-4726-1_Rev_Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38149_KCA-4726-2 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38150_KCA-4276-3 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38151_KCA-4726-4 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38152_KCA-4726-5 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38153_KCA-4726-6 Rev Basic.pdf",
+   "Agreements/Umbrella and annexes/United Launch Alliance/38154_KCA-4726-7 Rev Basic.pdf"
+  ]
+ },
+ {
+  "id": "Q13",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "what expired last year and did we ever extend any of it",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 15
+ },
+ {
+  "id": "Q14",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "are we signing more agreements than a few yrs ago",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "Q15",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "everything we have w lockheed",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 4
+ },
+ {
+  "id": "Q16",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which blue origin agreements got extended",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 15
+ },
+ {
+  "id": "Q17",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "whats our biggest agreement by $ and the biggest one with a company",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "Q18",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "where is the abscicon agreement, its not in the HQ folder",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "T1",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "make a spreadsheet of agreements expiring next quarter by center w partner, value, exp date and where the file is",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 8
+ },
+ {
+  "id": "T2",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "prep a 1 pager for our meeting w relativity space - everything incl the old expired stuff",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 15
+ },
+ {
+  "id": "T4",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "compare the aws umbrella and the stratolaunch umbrella clause by clause - liability, ip/data rights, termination",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 9
+ },
+ {
+  "id": "T6",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "make me a spreadsheet of msfc agreements expiring in the next 90 days w/ partner type value and exp date",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "T7",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "summarize the blue origin florida kca-4744 umbrella and all its annexes in order with total",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 22
+ },
+ {
+  "id": "T9",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "which agreement files are in the wrong folder, give me a list to fix",
+  "split": "held-out",
+  "hardcore": true,
+  "solved_by": 1
+ },
+ {
+  "id": "T10",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "summarise the herndon kca-4660 umbrella w all annexes, i think some are in the wrong place",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 13
+ },
+ {
+  "id": "N1",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "whens the crayola umbrella end and who signed it",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 12
+ },
+ {
+  "id": "N2",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "do we have anything w virgin galactic",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N4",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "where did the purdue umbrella w jsc get filed",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 19,
+  "answer": "PAM 37783, Purdue University umbrella with JSC: Agreements/Active/Other centers/37783_37783_-_Purdue_Umbrella_Fully_Executed.pdf (not the JSC folder; annex 37784 is in Active/JSC).",
+  "source_files": [
+   "Agreements/Active/JSC/37784_37784_-_Purdue_Annex_Fully_Executed.pdf",
+   "Agreements/Active/Other centers/37783_37783_-_Purdue_Umbrella_Fully_Executed.pdf"
+  ]
+ },
+ {
+  "id": "N5",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "what does the axiom ksc umbrella say about liability and insurance",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N6",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "how long does the rocket lab stennis umbrella run, can either side get out early",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "N8",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "what does intuitive machines owe us under the lro telecom agreement and when do they pay",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 21
+ },
+ {
+  "id": "N9",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements do we have w texas a&m incl the tees ones",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 19,
+  "answer": "18 Texas A&M agreements (JSC 13, LaRC 3, AFRC 1, GRC 1). By the documents 8 are in force on 23 Nov 2026 and 10 have ended.",
+  "source_files": [
+   "Agreements/Active/GRC/41744_SAA3-1845.pdf",
+   "Agreements/Active/JSC/35521_Fully_Executed_35521.pdf",
+   "Agreements/Active/JSC/35557_SAA-AD-22-35557_Executed.pdf",
+   "Agreements/Active/JSC/45598_Texas_AM_RSAA-AD-26-45598_FINAL-SIGNED_8.27.2026.pdf",
+   "Agreements/Active/Other centers/31974_SAA1-31974_TEES_BOLT_NRSAA_FULLY EXECUTED_4_23_21.pdf",
+   "Agreements/Expired/2024/36914_36914_36914_TechLeap Texas AM Final Signed.pdf",
+   "Agreements/Expired/2025/34689_SAA-EA-22-34689_TEES_LDAR_SAA_(Fully_Executed).pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/34764_SAA1-34764_Umbrella_Fully_Executed.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/34765_SAA1-34764_Annex_1_Fully_Executed.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/35888_35888_35888_TEES_Umbrella_Fully_Executed_042523.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/35889_TEES_Annex_1_PAM_35889_(Fully_Executed).pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/39512_SAA-AD-21-35521-02_Annex_between_NASA_and_Texas_AM_University.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/39520_TAMUS_Annex_3_PVAMU_PAM_39520_(Fully_Executed).pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/40348_TAMU_Annex_4_40348_PAM_Fully_Executed.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/40720_fully_executed_NRSAA_TAMU_ENMED_20Aug2025.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/42542_FE_TEES_Annex_2_Under_Space_Act_Umbrella_Agreement_No_35888.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/44409_fully_executed_Annex-07_NRSAA_with_TAMU_College_of_Medicine_and_NASA_44409_13Aug2026.pdf",
+   "Agreements/Umbrella and annexes/Texas A&M University/44831_44831_TEES_Annex3_ForSignature_Updated1AprilPE.pdf"
+  ]
+ },
+ {
+  "id": "N10",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "list all the funded space act agreements and who theyre with",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 13
+ },
+ {
+  "id": "N11",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which center has the most agreements, top 3",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N12",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements did we sign in 2023 vs 2024",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N13",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "the stratolaunch umbrella says something about mishaps - which nasa rule is that and what does it actually require",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 18
+ },
+ {
+  "id": "N14",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "boeing sustainable flight demonstrator - who signed for nasa and is that the right level under our directive for funded agreements",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 22
+ },
+ {
+  "id": "N15",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "relativity kca-4842-3 - do they pay up front, and what does our policy say about starting work before the money is in",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N16",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "how long is a space act agreement supposed to run per our guide and does the wisk ames umbrella stick to that",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N17",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "compare the wisk and joby ames umbrellas side by side - term, liability, ip",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 20
+ },
+ {
+  "id": "N18",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "one pager on axiom space - what we have with them, whats still running, whats ending in the next 6 months",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 17
+ },
+ {
+  "id": "N19",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "list the msfc agreements sitting in the to file folder so i can file them",
+  "split": "open",
+  "hardcore": false,
+  "solved_by": 19,
+  "answer": "28 MSFC agreements are in Agreements/_To file/ (the folder holds 165 agreement files): 31130, 31535, 32551, 33098, 33654, 33666, 36106, 36307, 36843, 36863, 36871, 38020, 38860, 39782, 39787, 39975, 40492, 40629, 41724, 42013, 43075, 43575, 43707, 45037, 45038, 46160, 46330, 46331.",
+  "source_files": [
+   "Agreements/_To file/31130_SAA8-1931129.1_Loral_Final.pdf",
+   "Agreements/_To file/31535_SAA8-1931535_ATK_Umbrella_Signed.pdf",
+   "Agreements/_To file/32551_SAA8-2032551_Umbrella_Artic_Slope_Signed.pdf",
+   "Agreements/_To file/33098_33098_SAA8-2233097.1_Final.pdf",
+   "Agreements/_To file/33654_33654_Mount_Pleasant_High_School_HUNCH_Signed.pdf",
+   "Agreements/_To file/33666_SAA8-2033666_McDonald_County_High_School_(HUNCH)_Signed.pdf",
+   "Agreements/_To file/36106_36106_SAA8-2336106_Final.pdf",
+   "Agreements/_To file/36307_36307_SAA8-2236307_eSign_Final_4.15.2022.pdf",
+   "Agreements/_To file/36843_SAA8-2236843_(36843)_Umbrella_Alabama_AM_Signed.pdf",
+   "Agreements/_To file/36863_36863_SAA8-2236863_Final.pdf",
+   "Agreements/_To file/36871_36871_SAA8-2236871_Final.pdf",
+   "Agreements/_To file/38020_38020_SAA8-2338020_eSign_MSFC_7.21.20231_Signed.pdf",
+   "Agreements/_To file/38860_38860_SAA8-2338860_Final.pdf",
+   "Agreements/_To file/39782_39782_SAA8-2339781.1_Final.pdf",
+   "Agreements/_To file/39787_39787_SAA8-2134592.12_Final.pdf",
+   "Agreements/_To file/39975_39975_SAA8-2339975_Final.pdf",
+   "Agreements/_To file/40492_40492_SAA8-2440491.1_Final.pdf",
+   "Agreements/_To file/40629_40629_SAA8-2540629_NTESS_Final.pdf",
+   "Agreements/_To file/41724_41724_SAA8-2441723.1_Final.pdf",
+   "Agreements/_To file/42013_42013_SAA8-2442013_Final.pdf",
+   "Agreements/_To file/43075_43075_SAA8-2543075_Auburn_Final.pdf",
+   "Agreements/_To file/43575_43575_EarthGuard_Umbrella_Final_Signed.pdf",
+   "Agreements/_To file/43707_43707_SAA8-2135668.7_Onyx_Final.pdf",
+   "Agreements/_To file/45037_SAA8-_2645037_(45037)_Umbrella_Wildstar_Final_Signed.pdf",
+   "Agreements/_To file/45038_SAA8-2645037.1_(45038)_Annex_1_Wildstar_Final_Signed.pdf",
+   "Agreements/_To file/46160_SAA8-2646160_(46160)_Union_Museum_Final_Signed.pdf",
+   "Agreements/_To file/46330_46330_SAA8-2646330_Onyx_Umbrella_Final.pdf",
+   "Agreements/_To file/46331_46331_SAA8-264330.1_Onyx_Annex_Final.pdf"
+  ]
+ },
+ {
+  "id": "N20",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "table of all the intuitive machines agreements - what each is for, center, end date",
+  "split": "held-out",
+  "hardcore": false,
+  "solved_by": 19
+ },
+ {
+  "id": "P2",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "do we have a procurement contract with bechtel and what is its ceiling",
+  "split": "open",
+  "hardcore": false,
+  "answer": "Yes. Contract 80KSC019C0013 with Bechtel National, Inc. for Mobile Launcher 2 (ML2) Phase Two design-build at Kennedy Space Center; contract value/ceiling $383,021,194.",
+  "source_files": [
+   "Procurement/Contracts (FOIA reading room)/contract_80ksc019c0013.pdf"
+  ]
+ },
+ {
+  "id": "P3",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "who are the contracting officers named on the spacex hls contract 80msfc20c0034 modifications we hold and what is spacex's cage code",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P4",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "what did the 2025 ig report on compliance with federal export control laws (ig-25-003) report about bilateral agreements with china",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P5",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "which nasa charter sets up the jpl governance board and who does it report to",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P6",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "is our delta air lines fatigue research agreement at ames (saa2-403566) still active or expired, check if any mod extended it",
+  "split": "open",
+  "hardcore": false,
+  "answer": "Expired as of 23 Nov 2026. The original agreement (32577, executed Nov 24, 2020) was later amended and then extended by Modification Three (44091, executed Aug 2026) from August 24, 2026 until November 17, 2026 to allow transition to a new agreement\u2014so even after Mod 3, it expired 6 days before 23 Nov 2026.",
+  "source_files": [
+   "Agreements/Active/ARC/32577_SAA2-403566_Delta_Human_Factors_Fatigue_Research_NRSAA_Agreement_Fully_Executed.pdf",
+   "Agreements/Active/ARC/44091_SIGNED-_Delta_Airline-SAA2-403566_Mod_3_NRSAA_(Fully_Executed).pdf"
+  ]
+ },
+ {
+  "id": "P7",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "in the spacex hls contract 80msfc20c0034 whats the firm fixed price for clin 001 and clin 005",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P8",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "when was the stop work order issued on spacex hls 80msfc20c0034, what FAR clause was cited, and when was it lifted",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P9",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "what is the maximum value and scope of the virgin galactic contract 80afrc21d0003 and did we issue a task order under it",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P10",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "does the caltech jpl prime contract 80nm0018d0004 mod 7 change the $30B ceiling or what does mod 7 actually do",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P11",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "for mishap reporting, is NPR 8621.1D still the latest word or did an interim directive update it, and what changed",
+  "split": "open",
+  "hardcore": false,
+  "answer": "No\u2014NASA Interim Directive NID 8621.157 (amendment to NPR 8621.1D, updated w/Change 4, Office of Safety and Mission Assurance) updated it; effective July 28, 2026 and expires July 28, 2027.",
+  "source_files": [
+   "Policy and guidance/N_PR_8621_001D_.pdf",
+   "Policy and guidance/NID_8621_157_.pdf"
+  ]
+ },
+ {
+  "id": "P12",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "how long does the exploration company international agreement run and why is it longer than the usual 5 year domestic saa limit",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P13",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "in the boeing commercial crew contract nnk14ma75c what did mod 001 change and what value did it show",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P14",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "what is syncom space services doing under nns15aa01c, at which center, and what is the contract value",
+  "split": "open",
+  "hardcore": false,
+  "answer": "Synergy Achieving Consolidated Operations and Maintenance (SACOM) contract at Stennis Space Center (SSC) (and MAF); Mod 000002 exercised Option 1 (Contract Period 2) under FAR 52.217-9, adding $103,710,796 to bring current contract value to $842,660,046.",
+  "source_files": [
+   "Procurement/Contracts (FOIA reading room)/redacted_sacom_contract_modification_1.pdf",
+   "Procurement/Contracts (FOIA reading room)/redacted_sacom_contract_modification_2.pdf",
+   "Procurement/Contracts (FOIA reading room)/redacted_sacom_contract_modification_3.pdf"
+  ]
+ },
+ {
+  "id": "P15",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "break down our 2027 agreement expiration cliff by quarter (Q1, Q2, Q3, Q4) - how many agreements expire and whats the total dollar value each quarter",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P16",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "list all procurement contracts in the foia reading room with a ceiling over $500M, showing contractor, contract number, and value",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P17",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "rank our top 5 commercial partners by total Space Act Agreement dollar value (merging name variants like Blue Origin LLC / Florida / Manufacturing and ULA / ULA LLC)",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P18",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many modifications do we have for the jacobs contract nnj11ha02c, whats the highest mod number, and what is the latest contract value",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P19",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which 3 contracts in the foia reading room have the most modification/attachment files in the library, and how many files each",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P20",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which agreements sitting in Active/GRC and Active/HQ are actually already expired as of today",
+  "split": "open",
+  "hardcore": false,
+  "answer": "7 agreements: Active/GRC (5): 40430 (Outpost Technologies, exp 2026-10-08), 40577 (Castheon, exp 2026-04-24), 39980 (Northrop Grumman, exp 2026-02-28), 37051 (MIT, exp 2025-03-15), 38857 (Makel Engineering, exp 2026-03-07). Active/HQ (2): 35525 (National Geographic Partners, exp 2026-09-23), 30043 (NIOSH/CDC, exp 2021-03-18).",
+  "source_files": [
+   "Agreements/Active/GRC/40430_SAA2-403805-1_Outpost_Technologies_Corp_R_A-1_Agreement_FE_20241008.pdf",
+   "Agreements/Active/GRC/40577_SAA3-1817.pdf",
+   "Agreements/Active/GRC/39980_SAA3-1724-06.pdf",
+   "Agreements/Active/GRC/37051_SAA3-1746-01.pdf",
+   "Agreements/Active/GRC/38857_SAA3-1780.pdf",
+   "Agreements/Active/HQ/35525_Signed_Artemis_Imagery_SAA.pdf",
+   "Agreements/Active/HQ/30043_TWH_NIOSH_agreement_signed_March_18_2019.pdf"
+  ]
+ },
+ {
+  "id": "P21",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "roughly how many agreements sitting in Agreements/Active have already passed their expiration date as of today, broken down by top 3 subfolders",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P22",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many agreements did we sign each year from 2022 through 2026 and which year had the highest total dollar value",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P23",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "which 5 umbrella agreements have the most annexes in the library",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P24",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many active agreements in HQ or KSC have a 90-day termination notice instead of the standard 30 days",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P25",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "reconcile Old shared drive/agreements_backup_2019 and Desktop backup against Agreements/ - how many files are in those two backup folders and are any of them missing from Agreements",
+  "split": "open",
+  "hardcore": false,
+  "answer": "131 files total (72 in Old shared drive/agreements_backup_2019 and 59 in Old shared drive/Desktop backup). All 131 (100%) are byte-identical SHA-256 duplicates of files already in Agreements/; 0 agreements are missing from Agreements/.",
+  "source_files": []
+ },
+ {
+  "id": "P26",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "how many OIG audit reports in the library were issued in 2024, 2025, and 2026 (including the ones filed at the root of Audit/)",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P27",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "which commercial companies appear in BOTH our Space Act Agreements and our FOIA procurement contracts - list at least 6 with their main procurement contract number",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P28",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "compare what our foia procurement files show for boeing and spacex commercial crew (nnk14ma75c) with what the 2026 ig audit says about commercial crew",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P29",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what did the 2025 and 2026 ig audits say about spacesuits (iss eva and next-gen) and do we have any active space act agreements with axiom space or collins on spacesuits",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P30",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what does NASA's export control directive NPD 2190.1B require, and what did the Feb 2025 IG report ig-25-003 say about NASA's China bilateral activities",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P31",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "check our caltech / jpl relationship across all libraries - what is the prime contract ceiling in procurement, which nasa charter governs the jpl board, and roughly how many jpl space act agreements do we hold",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P32",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what did the 2026/2027 ig audit of nasa's aerosciences evaluation and test capabilities portfolio (ig-27-002) find, and which commercial partners have active wind-tunnel or icing-tunnel agreements with glenn or ames",
+  "split": "open",
+  "hardcore": false,
+  "answer": "IG-27-002 (Nov 17, 2026) examines NASA's aging (~70-year-old) national wind-tunnel portfolio under AETC. Active GRC/ARC wind-tunnel and icing-tunnel partners include Embraer (GRC IRT), Rolls-Royce (GRC IRT 44252), GE Aerospace (GRC icing/wind tunnel 42132/SAA3-1851), Boeing (ARC wind tunnel), Dynetics (ARC wind tunnel 34898).",
+  "source_files": [
+   "Audit/final-report-ig-27-002-nasas-aerosciences-evaluation-and-test-capabilities-portfolio.pdf"
+  ]
+ },
+ {
+  "id": "P33",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what did the 2025 ig audit on government property for artemis (ig-25-010) find, and how do our reimbursable ksc umbrellas (like axiom or blue origin) handle damage to government property",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P34",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "before we review new icing work at glenn, which active agreements use the icing research tunnel AND how many historical technical reports mentioning icing do we hold in Technical Reports (and which center and decade have the most)",
+  "split": "open",
+  "hardcore": false,
+  "answer": "Active GRC IRT agreements include Embraer (BR01581_72550), Rolls-Royce (44252_SAA3-1892-01), GE Aerospace (SAA3-1851). Technical Reports/ holds 48 reports matching 'icing'; top center is GRC (11, then KSC 8, CDMS 7) and top decade is 1990s (18, then 2000s 14, 1980s 13).",
+  "source_files": []
+ },
+ {
+  "id": "P35",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "we have active agreements on thermal protection systems (like canopy aerospace, relativity, intuitive machines) - roughly how many technical reports on \"thermal protection\" are in Technical Reports and which two centers produced the most",
+  "split": "open",
+  "hardcore": false,
+  "answer": "117 reports in Technical Reports/ match the exact phrase 'thermal protection' (accept ~10% tolerance). Top two centers: MSFC (29) and JSC (17), followed by ARC (13) and KSC (12); top decade is 2000s (50).",
+  "source_files": []
+ },
+ {
+  "id": "P36",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "how many technical reports on \"sonic boom\" are in Technical Reports, which centers have the most, and do we have any active space act agreements on supersonic or low-boom flight",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P37",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "what do NASA's FY25 and FY26 financial statement audits (ig-26-001 and ig-27-003) say about the audit opinion, auditor firm, and any material weaknesses or significant deficiencies",
+  "split": "open",
+  "hardcore": false,
+  "answer": "Both FY25 (IG-26-001, Jan 16, 2026) and FY26 (IG-27-003, Nov 13, 2026) received unmodified (clean) opinions with no material weaknesses and no reportable/significant noncompliance. Auditor changed from Ernst & Young LLP (FY25) to Sikich CPA LLC (FY26). EY reported one significant deficiency in FY25 (financial reporting oversight controls); Sikich reported no material weaknesses or reportable noncompliance in FY26.",
+  "source_files": [
+   "Audit/2026/fy25-fsa-summary-ig-26-001.pdf",
+   "Audit/2026/final-report-ig-27-003-fy-2026-financial-statement-audit-summary.pdf"
+  ]
+ },
+ {
+  "id": "P38",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "trace the spacex hls contract 80msfc20c0034 from award through the latest mod we have - build a timeline showing how the ceiling and end date changed, when work was stopped and restarted, and summarize what the 2026 ig audit says about hls now",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P39",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "give me a full vendor 360 on virgin galactic across both partnership agreements and procurement contracts, keeping the two separate with dates, centers, and values",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P40",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "give me a full vendor 360 on lockheed martin separating their space act agreements from their foia procurement contracts (including the $11B orion contract)",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P41",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "audit the Agreements/International folder: table of all 9 agreements with partner, country, center, effective/expiration dates, value, who signed for nasa, and flag which ones are expired or exceed the 5-year domestic guideline",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P42",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "check the 7 agreements with \"draft\" or \"for signature\" in the filename in Active/HQ and Active/JSC - build a table showing which ones are actually fully signed vs unsigned (check the signature pages, not just the filenames)",
+  "split": "open",
+  "hardcore": false,
+  "answer": "All 7 are actually fully signed by both parties despite Draft/ForSignature filenames: 38787 (Peanuts Worldwide umbrella, Marc Etkind & Tim Erickson Jul 2023), 38788 (Peanuts Worldwide annex, Jul 2023), 40724 (Milo-ASU, Michael Kincaid & David Thomas May 30, 2024), 44981 (Hack Club, Elaine Ho & Zach Latta Mar 17-18, 2026), 41986 (Toyota Tsusho Annex 1, Jason Noble & Hideya Ito Feb 19-23, 2026), 44894 (Texas Space Coalition umbrella, Vanessa Wyche & Michels Pryor Jun 1-4, 2026), 45573 (UT Austin Annex 6, Randall Suratt & Daniel Sharphorn Jun 29-Jul 1, 2026).",
+  "source_files": [
+   "Agreements/Active/HQ/38787_38787_UmbrellaPWW_7_18_23_FINAL_FOR_SIGNATURE.pdf",
+   "Agreements/Active/HQ/38788_38788_AnnexPWW_7_18_23_FINAL_FOR_SIGNATURE_-_For_Signature.pdf",
+   "Agreements/Active/HQ/40724_Milo-ASU-FinalforSignature-5-24-24_-_mk.pdf",
+   "Agreements/Active/HQ/44981_Hack_Club-FinalSAAforSignature_-_Hack_Club_Signed_3-18-2026.pdf",
+   "Agreements/Active/JSC/41986_41986_2.23.26_-_Draft_Toyota_Annex_1_fully_executed.pdf",
+   "Agreements/Active/JSC/44894_44894_TSC_Umbrella_Ready_for_Signature_060126_Executed.pdf",
+   "Agreements/Active/JSC/45573_6.23.26_-_45573_Final_Draft_UT_Austin_Annex_6_under_SAA-AD-25-37779.pdf"
+  ]
+ },
+ {
+  "id": "P43",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "roughly how many agreements in the library include an explicit dollar cap on partner liability for repair/restoration of government property or direct damages, and make a table of 5 active examples with partner, agreement number, cap amount, and clause",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P44",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "ig-18-018 flagged four problems in nasa's agreement records (expired agreements listed as active, duplicate copies, missing values, and misfiled annexes) - write an executive audit memo citing at least 2 concrete file paths from our actual library for each problem",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P45",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "build a Q1 2027 renewal priority table for agreements worth over $500K expiring jan-mar 2027 - show partner, center, dollar value, expiration date, whether the parent umbrella also expires in 2027, and exact file path",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P46",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "produce a filing remediation table for the GRC and HQ agreements sitting in Agreements/_To file/ - give file path, partner, agreement number, reimbursable vs non-reimbursable, expiration date, and target folder (Active vs Expired)",
+  "split": "open",
+  "hardcore": false,
+  "answer": "32 files (9 GRC + 23 HQ): GRC active (7): 31344, 36290, 39760, 42133, 42214, 45423, 45710; GRC expired (2): 32093 (2025-12-02), 34260 (2024-07-12). HQ active (12): 35587, 36578, 36916, 40494, 40730, 41991, 42088, 43272, 45020, 45705, 45751 (+ termination notice 40660); HQ expired (11): 33056, 33079, 33080, 33084, 33145, 33159, 34991, 35270, 36288, 37299, 37402.",
+  "source_files": []
+ },
+ {
+  "id": "P47",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "compare our two biggest multi-mod support contracts in the foia reading room - dyncorp (nnj12jc05c) and jacobs (nnj11ha02c) - in a table: center, scope, number of mod files we hold, highest mod number, latest ceiling value, and latest period of performance",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P48",
+  "kind": 3,
+  "kind_name": "Count, list or total",
+  "question": "for the radford umbrella SAA1-32792 and its annex 3, how many stored copies of each do we have across Agreements and Old shared drive, and how many distinct files after matching contents",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P49",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "the standing review board audit IG-25-009 made recommendations. how many were already closed when it was issued, and under NPR 7120.5F who has decision authority for a category 1 project and who can receive that delegation",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P50",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "is Document (34520) on the old drive a copy of the American Airlines fatigue study or the digital information platform deal? give the matching file and show how you ruled the other one out",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P51",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "for our Villanova JSC capstone, make a handoff table with the governing agreement, the annex deliverable, the scheduled critical design review and the final handoff month and destination",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P52",
+  "kind": 5,
+  "kind_name": "Find, then act",
+  "question": "make a two-row brief on the gulfstream umbrella and annex 1 for the fuels team. what does each cover and what starts the clock for publicly archiving the test results",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P53",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "under annex one for demand services at the berkeley space center, what happens to unspent money if the work ends under budget? who chooses and when does nasa have to account for it",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P54",
+  "kind": 4,
+  "kind_name": "Across libraries",
+  "question": "why did the planetary defense audit suggest a program plan for PDCO, and under NPR 7120.8A who signs that kind of plan and who approves it",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P55",
+  "kind": 2,
+  "kind_name": "Read a clause",
+  "question": "in the ames annex for radian\u2019s rocket sled, does signing alone authorize NASA to start all subtasks? what else has to happen and can radian fund just some of them",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P56",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "the cornell agreement labeled for signature, PAM 41446 - which center is involved, what type of mission is the study for and is it reimbursable",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P57",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "in the OIG infrastructure resilience audit IG-25-008, how many centers did the auditors interview officials from and how many did they visit in person",
+  "split": "held-out",
+  "hardcore": false
+ },
+ {
+  "id": "P58",
+  "kind": 1,
+  "kind_name": "Find a document or a fact",
+  "question": "in our lunar telecommunications agreement PAM 45602 how many live sky tests are allowed and which two radio bands are named",
+  "split": "held-out",
+  "hardcore": false
+ }
+]
