@@ -548,15 +548,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   <div class="svg-wrap" id="scatterwrap">
     <div id="scattersvg"></div>
     <div class="scatter-tip" id="scattertip" role="status" aria-live="polite"></div>
-    <div class="slegend">
-      <span><i class="sdot" style="--c:var(--c-gemini)"></i>Gemini (Vertesia Agent System)</span>
-      <span><i class="sdot" style="--c:var(--c-claude)"></i>Claude (Vertesia Agent System)</span>
-      <span><i class="sdot" style="--c:var(--c-gpt)"></i>GPT (Vertesia Agent System)</span>
-      <span><i class="sdot" style="--c:var(--c-muse)"></i>Muse (Vertesia Agent System)</span>
-      <span><i class="sdot" style="--c:var(--c-with)"></i>Assistant + Vertesia index</span>
-      <span><i class="sdot" style="--c:var(--c-sp)"></i>Assistant on SharePoint alone</span>
-      <span class="muted">Dashed arrows: low → medium → high effort</span>
-    </div>
+    <div class="slegend" id="slegend"></div>
   </div>
 </section>
 
@@ -860,22 +852,28 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   const load = async n => { const r = await fetch(`data/${n}.json`, { cache: 'no-store' }); if (!r.ok) throw new Error(n); return r.json(); };
 
   function group(s) {
-    if (s.id.startsWith('studio-')) return 'agent';
-    if (s.content_system === 'SharePoint + Vertesia index') return 'with';
-    if (s.content_system === 'SharePoint') return 'alone';
+    const cs = (s.content_system || '').toLowerCase();
+    if (cs === 'vertesia') return 'agent';
+    if (cs.includes('+')) return 'with';
+    if (cs === 'sharepoint') return 'alone';
     return 'ext';
   }
-  function familyColor(s) {
+  const FAM_PALETTE = ['#2a6f97', '#a25236', '#1b6e53', '#7b4b94', '#c97b2b', '#4d6b53', '#8c4a6b', '#3a7d8c'];
+  function familyMeta(s) {
     const g = group(s);
-    if (g === 'alone') return 'var(--c-sp)';
-    if (g === 'with') return 'var(--c-with)';
-    const m = (s.model_name || s.model || '').toLowerCase();
-    if (m.includes('gemini')) return 'var(--c-gemini)';
-    if (m.includes('claude')) return 'var(--c-claude)';
-    if (m.includes('gpt')) return 'var(--c-gpt)';
-    if (m.includes('muse')) return 'var(--c-muse)';
-    return 'var(--accent)';
+    if (g === 'alone') return { key: 'sp', label: 'Assistant on SharePoint alone', color: 'var(--c-sp)' };
+    if (g === 'with') return { key: 'with', label: 'Assistant + structured index', color: 'var(--c-with)' };
+    const m = (s.model_label || s.model_name || s.model || 'Other').trim();
+    const first = m.split(/\s+/)[0];
+    const low = first.toLowerCase();
+    if (low === 'gemini') return { key: 'gemini', label: 'Gemini', color: 'var(--c-gemini)' };
+    if (low === 'claude') return { key: 'claude', label: 'Claude', color: 'var(--c-claude)' };
+    if (low === 'gpt') return { key: 'gpt', label: 'GPT', color: 'var(--c-gpt)' };
+    if (low === 'muse') return { key: 'muse', label: 'Muse', color: 'var(--c-muse)' };
+    let h = 0; for (let i = 0; i < low.length; i++) h = (h * 31 + low.charCodeAt(i)) >>> 0;
+    return { key: low, label: first, color: FAM_PALETTE[h % FAM_PALETTE.length] };
   }
+  const familyColor = s => familyMeta(s).color;
   function completedAccuracy(s) {
     if (!s.timeouts || s.timeouts <= 0) return null;
     const finished = s.correct + s.partial + s.wrong + s.no_answer - s.timeouts;
@@ -975,53 +973,48 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
       ? `<polyline fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-opacity=".45" stroke-dasharray="5 4" points="${frontier.map(p => `${sx(xVal(p)).toFixed(1)},${sy(yVal(p)).toFixed(1)}`).join(' ')}"/>`
       : '';
 
-    // Effort arrows (low -> medium -> high for studio models)
+    // Effort arrows (low -> medium -> high for any config with multiple efforts)
     const effOrder = ['low', 'medium', 'high'];
-    const byModel = {};
-    pts.filter(s => s.id.startsWith('studio-')).forEach(s => {
-      (byModel[s.model_name] ||= {})[s.reasoning_effort] = s;
+    const byCfg = {};
+    pts.forEach(s => {
+      if (!s.reasoning_effort) return;
+      const k = `${s.harness_label}|${s.content_system}|${s.model_label}`;
+      (byCfg[k] ||= {})[s.reasoning_effort] = s;
     });
-    let arrows = '';
-    for (const [mname, map] of Object.entries(byModel)) {
+    let arrows = '', hasArrows = false;
+    for (const map of Object.values(byCfg)) {
       const seq = effOrder.map(e => map[e]).filter(Boolean);
       for (let i = 0; i < seq.length - 1; i++) {
+        hasArrows = true;
         const a = seq[i], b = seq[i + 1];
         arrows += `<line x1="${sx(xVal(a)).toFixed(1)}" y1="${sy(yVal(a)).toFixed(1)}" x2="${sx(xVal(b)).toFixed(1)}" y2="${sy(yVal(b)).toFixed(1)}" stroke="${familyColor(a)}" stroke-width="1.5" stroke-opacity=".55" stroke-dasharray="3 3" marker-end="url(#arr)"/>`;
       }
     }
 
-    // Key point labels (non-overlapping top/interesting points)
-    const labelIds = new Set(['claude-vertesia-high', 'copilot-vertesia', 'claude-alone-high', 'copilot-alone',
-      'studio-gemini-4-neon-medium', 'studio-gemini-4-neon-low', 'studio-gemini-4-neon-high',
-      'studio-claude-opus-5.5-high', 'studio-gpt-6.2-astra-low', 'studio-gpt-6.2-sol-high', 'studio-claude-sonnet-5.5-low']);
+    // Dynamic point labels: Pareto frontier + non-agent harnesses + max-X/min-Y extremes
+    const labelSet = new Set(frontier.map(p => p.id));
+    pts.forEach(s => { if (group(s) !== 'agent') labelSet.add(s.id); });
+    if (pts.length) {
+      labelSet.add([...pts].sort((a, b) => xVal(b) - xVal(a))[0].id);
+      labelSet.add([...pts].sort((a, b) => yVal(a) - yVal(b))[0].id);
+    }
 
     let dots = '';
+    const placed = [];
     for (const s of pts) {
       const cx = sx(xVal(s)), cy = sy(yVal(s)), col = familyColor(s);
       const isFront = frontier.includes(s);
       const r = isFront ? 6.5 : 5.2;
       dots += `<circle class="sdot-pt" data-id="${esc(s.id)}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="${col}" stroke="var(--surface)" stroke-width="1.8" style="cursor:pointer" tabindex="0"/>`;
-      if (labelIds.has(s.id)) {
-        const short = s.id === 'claude-vertesia-high' ? 'Claude.ai + Vertesia'
-          : s.id === 'copilot-vertesia' ? 'Copilot + Vertesia'
-          : s.id === 'claude-alone-high' ? 'Claude.ai alone'
-          : s.id === 'copilot-alone' ? 'Copilot alone'
-          : `${s.model_label} ${s.reasoning_effort || ''}`.trim();
-        const offsets = {
-          'studio-gpt-6.2-astra-low': [-8, -10, 'end'],
-          'studio-gemini-4-neon-low': [8, -10, 'start'],
-          'studio-gemini-4-neon-medium': [8, -10, 'start'],
-          'studio-claude-opus-5.5-high': [-10, -10, 'end'],
-          'studio-gpt-6.2-sol-high': [10, 15, 'start'],
-          'studio-gemini-4-neon-high': [-10, -10, 'end'],
-          'studio-claude-sonnet-5.5-low': [10, 4, 'start'],
-          'claude-vertesia-high': [10, -10, 'start'],
-          'copilot-vertesia': [10, 14, 'start'],
-          'claude-alone-high': [10, 4, 'start'],
-          'copilot-alone': [10, -8, 'start'],
-        };
-        const [dx, dy, anchor] = offsets[s.id] || [cx > W - 150 ? -10 : 9, -8, cx > W - 150 ? 'end' : 'start'];
-        dots += `<text x="${(cx + dx).toFixed(1)}" y="${(cy + dy).toFixed(1)}" text-anchor="${anchor}" fill="var(--ink)" font-size="11" font-weight="${isFront ? 600 : 400}" pointer-events="none">${esc(short)}</text>`;
+      if (labelSet.has(s.id)) {
+        const short = group(s) === 'agent'
+          ? `${s.model_label} ${s.reasoning_effort || ''}`.trim()
+          : `${s.harness_label.replace('Microsoft 365 ', '')} (${s.content_system.includes('+') ? '+' : ''}${s.content_system.replace('SharePoint + ', '').replace(' index', '')})`;
+        const rightSide = cx < W - 180;
+        let lx = cx + (rightSide ? 9 : -9), ly = cy - 9, anchor = rightSide ? 'start' : 'end';
+        if (placed.some(([px, py]) => Math.abs(px - cx) < 95 && Math.abs(py - ly) < 14)) ly = cy + 16;
+        placed.push([cx, ly]);
+        dots += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" fill="var(--ink)" font-size="11" font-weight="${isFront ? 600 : 400}" pointer-events="none">${esc(short)}</text>`;
       }
     }
 
@@ -1029,6 +1022,12 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
       <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L7,4 L0,7 z" fill="var(--muted)" opacity=".7"/></marker></defs>
       ${grid}${frontierPath}${arrows}${dots}
     </svg>`;
+
+    // Dynamic legend from actual plotted systems
+    const seen = new Map();
+    pts.forEach(s => { const fm = familyMeta(s); if (!seen.has(fm.key)) seen.set(fm.key, fm); });
+    $('#slegend').innerHTML = [...seen.values()].map(fm => `<span><i class="sdot" style="--c:${fm.color}"></i>${esc(fm.label)}</span>`).join('')
+      + (hasArrows ? '<span class="muted">Dashed arrows: low → medium → high effort</span>' : '');
 
     const tip = $('#scattertip'), wrap = $('#scatterwrap');
     const showTip = (el, ev) => {
@@ -1381,29 +1380,39 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     $('#dprev').disabled = df.page === 0; $('#dnext').disabled = df.page >= pages - 1;
   }
 
-  /* ---------- TOKEN BAR CHART ---------- */
+  /* ---------- TOKEN BAR CHART (100% data-driven from leaderboard + tokens) ---------- */
   let tokSort = 'tokens';
   function renderTokens() {
-    const sets = DATA.tok, lb = DATA.lb;
-    const order = ['gpt-6.2-sol', 'claude-opus-5.5', 'gemini-4-neon', 'gpt-6.2-astra', 'claude-fable-5', 'claude-sonnet-5.5', 'gemini-4-argon', 'muse-wonder-1.0'];
-    const eff = ['low', 'medium', 'high'];
-    const inp = t => t.new + t.write + t.read;
+    const sets = DATA.tok || {}, lb = DATA.lb;
+    const effRank = { low: 0, medium: 1, high: 2 };
     const rows = [];
-    for (const m of order) for (const e of eff) {
-      const s = sets[`${m}|${e}`]; if (!s) continue;
-      const sys = lb.systems.find(x => x.id === `studio-${m}-${e}`); if (!sys) continue;
-      rows.push({ s, sys, total: inp(s.tokens_per_q) });
+    for (const sys of lb.systems) {
+      if (sys.input_tokens_per_q == null) continue;
+      const slug = sys.id.replace(/^studio-/, '');
+      const eff = sys.reasoning_effort || '';
+      const key = eff && slug.endsWith(`-${eff}`) ? `${slug.slice(0, -(eff.length + 1))}|${eff}` : '';
+      const s = sets[key];
+      const fresh = s ? (s.tokens_per_q.new + s.tokens_per_q.write) : Math.max(0, sys.input_tokens_per_q - (sys.cached_input_per_q || 0));
+      const read = s ? s.tokens_per_q.read : (sys.cached_input_per_q || 0);
+      const total = fresh + read;
+      const out = s ? s.tokens_per_q.out : sys.output_tokens_per_q;
+      const steps = s ? s.steps : (sys.steps_mean ?? '—');
+      const n = s ? s.n : (sys.correct + sys.partial + sys.wrong + sys.no_answer);
+      const correct = s ? s.correct : Math.max(1, sys.correct);
+      rows.push({ sys, fresh, read, total, out, steps, n, correct });
     }
+    if (!rows.length) { $('#costchart').innerHTML = '<p class="muted">No token records available.</p>'; return; }
     if (tokSort === 'tokens') rows.sort((a, b) => a.total - b.total);
     else if (tokSort === 'score') rows.sort((a, b) => b.sys.score - a.sys.score || a.total - b.total);
+    else rows.sort((a, b) => (a.sys.model_label || '').localeCompare(b.sys.model_label || '') || (effRank[a.sys.reasoning_effort] ?? 9) - (effRank[b.sys.reasoning_effort] ?? 9));
     const max = Math.max(...rows.map(r => r.total));
     const scale = Math.ceil(max / 200000) * 200000;
     let html = `<div class="axis"><span></span><div>${[0, .25, .5, .75, 1].map(f => `<span>${kt(scale * f)}</span>`).join('')}</div><span></span></div>`;
-    for (const { s, sys, total } of rows) {
-      const t = s.tokens_per_q;
-      const seg = [[t.new + t.write, '--seg-new'], [t.read, '--seg-read']].map(([v, c]) => `<i style="width:${(100 * v / scale).toFixed(2)}%;background:var(${c})"></i>`).join('');
-      html += `<div class="crow"><div class="lbl">${esc(sys.model.replace(' effort', ''))}<small>score ${sys.score.toFixed(1)} · ${s.steps} steps · ${kt(t.out)} output${s.n < 90 ? ` · n=${s.n}` : ''}</small></div>
-        <div class="cbar">${seg}</div><div class="val">${kt(total)} input<small>${kt(total * s.n / s.correct)} per correct</small></div></div>`;
+    for (const r of rows) {
+      const seg = [[r.fresh, '--seg-new'], [r.read, '--seg-read']].map(([v, c]) => `<i style="width:${(100 * v / scale).toFixed(2)}%;background:var(${c})"></i>`).join('');
+      const lbl = `${r.sys.model_label}${r.sys.reasoning_effort ? ', ' + r.sys.reasoning_effort : ''}`;
+      html += `<div class="crow"><div class="lbl">${esc(lbl)}<small>score ${r.sys.score.toFixed(1)} · ${r.steps} steps · ${kt(r.out)} output${r.n < 90 ? ` · n=${r.n}` : ''}</small></div>
+        <div class="cbar">${seg}</div><div class="val">${kt(r.total)} input<small>${kt(r.total * r.n / r.correct)} per correct</small></div></div>`;
     }
     $('#costchart').innerHTML = html;
   }
