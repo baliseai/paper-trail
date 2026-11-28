@@ -28,7 +28,7 @@
       "median_s": 175.2,
       "input_tokens_per_q": 857635,
       "status": "qualified",
-      "status_label": "Qualified"
+      "status_label": "Qualified \u00b7 full 150 complete"
     },
     {
       "id": "qual-kimi-k3",
@@ -53,7 +53,7 @@
       "median_s": 96.5,
       "input_tokens_per_q": 434396,
       "status": "qualified",
-      "status_label": "Qualified"
+      "status_label": "Qualified \u00b7 full 150 complete"
     },
     {
       "id": "qual-deepseek-v4.1-flash",
@@ -78,7 +78,7 @@
       "median_s": 166.9,
       "input_tokens_per_q": 889961,
       "status": "qualified",
-      "status_label": "Qualified"
+      "status_label": "Qualified \u00b7 full 150 complete"
     },
     {
       "id": "qual-mistral-large-4.0",
