@@ -191,6 +191,11 @@ def run_one_question(q, profile, env_id, model, inference_profile, time_limit=60
         ]
         if ans_msgs and not hit_limit:
             answer = ans_msgs[-1]["message"].strip()
+            # An agent sometimes posts a short follow-up after its answer (for example when a background task
+            # completes). The reader of the conversation sees both, so keep the full answer and append the follow-up.
+            longest = max((m["message"].strip() for m in ans_msgs[:-1]), key=len, default="")
+            if len(answer) < 400 and len(longest) >= 3 * len(answer):
+                answer = longest + "\n\n" + answer
 
     return {
         "id": qid,

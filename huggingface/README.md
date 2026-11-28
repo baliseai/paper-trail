@@ -52,9 +52,9 @@ reference answers come from the documents themselves.
 
 Each result reports the model, the harness that ran it, and the content system it searched.
 
-**Funding and conflicts.** Paper Trail is built and published by Balise, Inc. Vertesia's document index and agent
-appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were run by Balise. Outside
-submissions are graded with the same rubric.
+**Funding and conflicts.** Paper Trail is built and published by Balise, Inc. Vertesia's document index or agent
+appears in every row except the assistants running alone on SharePoint, and Vertesia pays for its own runs. All rows
+were run by Balise. Outside submissions are graded with the same rubric grader.
 
 For the submission format and run rules, see
 [Submitting results](#submitting-results-for-the-held-out-set).
@@ -62,7 +62,8 @@ For the submission format and run rules, see
 - **Version:** v2.1 (150 questions over 9,832 public NASA documents).
 - **Changes in v2.1:** P48–P58 replace M2, M33, M37, M44, M52, M53, Q8, Q10, N3, N7, and P1.
   These prompts had answers in previously published material. The [eight former open examples](https://github.com/baliseai/paper-trail/blob/main/docs/data/archived-open-examples.json) remain available for practice.
-  Existing runs need fresh answers for P48–P58. The 103-question leaderboard reports the earlier baseline.
+  Existing runs need fresh answers for P48–P58. The leaderboard below is on all 150 v2.1 questions; the `leaderboard`
+  and `results` configs hold the earlier 103-question baseline.
 - **Reference date:** questions use relative dates. **Treat today as 23 November 2026**: "next quarter" is
   January–March 2027, "this year" is 2026.
 - **Held-out set:** 25 open questions (5 per kind) publish their answer and source files; the other 125 keep their
@@ -142,7 +143,7 @@ held out.
 The 25 open questions (five per kind) include answers and source paths for checking a submission.
 
 `questions` columns: `id`, `kind`, `kind_name`, `question` (exactly as typed, typos included), `split`
-(`open` / `held-out`), `difficulty` (`hardcore` / `standard`), `hardcore`, `solved_by` (how many of the 23 measured
+(`open` / `held-out`), `difficulty` (`hardcore` / `standard`), `hardcore`, `solved_by` (how many of the 23 baseline v1
 systems answered it correctly) and `solved_of` (23); for open questions only, `answer`, `source_files` (library paths)
 and `answer_note` (an ambiguity the grader allowed for, when there is one). These three are empty for every held-out
 question.
@@ -155,6 +156,7 @@ question.
 3. **Answer from the library.** Web search and general knowledge do not count as sources.
 4. **Treat today as 23 November 2026.**
 5. **Stop each run at 10 minutes.** Record the time, and the input and output tokens if your system reports them.
+   (On the current leaderboard the assistants ran with a 600-second limit and the Vertesia agent rows with one hour.)
 
 ## Ingestion rules
 
@@ -181,77 +183,82 @@ and confirming zero manual document categorization or metadata edits—in the `i
 
 ## How answers are graded
 
-| Grade | Points | Meaning |
+Each question has a private rubric of atomic criteria: the core facts that make an answer right, what a complete
+answer must also contain, the statements that make it wrong, and the things that are explicitly not required. Three
+judges from three labs (Claude Opus 5.5, GPT 6.2 Sol and Gemini 4 Neon) check every criterion on every answer; no
+judge gives an overall grade. Numbers and list counts are checked in code against accepted ranges. The grade is then
+computed by a fixed rule:
+
+| Grade | Points | Rule |
 |---|--:|---|
-| Correct | 1 | Says what the documents say. Counts and totals within about 10% count as correct; the documents' printed amounts are the reference. |
-| Partial | 0.5 | Finds the right documents and points the right way, but leaves something out or gives a key figure more than 10% off. |
-| Wrong | 0 | States something the documents contradict, or names the wrong document. |
-| No answer | 0 | Gives up, asks a clarifying question, or says nothing is there when something is. |
+| Correct | 1 | Every core and every required criterion met, and no statement that makes it wrong. Counts and totals within about 10% of an accepted figure are accepted. |
+| Partial | 0.5 | Anything between correct and wrong. |
+| Wrong | 0 | A statement that makes it wrong is present, or fewer than half of the core facts are met. |
+| No answer | 0 | Empty, timed out, or only says it could not find or do it, with no criterion met. |
 
 The **score** is the points as a share of the questions in view, out of 100. The **strict score**
-(`score_wrong_minus1`) also takes a point off for every wrong answer. Every answer is graded against the documents
-by one grader, then by a blind second grader on any answer that is not obvious; disagreements are settled with the
-reasons written down.
+(`score_wrong_minus1`) also takes a point off for every wrong answer. The full protocol, the measured stability and
+the exact judge prompt are in
+[GRADING.md](https://github.com/baliseai/paper-trail/blob/main/GRADING.md). The rubrics, the gold answers of the
+held-out questions and the grader notes stay private.
 
 The answer key was rebuilt from the documents actually loaded in the library, not from NASA's public registers: where
 the register and the files disagree, the files win.
 
 ## Leaderboard
 
-Baseline scores out of 100 on all 103 original questions. C / P / W / N = correct / partial / wrong / no answer. Ranks follow the
-score; the two systems at 96.6 are listed in the published order.
+Scores out of 100 on all 150 questions of v2.1, rubric grader. C / P / W / N = correct / partial / wrong / no answer.
 
-| # | Harness | Model | Effort | Content system | Score | Strict | Hardest 11 | Held-out 83 | C / P / W / N | Median s | Input tokens / q | Output tokens / q |
+<!-- leaderboard:start -->
+| # | Harness | Model | Effort | Content system | Score | Strict | Hardest 11 | Held-out 125 | C / P / W / N | Median s | Input tokens / q | Output tokens / q |
 |--:|---|---|:-:|---|--:|--:|--:|--:|:-:|--:|--:|--:|
-| 1 | Claude.ai | Claude Opus 5.5 | high | SharePoint + Vertesia index | 96.6 | 96.6 | 68.2 | 95.8 | 96 / 7 / 0 / 0 | 46 | — | — |
-| 2 | Vertesia Agent System | Gemini 4 Neon | medium | Vertesia | 96.6 | 96.6 | 77.3 | 95.8 | 97 / 5 / 0 / 1 | 168 | 347K | 8.3K |
-| 3 | Vertesia Agent System | Claude Opus 5.5 | high | Vertesia | 95.1 | 95.1 | 54.5 | 94.0 | 93 / 10 / 0 / 0 | 116 | 327K | 4.1K |
-| 4 | Vertesia Agent System | Gemini 4 Neon | low | Vertesia | 94.7 | 94.7 | 54.5 | 93.4 | 92 / 11 / 0 / 0 | 126 | 154K | 3.5K |
-| 5 | Microsoft 365 Copilot (Cowork) | GPT (Auto) | medium | SharePoint + Vertesia index | 94.2 | 94.2 | 68.2 | 92.8 | 91 / 12 / 0 / 0 | 57 | — | — |
-| 6 | Vertesia Agent System | GPT 6.2 Sol | high | Vertesia | 91.7 | 90.8 | 45.5 | 89.8 | 90 / 9 / 1 / 3 | 152 | 374K | 3.2K |
-| 7 | Vertesia Agent System | GPT 6.2 Sol | medium | Vertesia | 91.3 | 89.3 | 45.5 | 89.2 | 89 / 10 / 2 / 2 | 125 | 238K | 1.8K |
-| 8 | Vertesia Agent System | Claude Opus 5.5 | medium | Vertesia | 90.8 | 88.8 | 45.5 | 89.8 | 87 / 13 / 2 / 1 | 114 | 260K | 3.3K |
-| 9 | Vertesia Agent System | GPT 6.2 Astra | low | Vertesia | 89.3 | 88.3 | 45.5 | 88.0 | 85 / 14 / 1 / 3 | 99 | 97K | 0.7K |
-| 10 | Vertesia Agent System | GPT 6.2 Astra | medium | Vertesia | 88.8 | 87.9 | 50.0 | 86.1 | 85 / 13 / 1 / 4 | 105 | 143K | 1.1K |
-| 11 | Vertesia Agent System | Gemini 4 Argon | low | Vertesia | 86.9 | 86.9 | 50.0 | 83.7 | 87 / 5 / 0 / 11 | 244 | 569K | 4.9K |
-| 12 | Vertesia Agent System | Claude Fable 5 | medium | Vertesia | 85.0 | 84.0 | 54.5 | 83.7 | 76 / 23 / 1 / 3 | 87 | 268K | 3.3K |
-| 13 | Vertesia Agent System | GPT 6.2 Sol | low | Vertesia | 83.0 | 83.0 | 54.5 | 83.7 | 72 / 27 / 0 / 4 | 106 | 97K | 0.7K |
-| 14 | Vertesia Agent System | Gemini 4 Neon | high | Vertesia | 82.5 | 81.6 | 45.5 | 78.3 | 83 / 4 / 1 / 15 | 267 | 760K | 16K |
-| 15 | Vertesia Agent System | Claude Opus 5.5 | low | Vertesia | 81.6 | 78.6 | 50.0 | 78.9 | 69 / 30 / 3 / 1 | 102 | 171K | 2.0K |
-| 16 | Vertesia Agent System | Claude Fable 5 | low | Vertesia | 80.6 | 76.7 | 40.9 | 77.7 | 71 / 24 / 4 / 4 | 77 | 221K | 2.2K |
-| 17 | Vertesia Agent System | Gemini 4 Argon | medium | Vertesia | 78.2 | 78.2 | 36.4 | 72.9 | 78 / 5 / 0 / 20 | 278 | 547K | 8.2K |
-| 18 | Vertesia Agent System | Claude Sonnet 5.5 | medium | Vertesia | 76.2 | 74.3 | 50.0 | 75.3 | 63 / 31 / 2 / 7 | 73 | 176K | 1.9K |
-| 19 | Vertesia Agent System | Muse Wonder 1.0 | low | Vertesia | 73.3 | 72.3 | 27.3 | 72.3 | 71 / 9 / 1 / 22 | 350 | 245K | 2.8K |
-| 20 | Claude.ai | Claude Opus 5.5 | high | SharePoint | 70.9 | 66.0 | 59.1 | 68.1 | 58 / 30 / 5 / 10 | 71 | — | — |
-| 21 | Vertesia Agent System | Muse Wonder 1.0 | medium | Vertesia | 69.4 | 68.4 | 36.4 | 65.1 | 65 / 13 / 1 / 24 | 407 | 276K | 3.3K |
-| 22 | Vertesia Agent System | Claude Sonnet 5.5 | low | Vertesia | 54.9 | 52.9 | 31.8 | 54.2 | 41 / 31 / 2 / 29 | 53 | 105K | 1.2K |
-| 23 | Microsoft 365 Copilot (Cowork) | GPT (Auto) | medium | SharePoint | 10.7 | 6.8 | 9.1 | 12.0 | 5 / 12 / 4 / 82 | 20 | — | — |
+| 1 | Vertesia Agent System | Gemini 4 Neon | medium | Vertesia | 97.3 | 97.3 | 86.4 | 96.8 | 143 / 6 / 0 / 1 | 175 | 493K | 13K |
+| 2 | Vertesia Agent System | Claude Opus 5.5 | medium | Vertesia | 97.0 | 96.3 | 86.4 | 96.8 | 142 / 7 / 1 / 0 | 69 | 430K | 5.7K |
+| 3 | Vertesia Agent System | Claude Fable 5.2 | medium | Vertesia | 96.7 | 96.7 | 86.4 | 96.4 | 140 / 10 / 0 / 0 | 94 | 434K | 9.4K |
+| 4 | Vertesia Agent System | Mistral Large 4.0 | medium | Vertesia | 95.0 | 94.3 | 81.8 | 94.4 | 136 / 13 / 1 / 0 | 170 | 852K | 14K |
+| 4 | Claude.ai | Claude Opus 5.5 | medium | SharePoint + Vertesia index | 95.0 | 94.3 | 86.4 | 95.6 | 136 / 13 / 1 / 0 | 68 | — | — |
+| 6 | Vertesia Agent System | GPT 6.2 Astra | medium | Vertesia | 93.3 | 91.3 | 77.3 | 93.2 | 133 / 14 / 3 / 0 | 67 | 262K | 2.0K |
+| 7 | Vertesia Agent System | GPT 6.2 Sol | medium | Vertesia | 91.3 | 87.3 | 77.3 | 90.0 | 130 / 14 / 6 / 0 | 83 | 412K | 3.5K |
+| 8 | Vertesia Agent System | Claude Sonnet 5.5 | medium | Vertesia | 91.0 | 89.0 | 77.3 | 90.4 | 128 / 17 / 3 / 2 | 44 | 324K | 4.1K |
+| 9 | ChatGPT | GPT 6.2 | medium | SharePoint + Vertesia index | 89.0 | 85.7 | 77.3 | 88.4 | 122 / 23 / 5 / 0 | 29 | — | — |
+| 10 | Microsoft 365 Copilot Chat | Auto | — | SharePoint + Vertesia index | 75.3 | 60.7 | 45.5 | 76.8 | 100 / 26 / 22 / 2 | 50 | — | — |
+| 11 | Claude.ai | Claude Opus 5.5 | medium | SharePoint | 59.7 | 40.3 | 40.9 | 58.0 | 76 / 27 / 29 / 18 | 56 | — | — |
+| 12 | ChatGPT | GPT 6.2 | medium | SharePoint | 56.7 | 30.7 | 45.5 | 56.4 | 70 / 30 / 39 / 11 | 35 | — | — |
+| 13 | Microsoft 365 Copilot Cowork | Auto | — | SharePoint | 13.7 | -6.3 | 9.1 | 11.6 | 11 / 19 / 30 / 90 | 23 | — | — |
+<!-- leaderboard:end -->
 
-**How to read the rows.** Each row is one harness running one model over one content system. The current table covers three setups:
+**How to read the rows.** Each row is one harness running one model over one content system:
 
-- **Vertesia Agent System** (Content system: Vertesia): Vertesia's general-purpose agent with read-only tools. The documents are stored
-  in Vertesia, which converts, types and indexes them, and the agent searches them there. Only the model and its
-  effort setting change between these rows.
-- **+ Vertesia** (Content system: SharePoint + Vertesia index): the harness is an assistant, Microsoft 365 Copilot (Cowork) or Claude.ai, and the documents stay in
-  a SharePoint library. The assistant keeps its own SharePoint search and also gets a search tool over Vertesia's
-  index of the same library (the Vertesia plugin in Copilot, the Vertesia connector in Claude.ai). It is the index
-  Vertesia Agent System rows use.
-- **Alone** (Content system: SharePoint): the same assistants with only their own SharePoint search: Copilot's built-in search, or Claude.ai's
-  Microsoft 365 connector (search and open files).
+- **Vertesia Agent System** (content system: Vertesia): Vertesia's general-purpose agent with read-only tools. The
+  documents are stored in Vertesia, which converts, types and indexes them, and the agent searches them there. Only
+  the model changes between these rows, all at medium effort.
+- **+ Vertesia index** (content system: SharePoint + Vertesia index): the harness is an assistant (Claude.ai, ChatGPT
+  or Microsoft 365 Copilot) and the documents stay in a SharePoint library. The assistant keeps its own SharePoint
+  search and also gets a search tool over Vertesia's index of the same library, the index the agent rows use.
+- **Alone** (content system: SharePoint): the same assistants with only their own SharePoint search.
 
-Copilot Cowork runs OpenAI GPT models in `Auto` mode at `medium` effort (choosing between variants such as Astra and Sol per task), so it is listed as `GPT (Auto)`. One run per question for every system.
+**Run conditions.** One run per question for every system. Time limit per question: one hour for the Vertesia agent
+rows, 600 seconds for the assistants; two Copilot Cowork answers without the index ran past 600 seconds (724 and 858)
+and were kept. Copilot's model is `Auto`: Copilot picks it and does not say which one answered. Copilot Chat +
+Vertesia was run with the Vertesia search skill attached by hand in every chat (without it Copilot did not call
+Vertesia), and Copilot used Vertesia in 133 of the 150 answers; Copilot Cowork + Vertesia used it in 140 of the 150.
+Copilot Cowork alone gave no answer on 112 of the 150 questions because its file search found nothing. In the
+Claude.ai and ChatGPT rows, at most nine answers per row are second attempts: the first attempt had read an output
+file an earlier run left in the library, or stopped at a connector sign-in. A configuration is listed once all 150 of
+its answers are graded.
 
 **Tokens.** We report tokens, not prices: what a token costs depends on how each customer pays for it. Tokens are
 measured for the Vertesia agent from the platform's records of each run. Input tokens include the part read from the
 prompt cache (`cached_input_tokens_per_question`), which is most of it: the conversation so far is read again at
 each step. Output includes thinking. Small side calls to a lighter model (conversation notes, titles) are not counted.
-Copilot does not expose its token use and Claude.ai's can only be estimated from the conversation text, so neither is
-listed. The leaderboard's per-question means are taken over the runs with a complete token record (`token_runs`);
-the per-question rows in `results` come from the graded run records, so a mean computed from them can differ slightly.
+Claude.ai, ChatGPT and Copilot do not report token use, so their rows show none. Means are taken over the runs
+with a token record.
 
-**Time limits.** Muse Wonder's provider slowed down when 16 questions ran at once, so the questions that hit the
-10-minute limit then were run again three at a time; its 22 and 24 questions without an answer still timed out or
-failed at the provider. `hit_time_limit` in `results` marks runs stopped at the limit.
+## Baseline files (v1)
+
+The `leaderboard` and `results` configs hold the earlier 103-question baseline (v1): 23 systems, graded with the
+earlier holistic grader. They are not comparable with the v2.1 table above. Muse Wonder's provider slowed down when
+16 questions ran at once, so its questions that hit the 10-minute limit then were run again three at a time.
 
 `leaderboard` columns: `rank`, `system_id`, `name`, `harness`, `model`, `reasoning_effort`, `content_system` (the
 content system the harness read), `retrieval` (how it searched it), `score`,

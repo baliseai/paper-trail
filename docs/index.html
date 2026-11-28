@@ -397,8 +397,8 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <div class="facts" id="facts">
           <div class="fact"><b>9,832</b><span>documents<br>(178,937 pages · 11.2 GB)</span></div>
           <div class="fact"><b>150</b><span>questions<br>(5 kinds · 25 open)</span></div>
-          <div class="fact"><b id="nsys-fact">15</b><span>configurations<br>150 questions (v2.1)</span></div>
-          <div class="fact"><b id="best">93.7</b><span>highest score / 100<br>150 questions</span></div>
+          <div class="fact"><b id="nsys-fact">—</b><span>configurations<br>150 questions (v2.1)</span></div>
+          <div class="fact"><b id="best">—</b><span>highest score / 100<br>150 questions</span></div>
         </div>
       </div>
     </div>
@@ -422,8 +422,8 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="head">
-    <h2><span id="nsys">15</span> configurations on 150 questions</h2>
-    <p>All configurations run at medium effort with a 10-minute cap and blind 3-lab grading. Click any row for its full breakdown.</p>
+    <h2><span id="nsys">—</span> configurations on 150 questions</h2>
+    <p>Question set v2.1, graded <span id="asof">—</span> with the rubric grader: three judges from three labs check each answer against a rubric, and the grade follows from a fixed rule. One run per question. Click any row for its full breakdown.</p>
   </div>
   <div class="controls">
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
@@ -455,7 +455,13 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   <div class="rowdefs">
     <p><span class="tag alone">SharePoint</span> The assistant searches the SharePoint library with its own built-in search.</p>
     <p><span class="tag with">SharePoint + Vertesia index</span> Same library and assistant, plus a search tool over Vertesia’s index of the files.</p>
-    <p><span class="tag agent">Vertesia</span> Vertesia’s agent over the same index. Only the model and its effort change between these rows.</p>
+    <p><span class="tag agent">Vertesia</span> Vertesia’s agent over the same index. Only the model changes between these rows, all at medium effort.</p>
+  </div>
+  <div class="rowdefs" id="conditions">
+    <p><b>Time limits.</b> Vertesia agent rows ran with a one-hour limit per question; Claude.ai, ChatGPT and Copilot rows with 600 seconds. Two Copilot Cowork answers without the index ran past 600 seconds (724 and 858) and were kept. One run per question for every row.</p>
+    <p><b>Copilot.</b> Its model is “Auto”: Copilot picks the model and does not say which one answered. Copilot Chat + Vertesia was run with the Vertesia search skill attached by hand in every chat; without it Copilot did not call Vertesia, and it used Vertesia in 133 of the 150 answers. Copilot Cowork + Vertesia used Vertesia in 140 of the 150. Copilot Cowork alone gave no answer on 112 of the 150 questions because its file search found nothing.</p>
+    <p><b>Second attempts.</b> In the Claude.ai and ChatGPT rows, at most nine answers per row are second attempts: the first attempt had read an output file an earlier run left in the library, or stopped at a connector sign-in.</p>
+    <p><b>Tokens.</b> Claude.ai, ChatGPT and Copilot do not report token use, so their rows show none. A configuration is listed once all 150 of its answers are graded.</p>
   </div>
   <div class="qual-box" id="qualbox" hidden>
     <div class="qual-head">
@@ -523,7 +529,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <section id="frontier">
   <div class="head">
     <h2>Score against tokens and time</h2>
-    <p>One point per configuration. Arrows run from low to high effort on the same model.</p>
+    <p>One point per configuration. The assistants report no tokens or tool calls, so they appear on the latency view only.</p>
   </div>
   <div class="controls">
     <div class="seg tight pillbar" id="fx-seg" role="group" aria-label="X axis">
@@ -568,7 +574,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <section id="example">
   <div class="head">
     <h2>Three graded questions</h2>
-    <p>M53 is retired from scoring. P20 and P42 are open questions in the current set.</p>
+    <p>M53 is retired from scoring; its grades come from the 103-question baseline and the earlier grader. P20 and P42 are open questions in the current set.</p>
   </div>
   <div class="seg" id="extabs" role="tablist" aria-label="Worked examples">
     <button class="chip" type="button" role="tab" data-ex="M53" aria-pressed="true">1 · M53: Misfiled scan and duplicate</button>
@@ -581,7 +587,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     <div class="qcard">
       <p class="qid">M53 · Baseline example · Retired from scoring</p>
       <p class="qline">put the microsoft agreements in a table - what each one is for and which are annexes</p>
-      <div class="qmeta"><span>Typed verbatim, lowercase and all</span><span>Answered correctly by <b id="m53solved">19</b> of <span class="nsys">23</span> measured systems</span></div>
+      <div class="qmeta"><span>Typed verbatim, lowercase and all</span><span>Answered correctly by <b id="m53solved">19</b> of 23 baseline systems</span></div>
     </div>
     <div class="cols">
       <div class="box">
@@ -623,7 +629,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <p class="verdict">Correct.</p></article>
     </div>
     <div class="box">
-      <h3>Vertesia Agent System on M53, across all 19 model and effort runs</h3>
+      <h3>Vertesia Agent System on M53, across the 19 baseline model and effort runs</h3>
       <div class="grid9" id="grid9"></div>
       <p class="note">GPT 6.2 Sol low stopped after the umbrella and annexes and left out Glenn (same miss as Claude.ai alone). Muse Wonder 1.0 low timed out at 10 minutes.</p>
     </div>
@@ -744,19 +750,19 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <li>Ask each question as written, typos included. One run, no follow-up, no human help.</li>
         <li>Answer from the library. Web search and outside knowledge do not count.</li>
         <li>Treat today as <b>23 November 2026</b>.</li>
-        <li>Stop each run at <b>10 minutes</b>. Record the time, and tokens if your system reports them.</li>
+        <li>Stop each run at <b>10 minutes</b>. Record the time, and tokens if your system reports them. (On this page the assistants ran with a 600-second limit and the Vertesia agent rows with one hour.)</li>
         <li>The system classifies, reads and indexes the files itself. A person may define document types and fields beforehand, but not from the questions, and may not tag or correct documents by hand, one at a time or in bulk.</li>
       </ol>
     </div>
     <div class="box">
       <h3>How answers are graded</h3>
       <div class="rubric">
-        <div><span class="grade g-correct">Correct</span><span class="pts">1</span><span>Says what the documents say. Counts and totals within about 10% count as correct; printed amounts in the files are the reference.</span></div>
-        <div><span class="grade g-partial">Partial</span><span class="pts">0.5</span><span>Finds the right documents and points the right way, but leaves something out or misses a key figure by more than 10%.</span></div>
-        <div><span class="grade g-wrong">Wrong</span><span class="pts">0</span><span>States something the documents contradict, or names the wrong document.</span></div>
-        <div><span class="grade g-none">No answer</span><span class="pts">0</span><span>Gives up, asks a clarifying question, times out, or says nothing is there when something is.</span></div>
+        <div><span class="grade g-correct">Correct</span><span class="pts">1</span><span>Every core and every required criterion met, and nothing that makes it wrong. Counts and totals within about 10% of an accepted figure are accepted.</span></div>
+        <div><span class="grade g-partial">Partial</span><span class="pts">0.5</span><span>At least half the core facts, but something required is missing or off.</span></div>
+        <div><span class="grade g-wrong">Wrong</span><span class="pts">0</span><span>States something that makes the answer wrong, or meets fewer than half of the core facts.</span></div>
+        <div><span class="grade g-none">No answer</span><span class="pts">0</span><span>Empty, timed out, or only says it could not find or do it, with no criterion met.</span></div>
       </div>
-      <p class="note">Baseline: one grader checked each answer against the documents, and a second graded the non-obvious ones blind. The <b>Strict</b> score also takes a point off for each wrong answer.</p>
+      <p class="note">Each question has a rubric of atomic criteria: the core facts, what a complete answer must also contain, the statements that make it wrong, and what is explicitly not required. Three judges from three labs (Claude Opus 5.5, GPT 6.2 Sol and Gemini 4 Neon) check every criterion on every answer, and the majority verdict counts; no judge grades an answer overall. Numbers and list counts are checked in code against accepted ranges. A prompt-injection screen runs first and forces a grade only at medium or high risk. Grading the same 150 answers twice changed at most 1 final grade on each of three systems, with the judges unanimous on 98–99.8% of criteria. The rubrics, held-out gold answers and grader notes stay private; the protocol and the exact judge prompt are in <a href="https://github.com/baliseai/paper-trail/blob/main/GRADING.md">GRADING.md</a>. The <b>Strict</b> score also takes a point off for each wrong answer.</p>
     </div>
   </div>
 </section>
@@ -776,7 +782,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     <button class="btn" type="button" data-dl="questions">Questions (CSV)</button>
     <button class="btn" type="button" data-dl="questions-json">Questions (JSON)</button>
     <button class="btn" type="button" data-dl="template">Submission template (JSON)</button>
-    <a class="btn" href="https://github.com/baliseai/paper-trail/raw/main/data/results.parquet" style="text-decoration:none">Grades (Parquet)</a>
+    <a class="btn" href="https://github.com/baliseai/paper-trail/raw/main/data/results.parquet" style="text-decoration:none">Baseline grades, 103 questions (Parquet)</a>
     <a class="btn" href="https://github.com/baliseai/paper-trail/blob/main/scripts/RUNBOOK.md" style="text-decoration:none">Runbook</a>
   </div>
   <p class="note" id="dlnote" style="margin-top:10px"></p>
@@ -823,7 +829,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <section id="disclosure">
   <div class="head">
     <h2>Funding and conflicts</h2>
-    <p>Paper Trail is built and published by Balise, Inc. Vertesia pays for its own evaluations, and all configurations are graded with the same blind 3-lab rubric. Outside submissions follow the exact same rules.</p>
+    <p>Paper Trail is built and published by Balise, Inc. Vertesia’s index or agent appears in <span id="nvert">—</span> of the <span class="nsys">—</span> rows, and Vertesia pays for its own evaluations. All configurations are graded blind with the same rubric grader. Outside submissions follow the exact same rules.</p>
   </div>
 </section>
 
@@ -838,7 +844,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const fmtT = s => s == null ? '—' : s < 60 ? `${Math.round(s)} s` : `${Math.floor(s / 60)} min ${String(Math.round(s % 60)).padStart(2, '0')} s`;
+  const fmtT = s => s == null ? '—' : s >= 3600 && s % 3600 === 0 ? `${s / 3600} h` : s < 60 ? `${Math.round(s)} s` : `${Math.floor(s / 60)} min ${String(Math.round(s % 60)).padStart(2, '0')} s`;
   const kt = v => v == null ? '—' : `${Math.round(v / 1000).toLocaleString('en-US')}K`;
   const DATA = {};
   const load = async n => { const r = await fetch(`data/${n}.json`, { cache: 'no-store' }); if (!r.ok) throw new Error(n); return r.json(); };
@@ -880,8 +886,11 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     const find = (h, m, cs) => sys.find(s => s.harness_label === h && (!m || s.model_label === m) && s.content_system === cs);
     const pair = (a, b) => (a && b) ? [a.score, b.score] : null;
 
-    const gptIndex = pair(find('ChatGPT', null, 'SharePoint'), find('ChatGPT', null, 'SharePoint + Vertesia index'));
-    const claudeIndex = pair(find('Claude.ai', null, 'SharePoint'), find('Claude.ai', null, 'SharePoint + Vertesia index'));
+    const CONTENT = [['Claude.ai', 'Claude.ai (Opus 5.5) on SharePoint search, then with a structured index'],
+      ['ChatGPT', 'ChatGPT (GPT 6.2) on SharePoint search, then with a structured index'],
+      ['Microsoft 365 Copilot Chat', 'Copilot Chat on SharePoint search, then with a structured index'],
+      ['Microsoft 365 Copilot Cowork', 'Copilot Cowork on SharePoint search, then with a structured index']]
+      .map(([h, d]) => [pair(find(h, null, 'SharePoint'), find(h, null, 'SharePoint + Vertesia index')), d]).filter(([p]) => p);
     const hOpus = pair(find('Vertesia Agent System', 'Claude Opus 5.5', 'Vertesia'), find('Claude.ai', 'Claude Opus 5.5', 'SharePoint + Vertesia index'));
     const hGpt = pair(find('Vertesia Agent System', 'GPT 6.2 Sol', 'Vertesia'), find('ChatGPT', null, 'SharePoint + Vertesia index'));
     const best = {};
@@ -899,18 +908,22 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     };
     const diff = p => f1(Math.abs(p[1] - p[0]));
     let html = '';
-    if (gptIndex) html += row(true, 'Content system', 'ChatGPT (GPT 6.2) on SharePoint search, then with a structured index', gptIndex, `+${diff(gptIndex)}`);
-    if (claudeIndex) html += row(!gptIndex, 'Content system', 'Claude.ai (Opus 5.5) on SharePoint search, then with a structured index', claudeIndex, `+${diff(claudeIndex)}`);
+    CONTENT.forEach(([p, d], i) => { html += row(i === 0, 'Content system', d, p, `${p[1] >= p[0] ? '+' : '−'}${diff(p)}`); });
     if (models.length > 1) html += row(true, 'Model', `${models.length} models on one agent and one index (medium effort)`, models, f1(models.at(-1) - models[0]), 'sm');
-    if (hOpus) html += row(true, 'Harness', 'Claude Opus 5.5 on the same index: Vertesia Agent System vs. Claude.ai', hOpus, `+${diff(hOpus)}`);
-    if (hGpt) html += row(!hOpus, 'Harness', 'GPT 6.2 on the same index: Vertesia Agent System vs. ChatGPT', hGpt, `+${diff(hGpt)}`);
+    if (hOpus) html += row(true, 'Harness', 'Claude Opus 5.5 on the same index: Vertesia Agent System vs. Claude.ai', hOpus, diff(hOpus));
+    if (hGpt) html += row(!hOpus, 'Harness', 'GPT 6.2 on the same index: Vertesia Agent System vs. ChatGPT', hGpt, diff(hGpt));
     html += `<div class="lrow laxis"><span></span><div class="ltrack">${[0, 25, 50, 75, 100].map(v => `<span style="left:${v}%">${v}</span>`).join('')}</div><span></span></div>`;
     $('#layerchart').innerHTML = html.replace('lrow g', 'lrow');
 
     const items = [];
-    if (gptIndex) items.push(`Adding a structured index over the same SharePoint files moved ChatGPT (GPT 6.2 medium) by +${diff(gptIndex)} points (${f1(gptIndex[0])} → ${f1(gptIndex[1])}).`);
+    if (CONTENT.length) {
+      const ds = CONTENT.map(([p]) => p[1] - p[0]).sort((a, b) => a - b);
+      items.push(CONTENT.length === 1
+        ? `Adding a structured index over the same SharePoint files moved the same assistant by ${f1(ds[0])} points.`
+        : `Adding a structured index over the same SharePoint files moved the same assistant by ${f1(ds[0])} to ${f1(ds.at(-1))} points across ${CONTENT.length} assistants.`);
+    }
     if (models.length > 3) items.push(`Swapping the model moved the score by ${f1(models.at(-1) - models[0])} points across ${models.length} models (${f1(models[0])} → ${f1(models.at(-1))}), and ${f1(models.at(-1) - models.at(-3))} across the top three.`);
-    if (hOpus) items.push(`Swapping the harness moved Opus 5.5 medium by +${diff(hOpus)} points on the same index (${f1(hOpus[0])} → ${f1(hOpus[1])}).`);
+    if (hOpus) items.push(`Swapping the harness moved Opus 5.5 medium by ${diff(hOpus)} points on the same index (Vertesia Agent System ${f1(hOpus[0])}, Claude.ai ${f1(hOpus[1])}).`);
     if (items.length) $('#takeaways').innerHTML = items.map(t => `<li>${t}</li>`).join('');
   }
 
@@ -1144,7 +1157,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         : '';
       const tied = rows.some((o, j) => j !== i && ranks[j] === ranks[i]);
       const ca = completedAccuracy(s);
-      const toBadge = s.timeouts >= 4 ? `<span class="tag to" title="${s.timeouts} runs hit the 10-min limit (${ca}% on ${n - s.timeouts} completed)">${s.timeouts} TO</span>` : '';
+      const toBadge = s.timeouts >= 4 ? `<span class="tag to" title="${s.timeouts} runs hit the ${fmtT(s.time_limit_s)} limit (${ca}% on ${n - s.timeouts} completed)">${s.timeouts} TO</span>` : '';
       const bar = view === 'overall' && metric === 'score'
         ? `<i class="c-ok" style="width:${w(s.correct)}%"></i><i class="c-part" style="width:${w(s.partial)}%"></i><i class="c-bad" style="width:${w(s.wrong)}%"></i><i class="c-none" style="width:${w(s.no_answer)}%"></i>`
         : `<i class="c-ok" style="width:${Math.max(0, sc).toFixed(1)}%"></i>`;
@@ -1184,9 +1197,11 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
             <div class="dstat"><span>Latency p50 / p90</span><b>${fmtT(s.median_s)} / ${fmtT(s.p90_s)}</b></div>
             <div class="dstat"><span>Steps / Tool calls</span><b>${s.steps_mean ?? '—'} / ${s.tool_calls_mean ?? '—'}</b></div>
             <div class="dstat"><span>Output tokens / q</span><b>${kt(s.output_tokens_per_q)}</b></div>
-            <div class="dstat"><span>10-min timeouts</span><b>${s.timeouts ?? '—'}${ca ? ` (${ca}% finished)` : ''}</b></div>
+            <div class="dstat"><span>Time limit / stopped at it</span><b>${fmtT(s.time_limit_s)} / ${s.timeouts ?? '—'}${ca ? ` (${ca}% finished)` : ''}</b></div>
+            <div class="dstat"><span>Answers over 10 min</span><b>${s.over_600s ?? '—'}</b></div>
+            <div class="dstat"><span>Judges unanimous</span><b>${s.criterion_unanimity_pct != null ? `${s.criterion_unanimity_pct}% of criteria` : '—'}</b></div>
           </div></div>
-        </div>${effSweep}</td></tr>`;
+        </div>${s.conditions ? `<p class="note" style="margin-top:12px">${esc(s.conditions)}</p>` : ''}${effSweep}</td></tr>`;
       }
       return html;
     }).join('');
@@ -1262,7 +1277,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     let bars = '';
     bins.forEach((cnt, i) => {
       const h = (cnt / maxB) * ph, x = M.l + i * bw, y = M.t + ph - h;
-      const col = i <= 9 ? 'var(--bad)' : i <= 15 ? 'var(--part)' : 'var(--ok)';
+      const col = i <= 0.4 * maxS ? 'var(--bad)' : i <= 0.65 * maxS ? 'var(--part)' : 'var(--ok)';
       bars += `<rect x="${(x + 1.5).toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(2, bw - 3).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${col}"><title>${i}/${maxS} systems correct: ${cnt} questions</title></rect>`;
       if (i % 5 === 0 || i === maxS) {
         bars += `<text x="${(x + bw / 2).toFixed(1)}" y="${H - 12}" text-anchor="middle" fill="var(--muted)" font-size="10.5" font-family="var(--f-mono)">${i}</text>`;
@@ -1282,10 +1297,11 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   function renderGrid() {
     const ex = DATA.ex, lb = DATA.lb;
     const cls = { correct: 'g-correct', partial: 'g-partial', wrong: 'g-wrong', 'no answer': 'g-none' };
-    const studioRows = lb.systems.filter(x => x.id.startsWith('studio-'));
-    $('#grid9').innerHTML = studioRows.map(s => {
-      const g = ex.grades[s.id];
-      return `<div class="${cls[g] || 'g-none'}"><span>${esc(s.model.replace(' effort', ''))}</span><span>${fmtT(ex.times[s.id])}</span></div>`;
+    // M53 is a baseline example: its rows are the baseline runs in example-grades.json, not the current board.
+    const studioRows = ex.studio_order || Object.keys(ex.grades).filter(id => id.startsWith('studio-'));
+    $('#grid9').innerHTML = studioRows.map(id => {
+      const g = ex.grades[id];
+      return `<div class="${cls[g] || 'g-none'}"><span>${esc((ex.labels || {})[id] || id)}</span><span>${fmtT(ex.times[id])}</span></div>`;
     }).join('');
     $('#m53solved').textContent = Object.values(ex.grades).filter(g => g === 'correct').length;
   }
@@ -1334,7 +1350,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <span class="qtags">${x.hardcore ? '<span class="pill hard">Hardest 11</span>' : ''}${x.split === 'open' ? '<span class="pill open">Open answer</span>' : ''}<span class="pill">${esc(x.kind_name)}</span>${x.solved_by != null ? `<span class="pill">${x.solved_by}/${DATA.lb.n_systems} correct</span>` : ''}</span>
       </summary><div class="qbody">${x.split === 'open'
         ? `<p><b>Expected answer.</b> ${esc(x.answer)}</p>${x.source_files?.length ? `<div><b>Source files</b><ul>${x.source_files.map(f => `<li class="path">${esc(f)}</li>`).join('')}</ul></div>` : ''}${x.note ? `<p class="note">Grader's note: ${esc(x.note)}</p>` : ''}`
-        : `<p class="muted">Answer held out. Send your submission and we grade it against the documents.${x.hardcore ? ` ${x.solved_by === 0 ? 'No system' : x.solved_by === 1 ? 'One system' : x.solved_by + ' systems'} of ${DATA.lb.n_systems} answered it correctly.` : ''}</p>`}</div></details>`).join('')
+        : `<p class="muted">Answer held out. Send your submission and we grade it against the documents.${x.hardcore && x.solved_by != null ? ` ${x.solved_by === 0 ? 'No system' : x.solved_by === 1 ? 'One system' : x.solved_by + ' systems'} of ${DATA.lb.n_systems} answered it correctly.` : ''}</p>`}</div></details>`).join('')
       : '<p class="muted" style="padding:16px">No question matches. Clear the search or pick another filter.</p>';
   }
 
@@ -1397,7 +1413,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     for (const r of rows) {
       const seg = [[r.fresh, '--seg-new'], [r.read, '--seg-read']].map(([v, c]) => `<i style="width:${(100 * v / scale).toFixed(2)}%;background:var(${c})"></i>`).join('');
       const lbl = `${r.sys.model_label}${r.sys.reasoning_effort ? ', ' + r.sys.reasoning_effort : ''}`;
-      html += `<div class="crow"><div class="lbl">${esc(lbl)}<small>score ${r.sys.score.toFixed(1)} · ${r.steps} steps · ${kt(r.out)} output${r.n < 90 ? ` · n=${r.n}` : ''}</small></div>
+      html += `<div class="crow"><div class="lbl">${esc(lbl)}<small>score ${r.sys.score.toFixed(1)} · ${r.steps} steps · ${kt(r.out)} output${r.n < 135 ? ` · n=${r.n}` : ''}</small></div>
         <div class="cbar">${seg}</div><div class="val">${kt(r.total)} input<small>${kt(r.total * r.n / r.correct)} per correct</small></div></div>`;
     }
     $('#costchart').innerHTML = html;
@@ -1473,6 +1489,8 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
       $('#nsys').textContent = DATA.lb.n_systems;
       $('#nsys-fact').textContent = DATA.lb.n_systems;
       document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lb.n_systems);
+      $('#nvert').textContent = DATA.lb.systems.filter(s => s.content_system !== 'SharePoint').length;
+      if (DATA.lb.as_of) $('#asof').textContent = new Date(`${DATA.lb.as_of}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
       populateAxisFilters(); renderViews(); renderBoard(); renderQual(); renderHeatmap(); renderHistogram(); renderLayers(); renderScatter(); renderGrid(); renderQFilters(); renderQuestions(); renderTokens();
     } catch (err) {
       $('#lbody').innerHTML = `<tr><td colspan="8">The results could not be loaded. Reload the page.</td></tr>`;
