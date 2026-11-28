@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRIVATE = os.path.join(os.path.dirname(ROOT), "paper-trail-private")
 QUESTIONS_PATH = os.path.join(ROOT, "docs", "data", "questions.json")
-OUT_PATH = os.path.join(ROOT, "docs", "data", "leaderboard-v2.json")
+OUT_PATH = os.path.join(ROOT, "docs", "data", "leaderboard.json")
 
 MODEL_LABELS = {
     "locations/global/publishers/xai/models/grok-4.7": "Grok 4.7",

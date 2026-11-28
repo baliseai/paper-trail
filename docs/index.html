@@ -397,8 +397,8 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <div class="facts" id="facts">
           <div class="fact"><b>9,832</b><span>documents<br>(178,937 pages · 11.2 GB)</span></div>
           <div class="fact"><b>150</b><span>questions<br>(5 kinds · 25 open)</span></div>
-          <div class="fact"><b id="nsys-fact">23</b><span>configurations<br>103-question baseline</span></div>
-          <div class="fact"><b id="best">96.6</b><span>highest baseline score<br>103 questions</span></div>
+          <div class="fact"><b id="nsys-fact">15</b><span>configurations<br>150 questions (v2.1)</span></div>
+          <div class="fact"><b id="best">93.7</b><span>highest score / 100<br>150 questions</span></div>
         </div>
       </div>
     </div>
@@ -406,9 +406,9 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 </div>
 
 <div class="bar"><div class="wrap"><nav aria-label="Sections">
-  <a href="#layers">What moves the score</a>
   <a href="#leaderboard">Leaderboard</a>
   <a href="#breakdown">By question kind</a>
+  <a href="#layers">What moves the score</a>
   <a href="#frontier">Tokens and time</a>
   <a href="#example">Examples</a>
   <a href="#questions">Questions</a>
@@ -419,38 +419,20 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 
 <main class="wrap">
 
-<section id="layers">
-  <div class="head">
-    <h2>What moves the score</h2>
-    <p>Same library, same questions, one layer changed at a time. 103-question baseline.</p>
-  </div>
-  <div class="layers" id="layerchart"></div>
-  <ul class="takeaways" id="takeaways">
-    <li>Adding an index moved the same assistant, on the same files, by 25.7 and 83.5 points.</li>
-    <li>Swapping the model moved the score by up to 23.3 points across 8 models, and 4.9 across the top three.</li>
-    <li>Swapping the harness moved it 1.5 points when both shared a model and an index.</li>
-  </ul>
-  <p class="note">One run per question, so a point or two is a tie. The index in these runs is Vertesia’s: see <a href="#disclosure">funding and conflicts</a>.</p>
-</section>
-
 <!-- LEADERBOARD -->
 <section id="leaderboard">
   <div class="head">
-    <h2><span id="nsys">7</span> configurations · <span id="lbset-lbl">150 questions (v2.1)</span></h2>
-    <p id="lbset-note">Full 150-question v2.1 runs (medium effort, blind 3-lab graded). Switch to the 103-question baseline to view the earlier multi-effort and SharePoint comparisons. Click any row for its breakdown.</p>
+    <h2><span id="nsys">15</span> configurations on 150 questions</h2>
+    <p>All configurations run at medium effort with a 10-minute cap and blind 3-lab grading. Click any row for its full breakdown.</p>
   </div>
   <div class="controls">
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
-      <div class="seg tight pillbar" id="set-seg" role="group" aria-label="Question set">
-        <button class="chip" type="button" data-set="v2" aria-pressed="true">150 questions (v2.1)</button>
-        <button class="chip" type="button" data-set="v1" aria-pressed="false">103 baseline</button>
-      </div>
       <div class="seg tight pillbar" id="metric-seg" role="group" aria-label="Score metric">
         <button class="chip" type="button" data-m="score" aria-pressed="true">Standard</button>
-        <button class="chip" type="button" data-m="strict" aria-pressed="false">Strict (−1)</button>
-        <button class="chip" type="button" data-m="held_out" aria-pressed="false">Held-out</button>
+        <button class="chip" type="button" data-m="strict" aria-pressed="false" title="Deducts 1 full point for each wrong answer (Correct +1, Partial +0.5, Wrong −1, No answer 0)">Strict (−1)</button>
+        <button class="chip" type="button" data-m="held_out" aria-pressed="false">Held-out 125</button>
       </div>
-      <div class="seg tight pillbar" id="effort-seg" role="group" aria-label="Effort grouping">
+      <div class="seg tight pillbar" id="effort-seg" role="group" aria-label="Effort grouping" hidden>
         <button class="chip" type="button" data-ef="collapsed" aria-pressed="true">Default effort</button>
         <button class="chip" type="button" data-ef="all" aria-pressed="false">All efforts</button>
       </div>
@@ -494,7 +476,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <section id="breakdown">
   <div class="head">
     <h2>Scores by kind of question</h2>
-    <p>103-question baseline. Click a column to sort.</p>
+    <p>150 questions (v2.1). Click a column to sort.</p>
   </div>
   <div class="scroll"><table class="hm">
     <thead><tr>
@@ -524,6 +506,17 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
       </ul>
     </div>
   </div>
+</section>
+
+<!-- WHAT MOVES THE SCORE (controlled 3-layer attribution, after the raw Leaderboard & Heatmap) -->
+<section id="layers">
+  <div class="head">
+    <h2>What moves the score</h2>
+    <p>Same library, same 150 questions, one layer changed at a time.</p>
+  </div>
+  <div class="layers" id="layerchart"></div>
+  <ul class="takeaways" id="takeaways"></ul>
+  <p class="note">One run per question, so a point or two is a tie. See <a href="#disclosure">funding and conflicts</a>.</p>
 </section>
 
 <!-- SCORE AGAINST TOKENS AND TIME -->
@@ -568,7 +561,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   <div class="legend">
     <span style="--c:var(--seg-new)">Fresh input</span><span style="--c:var(--seg-read)">Read from prompt cache</span>
   </div>
-  <p class="note" style="margin-top:14px">Tokens come from the platform’s run records; small side calls for titles and notes are left out. Muse Wonder 1.0 has token records for 49 (low) and 47 (medium) of its 103 runs.</p>
+  <p class="note" style="margin-top:14px">Tokens come from the platform’s run records; small side calls for titles and notes are left out.</p>
 </section>
 
 <!-- WORKED EXAMPLES -->
@@ -830,7 +823,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
 <section id="disclosure">
   <div class="head">
     <h2>Funding and conflicts</h2>
-    <p>Paper Trail is built and published by Balise, Inc. Vertesia’s document index and agent appear in 21 of the 23 baseline rows, and Vertesia pays for its own runs. All 23 rows were run by Balise. Outside submissions are graded with the same rubric.</p>
+    <p>Paper Trail is built and published by Balise, Inc. Vertesia pays for its own evaluations, and all configurations are graded with the same blind 3-lab rubric. Outside submissions follow the exact same rules.</p>
   </div>
 </section>
 
@@ -880,18 +873,19 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     return ((s.correct + 0.5 * s.partial) / finished * 100).toFixed(1);
   }
 
-  /* ---------- WHAT MOVES THE SCORE ---------- */
-  // Each row holds two layers fixed and changes the third. Pairs are named by system id.
+  /* ---------- WHAT MOVES THE SCORE (100% data-driven from 150-question systems) ---------- */
   function renderLayers() {
-    const by = Object.fromEntries(DATA.lb.systems.map(s => [s.id, s]));
+    const sys = DATA.lb.systems;
     const f1 = v => v.toFixed(1);
-    const pair = (a, b) => by[a] && by[b] ? [by[a].score, by[b].score] : null;
-    const copilot = pair('copilot-alone', 'copilot-vertesia');
-    const claude = pair('claude-alone-high', 'claude-vertesia-high');
-    const harness = pair('studio-claude-opus-5.5-high', 'claude-vertesia-high');
-    const noIndex = pair('copilot-alone', 'claude-alone-high');
+    const find = (h, m, cs) => sys.find(s => s.harness_label === h && (!m || s.model_label === m) && s.content_system === cs);
+    const pair = (a, b) => (a && b) ? [a.score, b.score] : null;
+
+    const gptIndex = pair(find('ChatGPT', null, 'SharePoint'), find('ChatGPT', null, 'SharePoint + Vertesia index'));
+    const claudeIndex = pair(find('Claude.ai', null, 'SharePoint'), find('Claude.ai', null, 'SharePoint + Vertesia index'));
+    const hOpus = pair(find('Vertesia Agent System', 'Claude Opus 5.5', 'Vertesia'), find('Claude.ai', 'Claude Opus 5.5', 'SharePoint + Vertesia index'));
+    const hGpt = pair(find('Vertesia Agent System', 'GPT 6.2 Sol', 'Vertesia'), find('ChatGPT', null, 'SharePoint + Vertesia index'));
     const best = {};
-    DATA.lb.systems.filter(s => s.id.startsWith('studio-')).forEach(s => { best[s.model_name] = Math.max(best[s.model_name] ?? 0, s.score); });
+    sys.filter(s => group(s) === 'agent').forEach(s => { best[s.model_label] = Math.max(best[s.model_label] ?? 0, s.score); });
     const models = Object.values(best).sort((a, b) => a - b);
 
     const dots = (vals, cls = '') => vals.map(v => `<i class="ldot ${cls}" style="left:${v}%"></i>`).join('');
@@ -905,18 +899,18 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     };
     const diff = p => f1(Math.abs(p[1] - p[0]));
     let html = '';
-    if (copilot) html += row(true, 'Content system', 'Copilot on SharePoint search, then with an index added', copilot, `+${diff(copilot)}`);
-    if (claude) html += row(!copilot, 'Content system', 'Claude.ai, Opus 5.5: the same change', claude, `+${diff(claude)}`);
-    if (models.length > 1) html += row(true, 'Model', `${models.length} models on one agent and one index, best effort each`, models, f1(models.at(-1) - models[0]), 'sm');
-    if (harness) html += row(true, 'Harness', 'Opus 5.5 on one index: an agent, then an assistant', harness, diff(harness));
-    if (noIndex) html += row(!harness, 'Harness', 'Copilot and Claude.ai on SharePoint search. Their models differ.', noIndex, diff(noIndex), 'hollow');
+    if (gptIndex) html += row(true, 'Content system', 'ChatGPT (GPT 6.2) on SharePoint search, then with a structured index', gptIndex, `+${diff(gptIndex)}`);
+    if (claudeIndex) html += row(!gptIndex, 'Content system', 'Claude.ai (Opus 5.5) on SharePoint search, then with a structured index', claudeIndex, `+${diff(claudeIndex)}`);
+    if (models.length > 1) html += row(true, 'Model', `${models.length} models on one agent and one index (medium effort)`, models, f1(models.at(-1) - models[0]), 'sm');
+    if (hOpus) html += row(true, 'Harness', 'Claude Opus 5.5 on the same index: Vertesia Agent System vs. Claude.ai', hOpus, `+${diff(hOpus)}`);
+    if (hGpt) html += row(!hOpus, 'Harness', 'GPT 6.2 on the same index: Vertesia Agent System vs. ChatGPT', hGpt, `+${diff(hGpt)}`);
     html += `<div class="lrow laxis"><span></span><div class="ltrack">${[0, 25, 50, 75, 100].map(v => `<span style="left:${v}%">${v}</span>`).join('')}</div><span></span></div>`;
     $('#layerchart').innerHTML = html.replace('lrow g', 'lrow');
 
     const items = [];
-    if (copilot && claude) items.push(`Adding an index moved the same assistant, on the same files, by ${diff(claude)} and ${diff(copilot)} points.`);
-    if (models.length > 3) items.push(`Swapping the model moved the score by up to ${f1(models.at(-1) - models[0])} points across ${models.length} models, and ${f1(models.at(-1) - models.at(-3))} across the top three.`);
-    if (harness) items.push(`Swapping the harness moved it ${diff(harness)} points when both shared a model and an index.`);
+    if (gptIndex) items.push(`Adding a structured index over the same SharePoint files moved ChatGPT (GPT 6.2 medium) by +${diff(gptIndex)} points (${f1(gptIndex[0])} → ${f1(gptIndex[1])}).`);
+    if (models.length > 3) items.push(`Swapping the model moved the score by ${f1(models.at(-1) - models[0])} points across ${models.length} models (${f1(models[0])} → ${f1(models.at(-1))}), and ${f1(models.at(-1) - models.at(-3))} across the top three.`);
+    if (hOpus) items.push(`Swapping the harness moved Opus 5.5 medium by +${diff(hOpus)} points on the same index (${f1(hOpus[0])} → ${f1(hOpus[1])}).`);
     if (items.length) $('#takeaways').innerHTML = items.map(t => `<li>${t}</li>`).join('');
   }
 
@@ -1040,7 +1034,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         <div class="trow"><span>Latency (p50 / p90)</span><span>${fmtT(s.median_s)} / ${fmtT(s.p90_s)}</span></div>
         ${s.input_tokens_per_q ? `<div class="trow"><span>Input / Output</span><span>${kt(s.input_tokens_per_q)} / ${kt(s.output_tokens_per_q)}</span></div>` : ''}
         ${s.tool_calls_mean ? `<div class="trow"><span>Tool calls / q</span><span>${s.tool_calls_mean}</span></div>` : ''}
-        ${ca ? `<div class="trow"><span>Timeouts</span><span>${s.timeouts} (${ca}% on ${103 - s.timeouts} finished)</span></div>` : ''}`;
+        ${ca ? `<div class="trow"><span>Timeouts</span><span>${s.timeouts} (${ca}% on ${(s.correct + s.partial + s.wrong + s.no_answer) - s.timeouts} finished)</span></div>` : ''}`;
       const r = wrap.getBoundingClientRect();
       const px = (ev ? ev.clientX : el.getBoundingClientRect().left) - r.left;
       const py = (ev ? ev.clientY : el.getBoundingClientRect().top) - r.top;
@@ -1150,7 +1144,7 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
         : '';
       const tied = rows.some((o, j) => j !== i && ranks[j] === ranks[i]);
       const ca = completedAccuracy(s);
-      const toBadge = s.timeouts >= 4 ? `<span class="tag to" title="${s.timeouts} runs hit the 10-min limit (${ca}% on ${103 - s.timeouts} completed)">${s.timeouts} TO</span>` : '';
+      const toBadge = s.timeouts >= 4 ? `<span class="tag to" title="${s.timeouts} runs hit the 10-min limit (${ca}% on ${n - s.timeouts} completed)">${s.timeouts} TO</span>` : '';
       const bar = view === 'overall' && metric === 'score'
         ? `<i class="c-ok" style="width:${w(s.correct)}%"></i><i class="c-part" style="width:${w(s.partial)}%"></i><i class="c-bad" style="width:${w(s.wrong)}%"></i><i class="c-none" style="width:${w(s.no_answer)}%"></i>`
         : `<i class="c-ok" style="width:${Math.max(0, sc).toFixed(1)}%"></i>`;
@@ -1203,25 +1197,6 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
     renderBoard();
   };
-  function applyDataset(setKey) {
-    activeSet = setKey;
-    DATA.lb = (setKey === 'v2' && DATA.lbV2 && DATA.lbV2.systems?.length) ? DATA.lbV2 : DATA.lbV1;
-    filt.harness = filt.model = filt.cs = 'all';
-    view = 'overall';
-    expanded.clear();
-    $('#nsys').textContent = DATA.lb.n_systems;
-    const isV2 = DATA.lb === DATA.lbV2;
-    $('#lbset-lbl').textContent = isV2 ? '150 questions (v2.1)' : '103-question baseline';
-    $('#lbset-note').textContent = isV2
-      ? 'Full 150-question v2.1 runs (medium effort, blind 3-lab graded). Switch to the 103 baseline to compare earlier multi-effort and SharePoint runs. Click any row for its breakdown.'
-      : 'Earlier 103-question baseline across 23 configurations, including SharePoint alone and reasoning-effort sweeps. Click any row for its breakdown.';
-    populateAxisFilters(); renderViews(); renderBoard(); renderHeatmap(); renderHistogram(); renderScatter(); renderTokens();
-  }
-  $('#set-seg').onclick = e => {
-    const b = e.target.closest('[data-set]'); if (!b) return;
-    $('#set-seg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    applyDataset(b.dataset.set);
-  };
   $('#effort-seg').onclick = e => {
     const b = e.target.closest('[data-ef]'); if (!b) return;
     effortMode = b.dataset.ef;
@@ -1243,8 +1218,8 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
     renderBoard();
   };
   function renderViews() {
-    const lb = DATA.lb, totalQ = lb.n_questions || 103;
-    const counts = lb.kind_counts || {'1': 20, '2': 16, '3': 28, '4': 16, '5': 23};
+    const lb = DATA.lb, totalQ = lb.n_questions || 150;
+    const counts = lb.kind_counts || {'1': 25, '2': 25, '3': 40, '4': 27, '5': 33};
     const opts = [['overall', 'Overall', totalQ], ['hardcore', `Hardest ${lb.hardcore_ids.length}`, lb.hardcore_ids.length],
       ...Object.entries(lb.kinds).map(([k, v]) => [k, v, counts[k] || 0])];
     $('#views').innerHTML = opts.map(([k, l, n]) => `<button class="chip" type="button" data-v="${k}" aria-pressed="${k === view}">${esc(l)}<span class="n">${n}</span></button>`).join('');
@@ -1490,22 +1465,15 @@ footer{padding-block:52px 60px;color:var(--muted);font-size:13px;display:grid;ga
   /* ---------- BOOT ---------- */
   (async () => {
     try {
-      [DATA.lbV1, DATA.q, DATA.ex, DATA.tok] = await Promise.all(['leaderboard', 'questions', 'example-grades', 'tokens'].map(load));
-      [DATA.lbV2, DATA.qual] = await Promise.all([
-        load('leaderboard-v2').catch(() => null),
-        load('qualification').catch(() => null),
-      ]);
-      DATA.lb = DATA.lbV1;
-      $('#best').textContent = Math.max(...DATA.lbV1.systems.map(s => s.score)).toFixed(1);
-      $('#nsys-fact').textContent = DATA.lbV1.n_systems;
-      document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lbV1.n_systems);
-      renderLayers(); renderGrid(); renderQual(); renderQFilters(); renderQuestions();
-      if (DATA.lbV2 && DATA.lbV2.systems?.length) {
-        applyDataset('v2');
-      } else {
-        $('#set-seg').hidden = true;
-        applyDataset('v1');
-      }
+      [DATA.lb, DATA.q, DATA.ex, DATA.tok] = await Promise.all(['leaderboard', 'questions', 'example-grades', 'tokens'].map(load));
+      DATA.qual = await load('qualification').catch(() => null);
+      const hasMultiEff = [...groupByConfig(DATA.lb.systems).values()].some(arr => arr.length > 1);
+      $('#effort-seg').hidden = !hasMultiEff;
+      $('#best').textContent = Math.max(...DATA.lb.systems.map(s => s.score)).toFixed(1);
+      $('#nsys').textContent = DATA.lb.n_systems;
+      $('#nsys-fact').textContent = DATA.lb.n_systems;
+      document.querySelectorAll('.nsys').forEach(e => e.textContent = DATA.lb.n_systems);
+      populateAxisFilters(); renderViews(); renderBoard(); renderQual(); renderHeatmap(); renderHistogram(); renderLayers(); renderScatter(); renderGrid(); renderQFilters(); renderQuestions(); renderTokens();
     } catch (err) {
       $('#lbody').innerHTML = `<tr><td colspan="8">The results could not be loaded. Reload the page.</td></tr>`;
     }
