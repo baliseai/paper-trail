@@ -40,14 +40,18 @@ C / P / W / N = correct / partial / wrong / no answer. Tokens are means per ques
 | 3 | Vertesia Agent System | Claude Fable 5.2 | medium | Vertesia | 96.7 | 96.7 | 86.4 | 96.4 | 140 / 10 / 0 / 0 | 94 | 434K | 9.4K |
 | 4 | Vertesia Agent System | Mistral Large 4.0 | medium | Vertesia | 95.0 | 94.3 | 81.8 | 94.4 | 136 / 13 / 1 / 0 | 170 | 852K | 14K |
 | 4 | Claude.ai | Claude Opus 5.5 | medium | SharePoint + Vertesia index | 95.0 | 94.3 | 86.4 | 95.6 | 136 / 13 / 1 / 0 | 68 | — | — |
-| 6 | Vertesia Agent System | GPT 6.2 Astra | medium | Vertesia | 93.3 | 91.3 | 77.3 | 93.2 | 133 / 14 / 3 / 0 | 67 | 262K | 2.0K |
-| 7 | Vertesia Agent System | GPT 6.2 Sol | medium | Vertesia | 91.3 | 87.3 | 77.3 | 90.0 | 130 / 14 / 6 / 0 | 83 | 412K | 3.5K |
-| 8 | Vertesia Agent System | Claude Sonnet 5.5 | medium | Vertesia | 91.0 | 89.0 | 77.3 | 90.4 | 128 / 17 / 3 / 2 | 44 | 324K | 4.1K |
-| 9 | ChatGPT | GPT 6.2 | medium | SharePoint + Vertesia index | 89.0 | 85.7 | 77.3 | 88.4 | 122 / 23 / 5 / 0 | 29 | — | — |
-| 10 | Microsoft 365 Copilot Chat | Auto | — | SharePoint + Vertesia index | 75.3 | 60.7 | 45.5 | 76.8 | 100 / 26 / 22 / 2 | 50 | — | — |
-| 11 | Claude.ai | Claude Opus 5.5 | medium | SharePoint | 59.7 | 40.3 | 40.9 | 58.0 | 76 / 27 / 29 / 18 | 56 | — | — |
-| 12 | ChatGPT | GPT 6.2 | medium | SharePoint | 56.7 | 30.7 | 45.5 | 56.4 | 70 / 30 / 39 / 11 | 35 | — | — |
-| 13 | Microsoft 365 Copilot Cowork | Auto | — | SharePoint | 13.7 | -6.3 | 9.1 | 11.6 | 11 / 19 / 30 / 90 | 23 | — | — |
+| 6 | Vertesia Agent System | Gemini 4 Argon | medium | Vertesia | 93.7 | 89.7 | 81.8 | 93.6 | 137 / 7 / 6 / 0 | 255 | 1752K | 14K |
+| 7 | Vertesia Agent System | GPT 6.2 Astra | medium | Vertesia | 93.3 | 91.3 | 77.3 | 93.2 | 133 / 14 / 3 / 0 | 67 | 262K | 2.0K |
+| 8 | Vertesia Agent System | Grok 4.7 | medium | Vertesia | 91.7 | 88.3 | 77.3 | 92.0 | 130 / 15 / 5 / 0 | 94 | 733K | 5.9K |
+| 9 | Vertesia Agent System | GPT 6.2 Sol | medium | Vertesia | 91.3 | 87.3 | 77.3 | 90.0 | 130 / 14 / 6 / 0 | 83 | 412K | 3.5K |
+| 10 | Vertesia Agent System | Claude Sonnet 5.5 | medium | Vertesia | 91.0 | 89.0 | 77.3 | 90.4 | 128 / 17 / 3 / 2 | 44 | 324K | 4.1K |
+| 11 | ChatGPT | GPT 6.2 | medium | SharePoint + Vertesia index | 89.0 | 85.7 | 77.3 | 88.4 | 122 / 23 / 5 / 0 | 29 | — | — |
+| 12 | Microsoft 365 Copilot Cowork | Auto | — | SharePoint + Vertesia index | 83.0 | 76.3 | 63.6 | 84.0 | 115 / 19 / 10 / 6 | 76 | — | — |
+| 13 | Microsoft 365 Copilot Chat | Auto | — | SharePoint + Vertesia index | 75.3 | 60.7 | 45.5 | 76.8 | 100 / 26 / 22 / 2 | 50 | — | — |
+| 14 | Claude.ai | Claude Opus 5.5 | medium | SharePoint | 59.7 | 40.3 | 40.9 | 58.0 | 76 / 27 / 29 / 18 | 56 | — | — |
+| 15 | ChatGPT | GPT 6.2 | medium | SharePoint | 56.7 | 30.7 | 45.5 | 56.4 | 70 / 30 / 39 / 11 | 35 | — | — |
+| 16 | Microsoft 365 Copilot Chat | Auto | — | SharePoint | 51.7 | 21.7 | 31.8 | 52.4 | 64 / 27 / 45 / 14 | 32 | — | — |
+| 17 | Microsoft 365 Copilot Cowork | Auto | — | SharePoint | 13.7 | -6.3 | 9.1 | 11.6 | 11 / 19 / 30 / 90 | 23 | — | — |
 <!-- leaderboard:end -->
 
 **How to read the rows.** Each row is one harness running one model over one content system:
